@@ -62,26 +62,21 @@ We also hope our project would reach those yet unfamiliar with TED and evoke the
 
 ### Exploratory Data Analysis
 
-Jupyter notebook with eda:
-how clean the data is, missing values
-distributions of different variables - histograms, boxplots
-correlation
+We analyzed the data in this [notebook](/Exploratory%20data%20analysis.ipynb). The ted\_main.csv file 
+contains information about 2550 ted talks. These are given by various people, the most profilic one 
+having given only 9 talks: Hans Rosling - TED talks are not easy to give. Approximately 97% of the 
+talks have one speaker. On average a TED talk lasts for approxiamtely 14 minutes, the shortest one
+having under 3 minutes while the longest one has 1.5 hours. The subject in these talks cover more
+than 416 subjects the top 3 ones being in order technology, science and global issues. These talks
+have gathered aproximately 4.3 billion views.
 
+The distribution of number of talks per event is long tailed. We found that almost half of the TED
+events in this dataset have only one talk. This dataset also contains individually organized TED 
+events known as TEDx and they represent 18% of our data.
 
-Explore tags:
--Counts per tag,
--Histogram of number of tags by counts
--what are the 30 most popular tags?
-
-
-Tags -> dictionary all talks
-Take average of ratings of each tag
-
-
-
-Notes:
-
-
+In terms of dates, the older TED talk was filmed in 1972 but got published 38 years after in 2010.
+The general trend however, is that talks are published in the same year they were recorded and their
+numbers have increased exponentially since 1990.
 
 ### Related Work
 
