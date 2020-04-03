@@ -14,11 +14,11 @@
 ### Dataset
 We decided to analyze dataset (https://www.kaggle.com/rounakbanik/ted-talks) of 2550 TED-talks from
 the official TED.com website until September 21st, 2017. This dataset contains two files, 
-* `ted\_main.csv` - for each TED talk:
-  ..** metadata about it: title, description, duration, event, languages, film and publish dates, url, number of views, tags about the subject
-  ..** ratings given to each talk on 14 dimensions
-  ..** information about the speaker: number of speakers, name, occupation
-  ..** relationship between talks: a recommandation of talks to watch next
+* `ted_main.csv` - for each TED talk:
+  ** metadata about it: title, description, duration, event, languages, film and publish dates, url, number of views, tags about the subject
+  ** ratings given to each talk on 14 dimensions
+  ** information about the speaker: number of speakers, name, occupation
+  ** relationship between talks: a recommandation of talks to watch next
 * `transcripts.csv` - transcript of the talk with audience reactions (Applause, Applause continues,
 Music, Music ends, Laughter)
 
@@ -35,23 +35,34 @@ Preprocessing steps taken so far:
 Preprocessing steps we are considering:
 1. sanitize the occupations (for example, consider aggregating types of artists into just "Artist")
 2. manually fill in the data for 6 speakers which have no occupation in the dataset 
-3. compute basic data from the transcripts: number of words, speed of speech
+3. build a network of talks using *related_talks* column to make the edges
+4. compute basic data from the transcripts: number of words, speed of speech
 
 
 ### Problematic
 
-Our main goal for this project is to provide the user with interactive tools for exploring the talks. The visualizations focus on segmenting talks to different groups and finding relationships between them. We hope our visualization will provide some insight on how diffrent talk characteristics (speed, speaker occupation and gender, sentiment of the talk, TED-event of the talk, TEDx-boolean) correlate with:
-the way the talk is perceived (whether it is funny/inspiring/courageous, or does the talk lack these ratings) and 
-with the popularity of the talk (number of views and number of languages)
+Our main goal for this project is to provide the user with interactive tools for exploring the talks. 
+The visualizations focus on segmenting talks to different groups and finding relationships between them. 
+We hope our visualization will provide some insight on how different talk characteristics (speed, 
+speaker occupation and gender, sentiment of the talk, TED-event of the talk, TEDx-boolean) correlate 
+with: the way the talk is perceived (whether it is funny/inspiring/courageous, or does the talk lack 
+these ratings) and  with the popularity of the talk (number of views and number of languages).
 
-Besides exploring correlations, another main goal for visualizing the TED-talks is to look at the relationships between the lectures. We will find relationships between talks based on the “recommended talks” and “tags” columns.
+Besides exploring correlations, another main goal for visualizing the TED-talks is to look at the 
+relationships between the lectures. We will find relationships between talks based on the 
+*recommended_talks* and *tags* columns. Visualizing this network of relationships will also help 
+find if there are some clusters in the data. For example, as TED is an acronym for "Technology, 
+Entertainment, Design", it would be interesting to see if there were some clustering of talks to 
+these three dimensions.
 
-After visualizing these relationships, the user can find interesting talks that are closely related on some arbitrary user-defined TED-talk. 
+After visualizing these relationships, the user can find interesting talks that are closely related 
+on some arbitrary user-defined TED-talk. 
 
-Visualizing this network of relationships will also help find if there are some clusters in the data. For example, as TED is an acronym for "Technology, entertainment, design", it would be interesting to see if there were some clustering of talks to these three dimensions.
-
-In general, our project is focused to those that have general Our target audience are new university students, as visualizations of this project together with TED-talks could provide them some insight on how to give popular talks (high-school curriculum has a lack of self-expression and presentation skills). 
-We also hope our project would reach those yet unfamiliar with TED and evoke them to start exploring the vast and free world of sophisticated and educational specialist presentations. 
+Our target audience are new university students, as visualizations of this project together with 
+TED-talks could provide them some insight on how to give popular talks (high-school curriculum has 
+a lack of self-expression and presentation skills). We also hope our project would reach those yet 
+unfamiliar with TED and evoke them to start exploring the vast and free world of sophisticated and 
+educational specialist presentations. 
 
 
 ### Exploratory Data Analysis
@@ -78,17 +89,31 @@ talk, we find that most talks are rated as being insipiring, informative and fas
 
 ### Related Work
 
-Data visualisation project by Yannick Pulver (https://yannickpulver.com/ivis/, 
-https://github.com/yannickpulver/ivis-ted-visualization) is concentrating on presenting Ted Talks view counts as a “drop of sauce”. In his project, it is possible to filter data based on the topics and ratings of the speeches.
+* Data visualisation project by [Yannick Pulver](https://yannickpulver.com/ivis/) is concentrating on
+presenting Ted Talks view counts as a “drop of sauce”. In his project, it is possible to filter data
+based on the topics and ratings of the speeches.
 
-Turkan Sevgili’s analysis (https://mef-bda503.github.io/pj-sevgilit/files/TED_Talks.html) includes plotters about “Top 10 Ted Speakers” in number of speeches held by a speaker, “Top 15 Occupations of the Speakers”, number of available languages for a speech, correlation between view counts and number of available languages for a speech, and correlation between comments and view counts.
+* Turkan Sevgili’s analysis (https://mef-bda503.github.io/pj-sevgilit/files/TED_Talks.html) includes plotters about “Top 10 Ted Speakers” in number of speeches held by a speaker, “Top 15 Occupations of the Speakers”, number of available languages for a speech, correlation between view counts and number of available languages for a speech, and correlation between comments and view counts.
 
-Following links provide pretty thorough data analysis of the TED Talks data set: https://www.kaggle.com/lpang36/analysis-of-ted-talk-ratings and especially https://www.kaggle.com/anandaribeiro/understanding-ted-talks-ratings. The latter one concentrates on exploring the rating system in the data set and to find correlations between ratings and other dimensions in the data set. These analysis provide a profound foundation for our project and give us a good understanding of the data set that we’re working with.
+Following kernels which provide pretty thorough data analysis of the TED Talks data set: 
+  * https://www.kaggle.com/lpang36/analysis-of-ted-talk-ratings 
+  * https://www.kaggle.com/anandaribeiro/understanding-ted-talks-ratings - this one concentrates on 
+    exploring the rating system in the data set and to find correlations between 
+    ratings and other dimensions in the data set. These analysis provide a profound foundation for 
+    our project and give us a good understanding of the data set that we’re working with
 
-As shown above, there already exists analysis from the data set. However, we believe that we can provide even more information about the data set and especially, present the information in more informative way. Most of the analysis above present the information only in two-dimensional plotter, but we believe that we can visualize the data in more informative way and by that help the user to find correlations between factors that none of the projects so far has been able to do. Therefore, our approach in emphasizing the visuality of the data will help the end user to find new information from the data set in an easy way.
+As shown above, there already exists analysis from the data set. However, we believe that we can 
+provide even more insight about the data set and especially, present the information in more 
+informative way. Most of the analysis above present the information only in two-dimensional plotter, 
+but we believe that we can visualize the data in more informative way and by that help the user to 
+find correlations between factors that none of the projects so far has been able to do. Therefore, 
+our approach in emphasizing the visuality of the data will help the end user to find new information 
+from the data set in an easy way.
 
-Our source of inspiration gems from beautiful and informative visualizations of data. As listed earlier in section “Methods”, there are lots of different kinds of possible data visualization graphs that we can use to plot different information from the data set. In addition, we will use the examples of earlier years as a source of inspiration for our final work.
-
+Our source of inspiration gems from beautiful and informative visualizations of data and we will focus
+more on network visualtization as well as multi dimensional graphs with the help of visual elements
+(dimension, color, forms etc). In addition, we will use the examples of earlier years as a source 
+of inspiration for our final work.
 
 ## Milestone 2 (Friday 1st May, 5pm)
 
