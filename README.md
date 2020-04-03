@@ -12,35 +12,30 @@
 
 **10% of the final grade**
 ### Dataset
-We decided to analyze dataset (https://www.kaggle.com/rounakbanik/ted-talks) of 2550 TED-talks with 17 variables: 
-name: The official name of the TED Talk. Includes the title and the speaker. Use this as the unique id in our dataframe
-title: The title of the talk
-main_speaker: The first named speaker of the talk
-speaker_occupation: The occupation of the main speaker
-num_speaker: The number of speakers in the talk
-description: A blurb of what the talk is about
-duration: The duration of the talk in seconds
-event: The TED/TEDx event where the talk took place
-languages: The number of languages in which the talk is available
-film_date: The Unix timestamp of the filming
-published_date: The Unix timestamp for the publication of the talk on TED.com
-tags: The themes associated with the talk
-views: The number of views on the talk
-url: The URL of the talk
-ratings: A stringified dictionary of the various ratings given to the talk (inspiring, fascinating, jaw dropping, etc.)
-comments The number of first level comments made on the talk
-related_talks A list of dictionaries of recommended talks to watch next
-The data also includes transcripts of the talks, which we find useful.
-Data is overall very clean: We have not found outliers. However, there are multiple steps of preprocessing and manipulations to the data that we have done in order to have new columns that will give us possibilities to explore the data in a greater depth. We have done / will do the following:
--extract the year of the event from the event name
--make a list of all occupations a speaker has 
--manually fill in the data for 6 speakers which have no occupation in the dataset (from wikipedia / official TED website)
--sanitize the occupations: cosider aggregating them for example “Artist”
--expand column ratings to multiple columns
--calculate number of words from transcript
--calculate the sensitivity 
--calculate speed of the speech = number of words divided by duration 
+We decided to analyze dataset (https://www.kaggle.com/rounakbanik/ted-talks) of 2550 TED-talks from
+the official TED.com website until September 21st, 2017. This dataset contains two files, 
+* `ted\_main.csv` - for each TED talk:
+  ..** metadata about it: title, description, duration, event, languages, film and publish dates, url, number of views, tags about the subject
+  ..** ratings given to each talk on 14 dimensions
+  ..** information about the speaker: number of speakers, name, occupation
+  ..** relationship between talks: a recommandation of talks to watch next
+* `transcripts.csv` - transcript of the talk with audience reactions (Applause, Applause continues,
+Music, Music ends, Laughter)
 
+Data is overall clean. We found only 6 missing values for speaker's occupation which we replaced with
+Unknown for now. Since they are not that many, we could manually search the speakers on websites like
+Wikipedia and fill in the missing information, making sure that we use the same keywords as we have 
+in other rows of the *speaker_ocupation* column.
+
+Preprocessing steps taken so far:
+1. replaced NaN with Unknown in *speaker_ocupation* column
+2. expand the *ratings* column in 14 different columns
+3. transfored unix timestamp for *film_date* and *publish_date* to day, month, year format
+
+Preprocessing steps we are considering:
+1. sanitize the occupations (for example, consider aggregating types of artists into just "Artist")
+2. manually fill in the data for 6 speakers which have no occupation in the dataset 
+3. compute basic data from the transcripts: number of words, speed of speech
 
 
 ### Problematic
@@ -59,25 +54,26 @@ In general, our project is focused to those that have general Our target audienc
 We also hope our project would reach those yet unfamiliar with TED and evoke them to start exploring the vast and free world of sophisticated and educational specialist presentations. 
 
 
-
 ### Exploratory Data Analysis
 
 We analyzed the data in this [notebook](/Exploratory%20data%20analysis.ipynb). The ted\_main.csv file 
 contains information about 2550 ted talks. These are given by various people, the most profilic one 
 having given only 9 talks: Hans Rosling - TED talks are not easy to give. Approximately 97% of the 
 talks have one speaker. On average a TED talk lasts for approxiamtely 14 minutes, the shortest one
-having under 3 minutes while the longest one has 1.5 hours. The subject in these talks cover more
-than 416 subjects the top 3 ones being in order technology, science and global issues. These talks
-have gathered aproximately 4.3 billion views.
+having under 3 minutes while the longest one has 1.5 hours. The talks cover more than 416 subjects,
+the top 3 ones being in order technology, science and global issues. All of the talks have gathered 
+aproximately 4.3 billion views.
 
 The distribution of number of talks per event is long tailed. We found that almost half of the TED
 events in this dataset have only one talk. This dataset also contains individually organized TED 
 events known as TEDx and they represent 18% of our data.
 
 In terms of dates, the older TED talk was filmed in 1972 but got published 38 years after in 2010.
-The general trend however, is that talks are published in the same year they were recorded and their
-numbers have increased exponentially since 1990.
+The general trend however, is that talks are published in the same year as they were recorded and 
+their numbers have increased exponentially since 1990.
 
+Each talk is being rated on 14 dimesions. Keeping only the rating with the biggest score for each
+talk, we find that most talks are rated as being insipiring, informative and fascinating.
 
 
 ### Related Work
