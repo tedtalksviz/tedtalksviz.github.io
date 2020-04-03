@@ -78,36 +78,20 @@ In terms of dates, the older TED talk was filmed in 1972 but got published 38 ye
 The general trend however, is that talks are published in the same year they were recorded and their
 numbers have increased exponentially since 1990.
 
+
+
 ### Related Work
 
-####What others have already done with the data?
 Data visualisation project by Yannick Pulver (https://yannickpulver.com/ivis/, 
-https://github.com/yannickpulver/ivis-ted-visualization) is concentrating on presenting Ted Talks view counts as a “drop of sauce”. In his project, it is possible to filter data based on the topics and ratings of the speeches. On the side of the main graph, the project shows the division of ratings between projects, i.e., how big procent of the speeches included some certain rating. The third graph on the page concentrates on making sentiment analysis of the speeches based on their transcripts.
+https://github.com/yannickpulver/ivis-ted-visualization) is concentrating on presenting Ted Talks view counts as a “drop of sauce”. In his project, it is possible to filter data based on the topics and ratings of the speeches.
 
-In his project (https://mef-bda503.github.io/pj-sevgilit/files/TED_Talks.html), Turkan Sevgili is doing exploratory data analysis for the Ted Talks data set with Python. The project includes graphs about “Top 10 Ted Speakers” in number of speeches held by a speaker, “Top 15 Occupations of the Speakers”, number of available languages for a speech, correlation between view counts and number of available languages for a speech, and correlation between comments and view counts.
+Turkan Sevgili’s analysis (https://mef-bda503.github.io/pj-sevgilit/files/TED_Talks.html) includes plotters about “Top 10 Ted Speakers” in number of speeches held by a speaker, “Top 15 Occupations of the Speakers”, number of available languages for a speech, correlation between view counts and number of available languages for a speech, and correlation between comments and view counts.
+
 Following links provide pretty thorough data analysis of the TED Talks data set: https://www.kaggle.com/lpang36/analysis-of-ted-talk-ratings and especially https://www.kaggle.com/anandaribeiro/understanding-ted-talks-ratings. The latter one concentrates on exploring the rating system in the data set and to find correlations between ratings and other dimensions in the data set. These analysis provide a profound foundation for our project and give us a good understanding of the data set that we’re working with.
 
+As shown above, there already exists analysis from the data set. However, we believe that we can provide even more information about the data set and especially, present the information in more informative way. Most of the analysis above present the information only in two-dimensional plotter, but we believe that we can visualize the data in more informative way and by that help the user to find correlations between factors that none of the projects so far has been able to do. Therefore, our approach in emphasizing the visuality of the data will help the end user to find new information from the data set in an easy way.
 
-#### Why is your approach original?
-As showed above, there already exists analysis from the data set. However, we believe that we can provide even more information about the data set and especially, present the information in more informative way. Most of the analysis above present the information only in two-dimensional plotter, but we believe that we can visualize the data in more informative way and by that help the user to find correlations between factors that none of the projects so far has been able to do. Therefore, our approach in emphasizing the visuality of the data will help the end user to find new information from the data set in an easy way.
-#### What source of inspiration do you take?
 Our source of inspiration gems from beautiful and informative visualizations of data. As listed earlier in section “Methods”, there are lots of different kinds of possible data visualization graphs that we can use to plot different information from the data set. In addition, we will use the examples of earlier years as a source of inspiration for our final work.
-
-
-In conclusion:
-
-TED-data
-https://www.kaggle.com/rounakbanik/ted-talks
-
-Variables:
--Comments & number of views
--Duration
--Date of filming
--number of languages is available on
--ratings provide different categorizations (Funny, courageous, confusing etc)
--related talks + tags
-
-
 
 
 ## Milestone 2 (Friday 1st May, 5pm)
