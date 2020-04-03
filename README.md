@@ -15,10 +15,10 @@
 We decided to analyze dataset (https://www.kaggle.com/rounakbanik/ted-talks) of 2550 TED-talks from
 the official TED.com website until September 21st, 2017. This dataset contains two files, 
 * `ted_main.csv` - for each TED talk:
-  ** metadata about it: title, description, duration, event, languages, film and publish dates, url, number of views, tags about the subject
-  ** ratings given to each talk on 14 dimensions
-  ** information about the speaker: number of speakers, name, occupation
-  ** relationship between talks: a recommandation of talks to watch next
+  * metadata about it: title, description, duration, event, languages, film and publish dates, url, number of views, tags about the subject
+  * ratings given to each talk on 14 dimensions
+  * information about the speaker: number of speakers, name, occupation
+  * relationship between talks: a recommandation of talks to watch next
 * `transcripts.csv` - transcript of the talk with audience reactions (Applause, Applause continues,
 Music, Music ends, Laughter)
 
@@ -118,49 +118,6 @@ of inspiration for our final work.
 ## Milestone 2 (Friday 1st May, 5pm)
 
 **10% of the final grade**
-
-
-
-###Tools to explore talks in general (correlations one could say)
--visualize most common tags with a bubble chart to illustrate that there are no large categories
--visualize correlation of performance with gender, profession, duration
--transcripts: Sentiment analysis, talking speed (number of words / duration)
-Possible methods: parallel sets/ coordinates, Chord, Hierarchical edge building
--https://www.jasondavies.com/parallel-sets/  (discrete data sets)
--https://observablehq.com/@d3/parallel-coordinates (continuous data)
--https://www.data-to-viz.com/graph/chord.html or
--https://observablehq.com/@d3/hierarchical-edge-bundlingExplore characteristics
-of good talks
-
-
-### One-variable analyses
-bubble plot based on some given variable (interactively choose from the following:
--number of times a tag is used
--frequencies of ratings
--frequencies of events
-
-
-###We combine ratings, the number of comments the number of languages to a sum-variable "performance"
--Consider making performance discrete by taking 5% of the best ted talks as their own group.
--Study the group of subgroup of lecturers that have given more than one ted talk, and how do they differ from the rest / average
-
-
-###Use ratings, tags, predefined related-talks as well as dictionary differences of transcripts to calculate a distance between all talks. Use this distance to populate force-directed-graph:
-(perhaps euclidean distance)
--User can select his favorite talk and see what areas it is connected to    
--https://observablehq.com/@d3/force-directed-graph
--https://observablehq.com/@d3/disjoint-force-directed-graph
-
-
-###events
--bubble chart to show main events
--Where are the smartest minds: Get location of each TED event, and look in what places have the best talks been performed
--https://bl.ocks.org/piwodlaiwo/3734a1357696dcff203a94012646e932
--http://bl.ocks.org/abenrob/c4ac3d581a7b16ff5f2f
--https://observablehq.com/@d3/orthographic-to-equirectangular
--https://observablehq.com/@d3/hexbin-map
-
-
 
 
 ## Milestone 3 (Thursday 28th May, 5pm)
