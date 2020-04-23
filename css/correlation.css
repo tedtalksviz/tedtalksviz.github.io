@@ -22,31 +22,35 @@
   stroke-width: 1px;
 }
 
-.axis:hover .var_name {
-  font-weight: bold;
+.dimension:hover .var_name {
+  font-size: 13px;
+}
+.brush rect.extent {
+  fill: rgba(100,100,100,0.15);
+  stroke: #fff;
+}
+.dark .brush rect.extent {
+  fill: rgba(100,100,100,0.15);
+  stroke: #ddd;
+}
+.brush:hover rect.extent {
+  stroke: #222;
+  stroke-dasharray: 5,5;
+}
+.brush rect.extent:hover {
+  stroke-dasharray: none;
 }
 
-.axis:hover .tick text {
-  opacity: 1;
-  font-weight: bold;
+.dimension:hover .tick text {
 }
 
-.axis {
+.dimension {
   opacity: 0.5;
 }
-.axis:hover {
-  opacity: 1;
-}
-
-.axis.active .title {
-  font-weight: bold;
-}
-
-.axis.active .tick text {
+.dimension:hover {
   opacity: 1;
   font-weight: bold;
 }
-
 
 .brush .extent {
   fill-opacity: .3;
