@@ -84,25 +84,25 @@ class ParallelCoords {
 
     // append the svg object to the body of the page
     var svg = d3.select(svg_element_id)
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
 
   // use the data
   d3.csv(data_address).then(function(data) {
-      for (row in data){
-        if (row != 'columns'){
-          data[row].logviews = Math.log(data[row]['views'])
-          data[row].logduration = Math.log(data[row]['duration'])
-          data[row].logcomments = Math.log(data[row]['comments'])
+    for (row in data){
+        if (row != 'columns'){ //columns is a part of the object
+            data[row].logviews = Math.log(data[row]['views'])
+            data[row].logduration = Math.log(data[row]['duration'])
+            data[row].logcomments = Math.log(data[row]['comments'])
         }
-      }
-      data['columns'].push('logviews')
-      data['columns'].push('logduration')
-      data['columns'].push('logcomments')
+    }
+    data['columns'].push('logviews')
+    data['columns'].push('logduration')
+    data['columns'].push('logcomments')
 
     function filter_rows_start(input_data, dim, low, high) {
         var output_data = input_data.filter(function(row){
@@ -122,15 +122,19 @@ class ParallelCoords {
         .padding(1)
         .domain(dimensions);
 
+        function get_scale_type(dim) {
+            if(dim == 'views' || dim == 'comments'){
+              return d3.scaleLog()
+            }else{
+              return d3.scaleLinear()
+            }
+        }
+
       // create y axis
       var y = {}
       for (i in dimensions) {
         name = dimensions[i]
-        if(name == 'views' || name == 'comments'){
-          var scal = d3.scaleLog()
-        }else{
-          var scal = d3.scaleLinear()
-        }
+        var scal = get_scale_type(name)
         y[name] = scal
           .domain( d3.extent(filtered_data, function(d) { return +d[name]; }) )
           .range([height, 0])
@@ -143,13 +147,6 @@ class ParallelCoords {
           }));
       }
 
-      function z() { //now use function as color_var is changed. Probably could use domain also
-        return d3.scaleSequential(y[color_var].domain().reverse(), d3.interpolateRdYlGn)
-      }
-
-      function change_color_var(d) {
-        color_var = d
-      }
 
       function position(dim) {
         var v = dragging[dim];
@@ -179,7 +176,6 @@ class ParallelCoords {
         }
         )
         filtered_data = input_data
-        console.log(filtered_data)
         draw_all()
     }
 
@@ -188,14 +184,33 @@ class ParallelCoords {
 
       // used to populate the svg
       function draw_all() {
+
+          function create_color_dimension() {
+              //colors according to the current **filtered** color_var
+              var min = 100000000000000
+              var max = 0
+              for (row in filtered_data){
+                if (row != 'columns'){ //columns is a par of the object
+                  //extract min and max
+                  min = Math.min(min, filtered_data[row][color_var])
+                  max = Math.max(max, filtered_data[row][color_var])
+                }
+              }
+            //return d3.scaleSequential(y[color_var].domain().reverse(), d3.interpolateRdYlGn)
+                var scal = get_scale_type(color_var)
+
+                //.domain( d3.extent(filtered_data, function(d) { return +d[name]; }) )
+                return d3.scaleSequential(
+                    (d)=> d3.interpolateRdYlGn(scal.domain([max,min])(d))
+                )
+          }
+          var z = create_color_dimension()
+
           var saved_brushes = {} // carry brushes over the clear
           d3.selectAll(".brush").each(function(dim) {
             var selection = this.__brush.selection
             saved_brushes[dim] = selection
           })
-          console.log(saved_brushes)
-          console.log(saved_brushes)
-          console.log(saved_brushes)
 
           svg.selectAll("*").remove();
           var len = filtered_data.length
@@ -213,7 +228,7 @@ class ParallelCoords {
             .data(filtered_data.slice().sort((a, b) => d3.ascending(a[color_var], b[color_var])))
             .enter().append("path")
            // .style("stroke", "#69b3a2")
-            .attr("stroke", dim => z()(dim[color_var]))
+            .attr("stroke", dim => z(dim[color_var]))
             .style("opacity", viz)
             .attr("stroke-width", viz)
             .join("myPath")
@@ -226,11 +241,6 @@ class ParallelCoords {
             .data(dimensions)
             .enter()
             .append("g")
-            .on('click', function(dim) {
-                console.log(color_var)
-                change_color_var(dim)
-                draw_all();  //after changing the color mapping, rerender the table
-            })
             .attr("class", 'dimension')
 
             // I translate this element to its right position on the x axis
@@ -261,11 +271,12 @@ class ParallelCoords {
                 if (dragging[dim] == x(dim)) {
                     // no movement -> click event
                     console.log(color_var)
-                    change_color_var(dim)
+                    color_var = dim
                 }else{ //reset axis place
                     d3.select(this).transition().attr("transform", "translate(" + x(dim) + ")");
                 }
-                setTimeout(function(){draw_all()}, 500);  //rerender whether just colormap or order changed
+                //rerender whether just colormap or order changed
+                setTimeout(function(){draw_all()}, 500);
 
                 delete this.__origin__;
                 delete dragging[dim];
@@ -322,9 +333,9 @@ class ParallelCoords {
                 .append("title")
                     .text("Doubleclick to dismiss");
       }
-      draw_all(); //after load, render the table
 
-    })
+  draw_all(); //after load, render the table
+  })
   }
 }
 
