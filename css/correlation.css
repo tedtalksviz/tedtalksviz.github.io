@@ -1,0 +1,73 @@
+.axis .tick text {
+  fill: #222;
+  pointer-events: none;
+}
+
+.axis.pl_facility .tick text,
+.axis.pl_instrument .tick text,
+.axis.st_spstr .tick text {
+  font-size: 6px;
+}
+
+.axis.pl_telescope .tick text {
+  font-size: 5px;
+}
+
+.axis:hover line,
+.axis:hover path,
+.axis.active line,
+.axis.active path {
+  fill: none;
+  stroke: #222;
+  stroke-width: 1px;
+}
+
+.dimension:hover .var_name {
+  font-size: 13px;
+}
+.brush rect.extent {
+  fill: rgba(100,100,100,0.15);
+  stroke: #fff;
+}
+.dark .brush rect.extent {
+  fill: rgba(100,100,100,0.15);
+  stroke: #ddd;
+}
+.brush:hover rect.extent {
+  stroke: #222;
+  stroke-dasharray: 5,5;
+}
+.brush rect.extent:hover {
+  stroke-dasharray: none;
+}
+
+.dimension:hover .tick text {
+}
+
+.dimension {
+  opacity: 0.5;
+}
+.dimension:hover {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  stroke-width: 1px;
+}
+#correlation_content {
+
+  background-color: #55f;
+
+}
+
+pre {
+  width: 100%;
+  height: 300px;
+  margin: 6px 12px;
+  tab-size: 40;
+  font-size: 10px;
+  overflow: auto;
+}
