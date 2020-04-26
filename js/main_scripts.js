@@ -31,8 +31,8 @@ class BubbleChart {
     this.svg = d3.select('#' + svg_element_id);
 
     this.plot_area =  this.svg.append('svg')
-                              .attr('viewBox','0 0 400 400') // this is magic ! define viewbox area of 400, use that same in pack size, and it scales to the viewPort perfectly!
-                              .attr('style', 'border: thin solid red');
+                              .attr('viewBox','0 0 400 400'); // this is magic ! define viewbox area of 400, use that same in pack size, and it scales to the viewPort perfectly!
+                              
     
     
 
