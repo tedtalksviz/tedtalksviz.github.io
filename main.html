@@ -15,6 +15,7 @@
   <!-- Rest of the scripts here to the bottom of the page to make page render faster. -->
   <script src="lib/d3.js"></script>
   <script src="js/main_scripts.js"></script>
+  <script src="js/talksGraph.js"></script>
   <!-- Three js-files for Bootstrap. Keep in this order ! -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -200,8 +201,8 @@
           https://observablehq.com/@d3/force-directed-graph
           https://observablehq.com/@d3/disjoint-force-directed-graph
         </p>
-        <img src="./images/force-graph.png" style="width:100%;max-width:1000px" class="w3-margin-top">
-        <img src="./images/relationships.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+        <svg id='talks-graph'>
+        </svg>
       </div>
     </div>
 
