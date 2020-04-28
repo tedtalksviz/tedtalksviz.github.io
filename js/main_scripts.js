@@ -31,17 +31,9 @@ class BubbleChart {
     this.svg = d3.select('#' + svg_element_id);
 
     this.plot_area =  this.svg.append('svg')
-<<<<<<< HEAD
-                              .attr('viewBox','0 0 400 400'); // this is magic ! define viewbox area of 400, use that same in pack size, and it scales to the viewPort perfectly!
-                              
-    
-    
-=======
-                              .attr('viewBox','0 0 400 400') // this is magic ! define viewbox area of 400, use that same in pack size, and it scales to the viewPort perfectly!
-                              .attr('style', 'border: thin solid red');
+      .attr('viewBox','0 0 400 400') // this is magic ! define viewbox area of 400, use that same in pack size, and it scales to the viewPort perfectly!
+      .attr('style', 'border: thin solid red');
 
-
->>>>>>> 80663824f84e0a1bc976ef59bb3174d951ec1ac4
 
     const hierarchicalData = d3.hierarchy({ children: this.data}).sum(function(d) {return d.counts});
     const packLayout = d3.pack().size([400-5, 400-5]).padding(0.5);
