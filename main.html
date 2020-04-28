@@ -12,6 +12,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 </head>
 <body>
+  <!-- Rest of the scripts here to the bottom of the page to make page render faster. -->
+  <script src="lib/d3.js"></script>
+  <script src="js/main_scripts.js"></script>
+  <script src="js/talksGraph.js"></script>
+  <!-- Three js-files for Bootstrap. Keep in this order ! -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- Scripts end here -->
+
   <!-- Links (sit on top) -->
   <div class="w3-top">
     <div class="w3-row w3-padding w3-black">
@@ -182,8 +193,8 @@
           https://observablehq.com/@d3/force-directed-graph
           https://observablehq.com/@d3/disjoint-force-directed-graph
         </p>
-        <img src="./images/force-graph.png" style="width:100%;max-width:1000px" class="w3-margin-top">
-        <img src="./images/relationships.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+        <svg id='talks-graph'>
+        </svg>
       </div>
     </div>
 
@@ -203,18 +214,7 @@
   <!-- Footer -->
   <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-  </footer>
-
-    <!-- Rest of the scripts here to the bottom of the page to make page render faster. -->
-    <script src="lib/d3.js"></script>
-    <script src="js/main_scripts.js"></script>
-    <!-- Three js-files for Bootstrap. Keep in this order ! -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <!-- Scripts end here -->
-    
+  </footer>    
 </body>
 </html>
 

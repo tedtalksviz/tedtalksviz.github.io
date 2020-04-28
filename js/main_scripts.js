@@ -384,12 +384,6 @@ whenDocumentLoaded(() => {
 
   };
 
-
-  /**dummy_values.map((value, index) => {
-    return {'id': index, 'name': RATINGS[index], 'counts': value}
-  });**/
-
-
   
   const plot2 = new ParallelCoords('#correlation_content', "data/ted_main.csv");
 
