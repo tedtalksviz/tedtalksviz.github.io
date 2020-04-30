@@ -34,15 +34,16 @@ class BubbleChart {
                               .attr('viewBox','0 0 400 400') // this is magic ! define viewbox area of 400, use that same in pack size, and it scales to the viewPort perfectly!
                               .classed('bubblechart', true);
 
-    const hierarchicalData = d3.hierarchy(this.data).sum(function(d) {return d.count}).sort((a,b) => b.count - a.count);
-    const packLayout = d3.pack().size([400-5, 400-5]).padding(1);
+    const hierarchicalData = d3.hierarchy(this.data).sum(function(d) {return d.count}).sort((a,b) => -(a.value - b.value));
+    const packLayout = d3.pack().size([400-5, 400-5]).padding(1);//.sort((a,b) => -(a.count - b.count));
     const root = packLayout(hierarchicalData);
     console.log(root.descendants())
     const mathMin = Math.min(...this.data.children.map(dict => {return dict.count}));
     const mathMax = Math.max(...this.data.children.map(dict => {return dict.count}));
-    const color = d3.scaleLinear()
+    const color = d3.scaleSequential([mathMin, mathMax * 5], d3.interpolateRainbow);
+               /**d3.scaleLinear()
                     .domain([mathMin, mathMax])
-                    .range(['#FF7F7F', "#FF0000"]);
+                    .range(['#FF7F7F', "#FF0000"]);*/
 
     const leaf = this.plot_area
                      .selectAll('g')
@@ -57,7 +58,7 @@ class BubbleChart {
       .append('circle')
       .attr('r', d => d.r)
       .attr('fill-opacity', d => !d.data.children ? 0.8 : 0) // make everything but leafs transparent
-      .attr('fill', function(d) {return color(d.data.count)});
+      .attr('fill', function(d) {return color(d.value)});
     
 
   }
