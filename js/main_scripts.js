@@ -37,7 +37,7 @@ class BubbleChart {
     const hierarchicalData = d3.hierarchy(this.data).sum(function(d) {return d.count}).sort((a,b) => b.count - a.count);
     const packLayout = d3.pack().size([400-5, 400-5]).padding(1);
     const root = packLayout(hierarchicalData);
-    console.log(root)
+    console.log(root.descendants())
     const mathMin = Math.min(...this.data.children.map(dict => {return dict.count}));
     const mathMax = Math.max(...this.data.children.map(dict => {return dict.count}));
     const color = d3.scaleLinear()
@@ -48,12 +48,15 @@ class BubbleChart {
                      .selectAll('g')
                      .data(root.descendants())
                      .join('g')
-                     .attr('transform', d => `translate(${d.x}, ${d.y})`)
-                     .classed('bubblechart_leaf', true);
+                        .attr('transform', d => `translate(${d.x}, ${d.y})`)
+                     /**.transition()
+                        .ease(easeLinear)
+                        .duration(1000);*/
+                      .classed('bubblechart_leaf', true);
     leaf
       .append('circle')
       .attr('r', d => d.r)
-      .attr('fill-opacity', 1)
+      .attr('fill-opacity', d => !d.data.children ? 0.8 : 0) // make everything but leafs transparent
       .attr('fill', function(d) {return color(d.data.count)});
     
 
