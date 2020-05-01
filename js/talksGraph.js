@@ -7,8 +7,8 @@ function createTalksGraph(files) {
   links = files[0];
   nodes = files[1];
 
-  const width = 800;
-  const height = 400;
+  const width = 1600;
+  const height = 800;
   const svg = d3.select("#talks-graph");
   svg.attr('width', width);
   svg.attr('height', height);
@@ -47,7 +47,7 @@ function createTalksGraph(files) {
   // Add links to our graph
   simulation.force('link', d3.forceLink(links)
     .id(function(d) { return d.id; })
-    .distance(70));
+    .distance(120));
   simulation.on('tick', () => {
     linkElements
       .attr('x1', link => link.source.x)
