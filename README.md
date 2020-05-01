@@ -118,6 +118,8 @@ of inspiration for our final work.
 ## Milestone 2 (Friday 1st May, 5pm)
 
 **10% of the final grade**
+The 2 pages report for the milestone 2: [Milestone2.pdf](Milestone2.pdf).
+Functional prototype: [tedtalksviz.github.io](https://tedtalksviz.github.io).
 
 
 ## Milestone 3 (Thursday 28th May, 5pm)
