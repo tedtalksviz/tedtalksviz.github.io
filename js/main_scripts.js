@@ -1,7 +1,3 @@
-
-const dummy_values = [1,2,3,4,5,6,7,8,9,10]
-const RATINGS = ['funny', 'confusing', 'beautiful', 'courageous', 'longwinded', 'informative', 'unconvincing', 'ingenious', 'inspiring', 'fascinating']
-
 function whenDocumentLoaded(action) {
 	if (document.readyState === "loading") {
 		document.addEventListener("DOMContentLoaded", action);
@@ -24,54 +20,6 @@ function openMenu(evt, menuName) {
   document.getElementById(menuName).style.display = "block";
   evt.currentTarget.firstElementChild.className += " w3-dark-grey";
 }
-
-class BubbleChart {
-  constructor(svg_element_id, data) {
-    this.data = data;
-    this.svg = d3.select('#' + svg_element_id);
-
-    this.plot_area =  this.svg.append('svg')
-                              .attr('viewBox','0 0 400 400') // this is magic ! define viewbox area of 400, use that same in pack size, and it scales to the viewPort perfectly!
-                              .classed('bubblechart', true);
-
-    const hierarchicalData = d3.hierarchy(this.data).sum(function(d) {return d.count}).sort((a,b) => -(a.value - b.value));
-    const packLayout = d3.pack().size([400-5, 400-5]).padding(1);//.sort((a,b) => -(a.count - b.count));
-    const root = packLayout(hierarchicalData);
-    console.log(root.descendants())
-    const mathMin = Math.min(...this.data.children.map(dict => {return dict.count}));
-    const mathMax = Math.max(...this.data.children.map(dict => {return dict.count}));
-    const color = d3.scaleSequential([mathMin, mathMax * 5], d3.interpolateRainbow);
-               /**d3.scaleLinear()
-                    .domain([mathMin, mathMax])
-                    .range(['#FF7F7F', "#FF0000"]);*/
-
-    const leaf = this.plot_area
-                     .selectAll('g')
-                     .data(root.descendants())
-                     .join('g')
-                        .attr('transform', d => `translate(${d.x}, ${d.y})`)
-                     /**.transition()
-                        .ease(easeLinear)
-                        .duration(1000);*/
-                      .classed('bubblechart_leaf', true);
-    leaf
-      .append('circle')
-      .attr('r', d => d.r)
-      .attr('fill-opacity', d => !d.data.children ? 0.8 : 0) // make everything but leafs transparent
-      .attr('fill', function(d) {return color(d.value)});
-    
-
-  }
-}
-
-
-
-
-
-
-
-
-
 
 class ParallelCoords {
     constructor(svg_element_id, data_address) {
@@ -353,42 +301,7 @@ class ParallelCoords {
 
 
 whenDocumentLoaded(() => {
-  const bubbleChartDict = {};
-  const promise = d3.csv("data/ted_main.csv", function(data, error) {
-        
-    /** JSON.parse() parses STRINGIFIED ratings back to an array of dictionaries. 
-     * HOWEVER, in order to do that, all ' -chars must be converted to " -chars.
-     * According to MDN documentation of JSON.parse(),
-     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse,
-     * it throws an error if the string contains ' -chars. */
     
-    const string_to_array = JSON.parse(data.ratings.replace(/'/g,'"')); // g in .replace implies globalness which means that all ' -chars must be changed. Otherwise only first match would be replaced.
-
-    const dictItem = string_to_array[0]; // This is always one dictionary f.ex.  {id: 7, name: "Funny", count: 1234}
-    //console.log(dictItem);
-
-    /** Increments the number of counts for each dictionary key. */
-    bubbleChartDict[dictItem.name] = ( bubbleChartDict[dictItem.name] || 0 ) + dictItem.count;
-    //console.log(bubbleChartData);
-
-  });
-  
-  promise.then(successCallBack, failureCallback);
-
-  function successCallBack() {
-    const bubbleChartData = []
-    for ([key, value] of Object.entries(bubbleChartDict)){
-      bubbleChartData.push({'name': key, 'count': value});
-    };
-    const plot = new BubbleChart('single_var_content', {'name': 'parent', 'children': bubbleChartData});
-  };
-
-  function failureCallback(error) {
-    window.alert("Error in getting promise 'MainData' " + error)
-
-  };
-
-  
   const plot2 = new ParallelCoords('#correlation_content', "data/ted_main.csv");
 
 
