@@ -4,34 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Ted Talks</title>
-    <!-- Keep Bootstrap stylesheet as the first one all the time. -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- Custom styles for this template -->
     <link href="css/main.css" rel="stylesheet">
     <link href="css/correlation.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 </head>
 <body>
-  <!-- Rest of the scripts here to the bottom of the page to make page render faster. -->
   <script src="lib/d3.js"></script>
   <script src="js/main_scripts.js"></script>
   <script src="js/bubblechart.js"></script>
   <script src="js/talksGraph.js"></script>
-  <!-- Three js-files for Bootstrap. Keep in this order ! -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <!-- Scripts end here -->
 
   <!-- Links (sit on top) -->
   <div class="w3-top">
     <div class="w3-row w3-padding w3-black">
       <div class="w3-col s2">
-        <a href="#" class="w3-button w3-block w3-black">HOME & Motivation</a>
-      </div>
-      <div class="w3-col s2">
-        <a href="#menu" class="w3-button w3-block w3-black">menu for some reason</a>
+        <a href="#" class="w3-button w3-block w3-black">MOTIVATION</a>
       </div>
       <div class="w3-col s2">
         <a href="#events" class="w3-button w3-block w3-black">EVENTS</a>
@@ -43,91 +30,35 @@
         <a href="#correlation" class="w3-button w3-block w3-black">CORRELATION</a>
       </div>
       <div class="w3-col s2">
-        <a href="#distance" class="w3-button w3-block w3-black">DISTANCE</a>
+        <a href="#distance" class="w3-button w3-block w3-black">NETWORK</a>
       </div>
     </div>
   </div>
 
   <!-- Header with image -->
   <header class="bgimg w3-display-container w3-grayscale-min" id="home">
-    <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
-      <span class="w3-tag">Open from 6am to 5pm</span>
-    </div>
     <div class="w3-display-middle w3-center">
-      <span class="w3-text-white" style="font-size:90px">the<br>TED-talk analysis</span>
-    </div>
-    <div class="w3-display-bottomright w3-center w3-padding-large">
-      <span class="w3-text-white">15 Adr street, 5015</span>
+      <span class="w3-text-white" style="font-size:90px">TED-talk analysis</span>
     </div>
   </header>
 
   <!-- Add a background color and large text to the whole page -->
-  <!-- <div class=<"w3-sand w3-grayscale w3-large"> !!! THIS IS THE OLD SOLUTION MAKING PAGE LOOK GRAY !!! -->
   <div class="w3-large">
     <!-- About Container -->
     <div class="w3-container" id="about">
       <div class="w3-content">
-        <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE PROJECT</span></h5>
-        <p>The PROJECT was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <p>In addition to our full espresso and brew bar menu, we serve fresh made-to-order breakfast and lunch sandwiches, as well as a selection of sides and salads and other good stuff.</p>
+        <h5 class="w3-center w3-padding-64">
+          <span class="w3-tag w3-wide">ABOUT TED TALKS</span>
+       </h5>
+        <p>TED Talks are a collection of free online talks centered around
+        three broad subject areas: <b>T</b>echnology, <b>E</b>ntertainment,
+        <b>D</b>esign. They were founded by Richard Saul Wurman in February
+        1984 and had been held annually since 1990.
         <div class="w3-panel w3-leftbar w3-light-grey">
-          <p><i>"some nice quotation about TEDs to emphasize their awesomesness in some very delicate and stupendous way.</i></p>
-          <p>Mr anonymous, owner of anom corp</p>
+          <p><i>"Vision begins with the eyes, but it truly takes place in the brain."</i></p>
+          <p>Fei-Fei Li - TED2015 Vancouver</p>
         </div>
         <img src="./images/ted_logo.png" style="width:100%;max-width:1000px" class="w3-margin-top">
-        <p><strong>Opening hours:</strong> everyday from 6am to 5pm.</p>
-        <p><strong>Address:</strong> 15 Adr street, 5015, NY</p>
-      </div>
-    </div>
-
-    <!-- Menu Container -->
-    <div class="w3-container" id="menu">
-      <div class="w3-content">
-
-        <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">THE MENU</span></h5>
-
-        <div class="w3-row w3-center w3-card w3-padding">
-          <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
-            <div class="w3-col s6 tablink">Eat</div>
-          </a>
-          <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
-            <div class="w3-col s6 tablink">Drink</div>
-          </a>
-        </div>
-
-        <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
-          <h5>Bread Basket</h5>
-          <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
-
-          <h5>Honey Almond Granola with Fruits</h5>
-          <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
-
-          <h5>Belgian Waffle</h5>
-          <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
-
-          <h5>Scrambled eggs</h5>
-          <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
-
-          <h5>Blueberry Pancakes</h5>
-          <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
-        </div>
-
-        <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
-          <h5>Coffee</h5>
-          <p class="w3-text-grey">Regular coffee 2.50</p><br>
-
-          <h5>Chocolato</h5>
-          <p class="w3-text-grey">Chocolate espresso with milk 4.50</p><br>
-
-          <h5>Corretto</h5>
-          <p class="w3-text-grey">Whiskey and coffee 5.00</p><br>
-
-          <h5>Iced tea</h5>
-          <p class="w3-text-grey">Hot tea, except not hot 3.00</p><br>
-
-          <h5>Soda</h5>
-          <p class="w3-text-grey">Coke, Sprite, Fanta, etc. 2.50</p>
-        </div>
       </div>
     </div>
 
@@ -136,16 +67,11 @@
         <h5 class="w3-center w3-padding-48">
           <span class="w3-tag w3-wide">EVENTS</span>
         </h5>
-        <p><span class="w3-tag">events</span> 
-          -bubble chart to show main events
-          -Where are the smartest minds: Get location of each TED event, and look in what places have the best talks been performed
-          -https://bl.ocks.org/piwodlaiwo/3734a1357696dcff203a94012646e932
-          -http://bl.ocks.org/abenrob/c4ac3d581a7b16ff5f2f
-          -https://observablehq.com/@d3/orthographic-to-equirectangular
-          -https://observablehq.com/@d3/hexbin-map
+        <p>
+        Where are these Ted Talks given? How did they start? <b>(Sketch)</b>
         </p>
-        <img src="./images/worldmap.png" style="width:100%;max-width:1000px" class="w3-margin-top">
-        <img src="./images/timeline.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+        <img src="./images/ted_event_map.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+        <img src="./images/timeseries_ted_events.png" style="width:100%;height:450px;max-width:1000px" class="w3-margin-top">
       </div>
     </div>
 
@@ -155,13 +81,6 @@
           <span class="w3-tag w3-wide">ONE VARIABLE ANALYSES</span>
         </h5>
         <p><span class="w3-tag">one-variable-analyses</span> 
-            ### One-variable analyses
-            bubble plot based on some given variable (interactively choose from the following:
-            -number of times a tag is used
-            -frequencies of ratings
-            -frequencies of events
-        </p>
-        <img src="./images/bubble.png" style="width:100%;max-width:1000px" class="w3-margin-top">
       </div>
     </div>
 
@@ -175,48 +94,30 @@
         Adjustments to the data:
         <li>Filter rows with under 2000 duration</li>
         <li>Film date over 1 000 000 000 (timestamp)</li>
-
         brown == high, green == low
-
-
         </p>
       </div>
     </div>
-
+    <!--Network of talks-->
     <div class="w3-container" id="distance" style="padding-bottom:32px;">
       <div class="w3-content">
         <h5 class="w3-center w3-padding-48">
-          <span class="w3-tag w3-wide">DISTANCE and RELATIONSHIPS BETWEEN TALKS</span>
+          <span class="w3-tag w3-wide">
+            DISTANCE and RELATIONSHIPS BETWEEN TALKS
+          </span>
         </h5>
-        <p><span class="w3-tag">force-directed graphs</span> 
-          ###Use ratings, tags, predefined related-talks as well as dictionary differences of transcripts to calculate a distance between all talks. Use this distance to populate force-directed-graph:
-          (perhaps euclidean distance)
-          User can select his favorite talk and see what areas it is connected to
-          https://observablehq.com/@d3/force-directed-graph
-          https://observablehq.com/@d3/disjoint-force-directed-graph
         </p>
+        In the graph below you can see how dense the relationships between
+        these talks are based on what the next recommended talk is. There are
+        more than 2500 talks connected through almost 5000 relations.
+        </p>
+     </div>
+     <div class="w3-content graph">
         <svg id='talks-graph'>
         </svg>
-      </div>
     </div>
-
-    <p><strong>Reserve</strong> a table, ask for today's special or just send us a message:</p>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many people" required name="People"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time" required name="date" value="2017-11-16T20:00"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
-      <p><button class="w3-button w3-black" type="submit">SEND MESSAGE</button></p>
-    </form>
+    </div>
   </div>
-  <script>
-
-  </script>
-
-  <!-- Footer -->
-  <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-  </footer>    
 </body>
 </html>
 
