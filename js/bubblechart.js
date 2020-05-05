@@ -64,7 +64,8 @@ class BubbleChart_Ratings {
 
 whenDocumentLoaded(() => {
   const dict_bubbleChart_Ratings = {};
-  const promise = d3.csv("data/ted_main.csv", function(data, error) {
+  const dict_bubbleChart_Speakers = {};
+  const promise = d3.csv("resources/ted_main.csv", function(data, error) {
         
     /** JSON.parse() parses STRINGIFIED ratings back to an array of dictionaries. 
      * HOWEVER, in order to do that, all ' -chars must be converted to " -chars.
@@ -72,14 +73,19 @@ whenDocumentLoaded(() => {
      * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse,
      * it throws an error if the string contains ' -chars. */
     
-    const string_to_array = JSON.parse(data.ratings.replace(/'/g,'"')); // g in .replace implies globalness which means that all ' -chars must be changed. Otherwise only first match would be replaced.
 
-    const dictItem = string_to_array[0]; // This is always one dictionary f.ex.  {id: 7, name: "Funny", count: 1234}
+    // !!! Initializing the data for RATINGS bubble chart
+    const ratings_string_to_array = JSON.parse(data.ratings.replace(/'/g,'"')); // g in .replace implies globalness which means that all ' -chars must be changed. Otherwise only first match would be replaced.
+    const dictItem = ratings_string_to_array[0]; // This is always one dictionary f.ex.  {id: 7, name: "Funny", count: 1234}
     //console.log(dictItem);
-
     /** Increments the number of counts for each dictionary key. */
     dict_bubbleChart_Ratings[dictItem.name] = ( dict_bubbleChart_Ratings[dictItem.name] || 0 ) + dictItem.count;
     //console.log(bubbleChartData);
+
+    // !!! Initializing the data for SPEAKERS bubble chart
+    //const speakers_string_to_array = JSON.parse(data.ratings.replace(/'/g,'"')); // g in .replace implies globalness which means that all ' -chars must be changed. Otherwise only first match would be replaced.
+    //const dictItem = ratings_string_to_array[0]; // This is always one dictionary f.ex.  {id: 7, name: "Funny", count: 1234}
+    console.log(data);
 
   });
   
