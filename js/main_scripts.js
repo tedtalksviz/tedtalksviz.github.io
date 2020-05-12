@@ -64,6 +64,9 @@ whenDocumentLoaded(() => {
 
   const plot2 = new ParallelCoords('#correlation_content', 'resources/ted_main.csv');
 
+
+  const plot3 = new EventTimeseries('#events_content', 'resources/events.csv');
+
   function failureCallback(error) {
     window.alert("Error in getting promise 'MainData' " + error)
 

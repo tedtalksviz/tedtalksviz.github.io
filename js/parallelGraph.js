@@ -6,7 +6,7 @@ class ParallelCoords {
     constructor(svg_element_id, data_address) {
     // set the dimensions and margins of the graph
     var margin = {top: 30, right: 10, bottom: 10, left: 0},
-    width = 900 - margin.left - margin.right,
+    width = 1800 - margin.left - margin.right,
     height = 800 - margin.top - margin.bottom;
     var row = 0
     var i = 0
@@ -19,7 +19,8 @@ class ParallelCoords {
     // just hardcode the desired variables
     var dimensions = [ 'views', 'comments',
                         'film_date', 'published_date',
-                        'languages', 'speed_of_speech', 'duration']
+                        'languages', 'speed_of_speech', 'duration'
+                        ]
 
     // append the svg object to the body of the page
     var svg = d3.select(svg_element_id)
@@ -32,6 +33,7 @@ class ParallelCoords {
 
   // use the data
   d3.csv(data_address).then(function(data) {
+    var titles = []
     for (row in data){
         if (row != 'columns'){ //columns is a part of the object
             data[row].logviews = Math.log(data[row]['views'])
@@ -39,6 +41,7 @@ class ParallelCoords {
             data[row].logcomments = Math.log(data[row]['comments'])
             data[row].film_date = timeparser(data[row]['film_date'])
             data[row].published_date = timeparser(data[row]['published_date'])
+            titles.push(data[row]['title'])
         }
     }
     data['columns'].push('logviews')
@@ -66,6 +69,8 @@ class ParallelCoords {
         function get_scale_type(dim) {
             if(dim == 'views' || dim == 'comments'){
               return d3.scaleLog()
+            }else if(dim=='title'){
+              return d3.scalePoint()
             }else{
               return d3.scaleLinear()
             }
@@ -76,9 +81,16 @@ class ParallelCoords {
       for (i in dimensions) {
         name = dimensions[i]
         var scal = get_scale_type(name)
-        y[name] = scal
-          .domain( d3.extent(filtered_data, function(d) { return +d[name]; }) )
-          .range([height, 0])
+        if(name == 'title'){
+            y[name] = scal
+                    .domain( titles.sort() )
+                    .range([0,height])
+
+        }else{
+            y[name] = scal
+              .domain( d3.extent(filtered_data, function(d) { return +d[name]; }) )
+              .range([height, 0])
+        }
       }
 
       //draw one line
@@ -181,7 +193,6 @@ class ParallelCoords {
             .data(dimensions)
             .enter()
             .append("g") //grouping for each dimension
-            .attr("class", 'dimension')
             .attr("transform", function(d) { //element to its position on x axis
                 return "translate(" + position(d) + ")";
             })
@@ -219,16 +230,22 @@ class ParallelCoords {
         function get_tick_type(dim) {
             if(['film_date', 'published_date'].indexOf(dim) >=0 ){
                 return d3.timeFormat("%m/%Y")
+            }else if(['title'].indexOf(dim) >= 0){
+                return function(d, i) { return d }
             }else{
                 return d3.format(".2s")
             }
         }
 
+        all_axes.each(function(dim){
+            d3.select(this).attr("class", dim+" dimension")
+        })
+
         //create axis
         all_axes.each(function(dim) {
                 d3.select(this)
                 .call(
-                     d3.axisLeft()
+                     d3.axisRight()
                         .scale(y[dim])
                         .ticks(7)
                         .tickSize(4,0)
