@@ -14,12 +14,12 @@ class ParallelCoords {
     var timeparser = d3.timeParse("%Y-%m-%d")
 
 
-    var color_var = 'film_date'
+    var color_var = 'published_date'
 
     // just hardcode the desired variables
-    var dimensions = [ 'duration', 'number_of_words','speed_of_speech', 'views',
-                        'comments','film_date','published_date',
-                         'movie_sentiment', 'twitter_sentiment',  'languages']
+    var dimensions = [ 'views', 'comments',
+                        'film_date', 'published_date',
+                        'languages', 'speed_of_speech', 'duration']
 
     // append the svg object to the body of the page
     var svg = d3.select(svg_element_id)
@@ -178,14 +178,11 @@ class ParallelCoords {
 
           // Draw the axis:
           var all_axes = svg.selectAll(".dimension")
-            // For each dimension of the dataset I add a 'g' element:
             .data(dimensions)
             .enter()
-            .append("g")
+            .append("g") //grouping for each dimension
             .attr("class", 'dimension')
-
-            // I translate this element to its right position on the x axis
-            .attr("transform", function(d) {
+            .attr("transform", function(d) { //element to its position on x axis
                 return "translate(" + position(d) + ")";
             })
             .call(d3.drag()
@@ -198,15 +195,10 @@ class ParallelCoords {
                     dimensions.sort(function(a, b) {
                         return position(a) - position(b);
                     });
-
                     x.domain(dimensions);
-
-
                 all_axes.attr("transform", function(dim) {
                     return "translate(" + position(dim) + ")";
                 });
-
-
               })
               .on("end", function(dim) {
                 if (dragging[dim] == x(dim)) {
@@ -223,10 +215,26 @@ class ParallelCoords {
                 delete dragging[dim];
               })
             )
-            .each(function(dim) {
+
+        function get_tick_type(dim) {
+            if(['film_date', 'published_date'].indexOf(dim) >=0 ){
+                return d3.timeFormat("%m/%Y")
+            }else{
+                return d3.format(".2s")
+            }
+        }
+
+        //create axis
+        all_axes.each(function(dim) {
                 d3.select(this)
-                .call(d3.axisLeft().scale(y[dim]))
-                // .style("padding", '20px 30px 20px 20px') //not helping for the tight axis
+                .call(
+                     d3.axisLeft()
+                        .scale(y[dim])
+                        .ticks(7)
+                        .tickSize(4,0)
+                        .tickFormat( get_tick_type(dim) )
+                )
+                .style("color", "black")
             })
 
         //label
@@ -238,7 +246,6 @@ class ParallelCoords {
             .attr("class", "var_name")
 
         //brush
-
 
         function get_saved_brush(dim) {
             var to_return = []
