@@ -172,7 +172,36 @@ class ParallelCoords {
           var viz = 1/dividor //used for opacity and stroke-width
           console.log('visual smoother viz:', viz)
 
+      function handleMouseOver(d, i) {  // Add interactivity
+            var coordinates= d3.mouse(this);
+            var x = coordinates[0];
+            var y = coordinates[1];
+            // Use D3 to select element, change color and size
+            d3.select(this).attr({
+              stroke: "black",
+              fill: "black"
+              //r: viz * 2
+            })
+            console.log(d.name)
+            // Specify where to put label of text
+            svg.append("text")
+              .style("text-anchor", "middle")
+              .attr('x', function() { return x - 15 })
+              .attr('y', function() { return y - 15 })
+              .attr('id', "t" + '' + "-" + ''+ "-" + i)
+              .text(d.name)
+              .style("fill", "black")
+          }
 
+      function handleMouseOut(d, i) {
+            // Use D3 to select element, change color back to normal
+            d3.select(this).attr({
+              fill: "black"
+            });
+
+            // Select text by id and then remove
+            d3.select("#t" + '' +  "-" + '' + "-" + i).remove();  // Remove text location
+          }
 
           // Draw the lines
           svg
@@ -181,11 +210,15 @@ class ParallelCoords {
             .data(filtered_data.slice().sort((a, b) => d3.ascending(a[color_var], b[color_var])))
             .enter().append("path")
            // .style("stroke", "#69b3a2")
-            .attr("stroke", dim => z(dim[color_var]))
-            .style("opacity", viz)
-            .attr("stroke-width", viz)
+            .attr("stroke", row => z(row[color_var]))
+            .style("opacity", viz/3)
+            .attr("stroke-width", viz*3)
             .join("myPath")
-                .attr("d",  path)
+            .attr("d",  path)
+            .on('mouseover', handleMouseOver)
+            .on('mouseout', handleMouseOut)
+
+
 
 
           // Draw the axis:
