@@ -19,7 +19,8 @@ class ParallelCoords {
     // just hardcode the desired variables
     var dimensions = [ 'views', 'comments',
                         'film_date', 'published_date',
-                        'languages', 'speed_of_speech', 'duration'
+                        'languages', 'speed_of_speech', 'duration',
+                        'event_type'
                         ]
 
     // append the svg object to the body of the page
@@ -33,6 +34,7 @@ class ParallelCoords {
 
   // use the data
   d3.csv(data_address).then(function(data) {
+    var event_types = ['tedx','salon','main','external','women','global','youth']
     var titles = []
     for (row in data){
         if (row != 'columns'){ //columns is a part of the object
@@ -44,6 +46,7 @@ class ParallelCoords {
             titles.push(data[row]['title'])
         }
     }
+    titles.sort()
     data['columns'].push('logviews')
     data['columns'].push('logduration')
     data['columns'].push('logcomments')
@@ -67,9 +70,9 @@ class ParallelCoords {
         .domain(dimensions);
 
         function get_scale_type(dim) {
-            if(dim == 'views' || dim == 'comments'){
+            if(['views', 'comments'].indexOf(dim) >= 0){
               return d3.scaleLog()
-            }else if(dim=='title'){
+            }else if(['title', 'event_type'].indexOf(dim) >= 0){
               return d3.scalePoint()
             }else{
               return d3.scaleLinear()
@@ -83,8 +86,13 @@ class ParallelCoords {
         var scal = get_scale_type(name)
         if(name == 'title'){
             y[name] = scal
-                    .domain( titles.sort() )
-                    .range([0,height])
+                    .domain( titles )
+                    .range([height, 0])
+
+        }else if(name == 'event_type'){
+            y[name] = scal
+                    .domain( event_types )
+                    .range([height, 0])
 
         }else{
             y[name] = scal
@@ -137,25 +145,28 @@ class ParallelCoords {
 
       // used to populate the svg
       function draw_all() {
+          function create_color_dimension() {//colors according to the current **filtered** color_var
+            var scal = get_scale_type(color_var)
 
-          function create_color_dimension() {
-              //colors according to the current **filtered** color_var
+            if(color_var == 'event_type'){
+                return d3.scaleOrdinal(
+                        data.map(x => x.event_type), d3.schemeSet1
+                    )
+            }else{
               var min = 100000000000000
               var max = 0
-              for (row in filtered_data){
-                if (row != 'columns'){ //columns is a par of the object
-                  //extract min and max
-                  min = Math.min(min, filtered_data[row][color_var])
-                  max = Math.max(max, filtered_data[row][color_var])
-                }
-              }
-            //return d3.scaleSequential(y[color_var].domain().reverse(), d3.interpolateRdYlGn)
-                var scal = get_scale_type(color_var)
+                  for (row in filtered_data){
+                    if (row != 'columns'){ //columns is a par of the object
+                      //extract min and max
+                      min = Math.min(min, filtered_data[row][color_var])
+                      max = Math.max(max, filtered_data[row][color_var])
+                    }
+                  }
 
-                //.domain( d3.extent(filtered_data, function(d) { return +d[name]; }) )
-                return d3.scaleSequential(
-                    (d)=> d3.interpolateRdYlGn(scal.domain([max,min])(d))
-                )
+                    return d3.scaleSequential(
+                        (d)=> d3.interpolateRdYlGn(scal.domain([max,min])(d))
+                    )
+            }
           }
           var z = create_color_dimension()
 
@@ -177,11 +188,10 @@ class ParallelCoords {
             var x = coordinates[0];
             var y = coordinates[1];
             // Use D3 to select element, change color and size
-            d3.select(this).attr({
-              stroke: "black",
-              fill: "black"
-              //r: viz * 2
-            })
+            d3.select(this).attr('stroke', "black")
+            d3.select(this).attr("stroke-width", viz*6)
+            d3.select(this).style("opacity", 1)
+
             console.log(d.name)
             // Specify where to put label of text
             svg.append("text")
@@ -190,18 +200,29 @@ class ParallelCoords {
               .attr('y', function() { return y - 15 })
               .attr('id', "t" + '' + "-" + ''+ "-" + i)
               .text(d.name)
-              .style("fill", "black")
+              .style("fill", "brown")
+              .style("font-weight", "bold")
           }
 
       function handleMouseOut(d, i) {
-            // Use D3 to select element, change color back to normal
-            d3.select(this).attr({
-              fill: "black"
-            });
+            //change properties back to normal
+            d3.select(this).attr('stroke', row => z(row[color_var]) )
+            d3.select(this).attr("stroke-width", viz*3)
+            d3.select(this).style("opacity", viz/3)
 
             // Select text by id and then remove
             d3.select("#t" + '' +  "-" + '' + "-" + i).remove();  // Remove text location
-          }
+      }
+
+      function handleClick(d, i) {  // Add interactivity
+            console.log(d.url)
+            open(d.url)
+      }
+
+
+
+
+
 
           // Draw the lines
           svg
@@ -217,6 +238,8 @@ class ParallelCoords {
             .attr("d",  path)
             .on('mouseover', handleMouseOver)
             .on('mouseout', handleMouseOut)
+            .on('click', handleClick)
+
 
 
 
@@ -263,7 +286,7 @@ class ParallelCoords {
         function get_tick_type(dim) {
             if(['film_date', 'published_date'].indexOf(dim) >=0 ){
                 return d3.timeFormat("%m/%Y")
-            }else if(['title'].indexOf(dim) >= 0){
+            }else if(['title', 'event_type'].indexOf(dim) >= 0){
                 return function(d, i) { return d }
             }else{
                 return d3.format(".2s")

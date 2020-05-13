@@ -83,7 +83,8 @@ class EventTimeseries {
     // Add a scale for bubble size
       var z = d3.scaleLinear()
             .domain( d3.extent(data, function(d) {return +d['nof_talks']} ) )
-            .range([ 3, 85]);
+            .range([ 4, 36.66]); //smallest is 1 talk, largest is about 84
+                              //4*4 = 16 & 36.66*36.66 = 1344, 1344/16 = 84
       var c = d3.scaleOrdinal(data.map(x => x.event_type), d3.schemeCategory10)
             .unknown("black")
 
