@@ -11,10 +11,12 @@
 <body>
   <script src="lib/d3.js"></script>
   <script src="lib/d3-legend.min.js"></script>
+  <script src="lib/topojson.min.js"></script>
   <script src="js/bubbleGraph.js"></script>
   <script src="js/parallelGraph.js"></script>
   <script src="js/eventTimeseriesGraph.js"></script>
   <script src="js/talksGraph.js"></script>
+  <script src="js/eventsMap.js"></script>
   <script src="js/main_scripts.js"></script>
 
   <!-- Links (sit on top) -->
@@ -73,8 +75,8 @@
         <p>
         Where are these Ted Talks given? How did they start? <b>(Sketch)</b>
         </p>
-        <img src="./images/ted_event_map.png" style="width:100%;max-width:1000px" class="w3-margin-top">
-        y-axis value:
+        <svg id="event-map" viewBox="0 0 1000 550" width="1000" height="550"></svg>
+        <p>y-axis value:</p>
         <form id="form">
             <input type="radio" name="stack" value="avg_views" checked="checked">
             average views<br>
@@ -132,8 +134,10 @@
         </p>
      </div>
      <div class="w3-content graph">
+        <!--
+          Commenting this for now since it takes up too much time loading
         <svg id='talks-graph'>
-        </svg>
+        </svg> --> 
     </div>
     </div>
   </div>

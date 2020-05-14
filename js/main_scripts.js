@@ -66,6 +66,7 @@ whenDocumentLoaded(() => {
 
 
   const plot3 = new EventTimeseries('#events_content', 'resources/events.csv');
+  const event_map = new EventsMap('event-map');
 
   function failureCallback(error) {
     window.alert("Error in getting promise 'MainData' " + error)
