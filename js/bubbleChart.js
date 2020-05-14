@@ -1,4 +1,3 @@
-
 class BubbleChart {
   constructor(svg_element_id, data) {
     this.data = data;

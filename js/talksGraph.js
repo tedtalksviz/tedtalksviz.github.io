@@ -1,3 +1,4 @@
+// Todo make this a class
 Promise.all([
   d3.tsv('resources/edges.tsv'),
   d3.tsv('resources/nodes.tsv')

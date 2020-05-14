@@ -1,4 +1,3 @@
-
 class EventTimeseries {
     constructor(svg_element_id, data_address) {
     // set the dimensions and margins of the graph
