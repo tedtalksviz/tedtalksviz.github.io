@@ -38,7 +38,7 @@ body, html {
 }
 
 
-.bubblechart_leaf:hover circle {
+.bubblechart_leaf:hover {
   fill: black;
   opacity: 1;
 }

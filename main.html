@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Ted Talks</title>
     <link href="css/main.css" rel="stylesheet">
+    <link href="css/bubble_chart.css" rel="stylesheet">
     <link href="css/correlation.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 </head>
 <body>
   <script src="lib/d3.js"></script>
+  <script src="js/main_scripts.js"></script>
+  <!-- <script src="js/bubblechart.js"></script> -->
+  <script src="js/speakers_graph.js"></script>
+  <script src="js/tooltip.js"></script>
   <script src="lib/d3-legend.min.js"></script>
   <script src="lib/topojson.min.js"></script>
-  <script src="js/bubbleChart.js"></script>
   <script src="js/parallelCoords.js"></script>
   <script src="js/eventTimeseries.js"></script>
   <script src="js/talksGraph.js"></script>
@@ -75,7 +79,8 @@
         <p>
         Where are these Ted Talks given? How did they start? <b>(Sketch)</b>
         </p>
-        <svg id="event-map" viewBox="0 0 1000 550" width="1000" height="550"></svg>
+        <svg id="event-map" viewBox="0 0 1000 550" width="1000" height="550">
+        </svg>
         <p>y-axis value:</p>
         <form id="form">
             <input type="radio" name="stack" value="avg_views" checked="checked">
@@ -85,8 +90,7 @@
             <input type="radio" name="stack" value="avg_speed_of_speech">
             average speed of speech<br>
             <input type="radio" name="stack" value="avg_duration">
-            average
-            duration
+            average duration
         </form>
       </div>
     </div>
@@ -96,8 +100,16 @@
         <h5 class="w3-center w3-padding-48">
           <span class="w3-tag w3-wide">ONE VARIABLE ANALYSES</span>
         </h5>
-        <p><span class="w3-tag">one-variable-analyses</span> 
+        <p><span class="w3-tag">one-variable-analyses</span></p>
+        <div class="w3-content" id="single_var_content_2"></div>
       </div>
+    </div>
+    <div class="w3-container" id="bubblegraph_toolbar">
+        <button id="all" class="button active">All Together</button>
+        <button id="year" class="button">Division by Year</button>
+        <input type="range" class="bubblechart_slider" min="1" max="2159" value="2159" id="bubblechart_slider">
+    </div>
+    <div class="w3-container" id="single_var_content_1">
     </div>
 
     <div class="w3-container" id="correlation" style="padding-bottom:32px;">
