@@ -59,7 +59,6 @@ d3.csv(data_address).then(function(data) {
     return output_data
   }
 
-
   data = filter_rows(data, 'duration', 0, 30, false)
   data = filter_rows(data, 'film_date', start_time, end_time, false)
 
