@@ -40,3 +40,16 @@ class EventsMap {
     });
   }
 }
+
+function whenDocumentLoaded(action) {
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', action);
+	} else {
+		// `DOMContentLoaded` already fired
+		action();
+	}
+}
+
+whenDocumentLoaded(() => {
+  const eventMap = new EventsMap('event-map');
+});

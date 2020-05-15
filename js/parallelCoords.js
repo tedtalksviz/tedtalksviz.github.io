@@ -85,7 +85,7 @@ d3.csv(data_address).then(function(data) {
                       .domain( event_types )
                       .range([height, 0])
       }else{
-          y[name] = scal
+          y[name] = scale
             .domain( d3.extent(filtered_data, function(d) { return +d[name]; }) )
             .range([height, 0])
       }
@@ -350,4 +350,16 @@ d3.csv(data_address).then(function(data) {
   }
 }
 
+function whenDocumentLoaded(action) {
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', action);
+	} else {
+		// `DOMContentLoaded` already fired
+		action();
+	}
+}
 
+whenDocumentLoaded(() => {
+  const parallelCoords = new ParallelCoords('#correlation_content', 
+                                            'resources/ted_main.csv');
+});
