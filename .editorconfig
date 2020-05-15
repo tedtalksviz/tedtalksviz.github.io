@@ -3,7 +3,7 @@ root = true
 [*]
 end_of_line = lf
 charset = utf-8
-max_line_length = 80
+max_line_length = 50
 indent_size = 4
 
 
@@ -11,15 +11,8 @@ indent_size = 4
 indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
-max_line_length = 80
-indent_size = 4
-
-[*.scala]
-indent_style = space
-insert_final_newline = true
-trim_trailing_whitespace = true
 max_line_length = 100
-indent_size = 2
+indent_size = 4
 
 [*.js]
 indent_style = space
@@ -27,15 +20,3 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 max_line_length = 80
 indent_size = 2
-
-insert_final_newline = true
-trim_trailing_whitespace = true
-max_line_length = 100
-
-[*.yml]
-indent_style = space
-indent_size = 2
-
-[*.{bat,vbs,ps1}]
-end_of_line = CRLF
-
