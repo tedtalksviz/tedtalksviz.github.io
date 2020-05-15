@@ -396,10 +396,10 @@ whenDocumentLoaded(() => {
    */
    function setupButtons() {
        d3.select('#bubblegraph_toolbar')
-           .selectAll('.button')
+           .selectAll('.erikinput')
            .on('click', function () {
            // Remove active class from all buttons
-           d3.selectAll('.button').classed('active', false);
+           d3.selectAll('.erikinput').classed('active', false);
            // Find the button just clicked
            var button = d3.select(this);
 
