@@ -211,7 +211,7 @@ d3.csv(data_address).then(function(data) {
   function create_color_dimension() {
     var scale = dim_pars[color_var]['scale_type']()
     if(color_var == 'event_type'){
-        return d3.scaleOrdinal(data.map(x => x.event_type), d3.schemeSet1)
+        return d3.scaleOrdinal(event_types, d3.schemeCategory10)
     }else{
       var min = 100000000000000
       var max = 0

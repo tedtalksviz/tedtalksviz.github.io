@@ -99,66 +99,70 @@ class EventTimeseries {
         tooltip.hideTooltip();
     }
 
-
-      svg.append("g")
-        .call(d3.axisLeft(y));
+    svg.append("g")
+      .call(d3.axisLeft()
+                  .scale(y)
+                  .ticks(7)
+                  .tickSize(4,0)
+                  .tickFormat(d3.format(".2s"))
+      );
 
     // Add a scale for bubble size
-      var z = d3.scaleLinear()
-            .domain( d3.extent(data, function(d) {return +d['nof_talks']} ) )
-            .range([ 4, 36.66]); //smallest is 1 talk, largest is about 84
-                              //4*4 = 16 & 36.66*36.66 = 1344, 1344/16 = 84
-      var event_types = ['external','salon','global','main','youth',
-                            'med','women','tedx', 'satellite']
-      var c = d3.scaleOrdinal(event_types, d3.schemeCategory10)
-            .unknown("black")
+    var z = d3.scaleLinear()
+          .domain( d3.extent(data, function(d) {return +d['nof_talks']} ) )
+          .range([ 4, 36.66]); //smallest is 1 talk, largest is about 84
+                            //4*4 = 16 & 36.66*36.66 = 1344, 1344/16 = 84
+    var event_types = ['external','salon','global','main','youth',
+                          'med','women','tedx', 'satellite']
+    var c = d3.scaleOrdinal(event_types, d3.schemeCategory10)
+          .unknown("black")
 
 
-      // Add dots
-      svg.append('g')
-        .selectAll("dot")
-        .data(data)
-        .enter()
-        .append("circle")
-        .attr("cx", data =>  x(data.film_date)  )
-        .attr("cy", data => y(data[y_axis])  )
-        .attr("r", data =>  z(data.nof_talks)  )
-        .attr("fill", data => c(data.event_type))
-        .style("opacity", "0.7")
-        .attr("stroke", "black")
-        .on('mouseover', showDetail)
-        .on('mouseout', hideDetail);
+    // Add dots
+    svg.append('g')
+      .selectAll("dot")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("cx", data =>  x(data.film_date)  )
+      .attr("cy", data => y(data[y_axis])  )
+      .attr("r", data =>  z(data.nof_talks)  )
+      .attr("fill", data => c(data.event_type))
+      .style("opacity", "0.7")
+      .attr("stroke", "black")
+      .on('mouseover', showDetail)
+      .on('mouseout', hideDetail);
 
-        svg.append("g")
-          .attr("class", "legendSequential")
-          .attr("transform", "translate(20,20)");
+    svg.append("g")
+      .attr("class", "legendSequential")
+      .attr("transform", "translate(20,20)");
 
-        var legendSequential = d3.legendColor()
-            .shapeWidth(100)
-            .cells(10)
-            .orient("horizontal")
-            .scale(c)
+    var legendSequential = d3.legendColor()
+        .shapeWidth(100)
+        .cells(10)
+        .orient("horizontal")
+        .scale(c)
 
-        svg.select(".legendSequential")
-          .call(legendSequential);
+    svg.select(".legendSequential")
+      .call(legendSequential);
 
-        svg.append("g")
-          .attr("class", "legendSize")
-          .attr("transform", "translate(1000, 20)");
+    svg.append("g")
+      .attr("class", "legendSize")
+      .attr("transform", "translate(1000, 20)");
 
-      //
-        var legendSize = d3.legendSize()
-          .scale(z)
-          .shape('circle')
-          .shapePadding(30)
-          .labelOffset(20)
-          .orient('horizontal');
+    // bubble size legend
+    var legendSize = d3.legendSize()
+      .scale(z)
+      .shape('circle')
+      .shapePadding(30)
+      .labelOffset(20)
+      .orient('horizontal');
 
-        svg.select(".legendSize")
-          .style("opacity", "0.7")
-          .call(legendSize);
+    svg.select(".legendSize")
+      .style("opacity", "0.7")
+      .call(legendSize);
 
-      }
+    }
     draw('nof_talks');
 
     d3.selectAll("button.ts_input").on("click", function(){
