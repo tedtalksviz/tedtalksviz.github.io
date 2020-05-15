@@ -195,20 +195,20 @@ function createBubbleChart() {
 
         const slider = d3.select("#bubblechart_slider");
 
-        // Create a SVG element inside the provided selector
+        // Create an SVG element inside the provided selector
         // with desired size.
         svg = d3.select(selector)
                 .append('svg')
                 .attr('width', width)
                 .attr('height', height);
 
-        var spn = svg.selectAll('span').data(["Value: "]);
-        console.log("moi");
-        console.log(spn);
-        var spnE = spn.enter().append("p")
+        var txt = svg.selectAll('text').data(["Value: "]);
+        txt.enter().append('text')
+                      .attr('x', width / 2)
+                      .attr('y', height / 2)
+                      .classed('bubblechart_slider_value', true)
                       .text(function(d) {return d});
-        spn.merge(spnE);
-        console.log(spn)
+
 
         // Add year headers to the chart immetiadely. Initialize opacity to 0.
         // Later function showYearTitles() will change the opacity to make titles appear.

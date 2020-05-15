@@ -83,6 +83,10 @@
 
 .bubblechart_slider_value {
     margin: auto;
+    font-size: 100px;
+    font-family: sans-serif;
+    fill: red;
+    text-anchor: middle;
 }
 
 .bubblechart_slider::-webkit-slider-thumb {
