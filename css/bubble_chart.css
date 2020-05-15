@@ -1,100 +1,104 @@
 .button {
-    min-width: 150px;
-    padding: 4px 5px;
-    cursor: pointer;
-    text-align: center;
-    font-size: 16px;
-    border: 1px solid #e0e0e0;
-    text-decoration: none;
-    border-radius: 5px;
-    box-shadow: 0px 1px 10px 1px black;
-  }
+  min-width: 150px;
+  padding: 4px 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #e0e0e0;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0px 1px 10px 1px black;
+}
 
 .button.active {
-    background: #000;
-    color: #fff;
-  }
+  background: #000;
+  color: #fff;
+}
 
 .tooltip {
-	position: absolute;
-	top: 100px;
-	left: 100px;
-	border-radius: 5px;
-    border: 2px solid #000;
-    background: #fff;
-	opacity: .8;
-    color: black;
-	padding: 10px;
-	width: 800px;
-	font-size: 12px;
-	z-index: 10;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  background: #fff;
+  opacity: .8;
+  color: black;
+  padding: 10px;
+  width: 800px;
+  font-size: 12px;
+  z-index: 10;
 }
 
 .tooltip .name {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .year {
-    font-size: 21px;
-    fill: #000;
-    opacity: 0.7;
-    cursor: default;
-  }
+  font-size: 21px;
+  fill: #000;
+  opacity: 0.7;
+  cursor: default;
+}
 
-  .bubblechart_slider {
-      width: 600px;
-      position: absolute;
-      padding: 4px 5px;
-      margin: 0px 6px;
-      -webkit-appearance: none;
-      background:linear-gradient(90deg,  rgb(246, 71, 141) 1%,rgb(218, 63, 163) 3%,rgb(202, 61, 171) 10%, rgb(184, 60, 176) 20%, rgb(165, 60, 179) 32%,  rgb(146, 61, 179) 45%,  rgb(128, 62, 176) 60%, rgb(110,64,170) 90%);
-      height: 34px;
-      outline: none;
-      opacity: 0.8;
-      border: 0.3px solid white;
-      -webkit-transition: 0.2s;
-      transition: opacity 0.2s;
-      border-radius: 5px;
-      box-shadow: 0px 1px 10px 1px black;
+.bubblechart_slider {
+  width: 600px;
+  position: absolute;
+  padding: 4px 5px;
+  margin: 0px 6px;
+  -webkit-appearance: none;
+  background:linear-gradient(90deg,  rgb(246, 71, 141) 1%,rgb(218, 63, 163) 3%,rgb(202, 61, 171) 10%, rgb(184, 60, 176) 20%, rgb(165, 60, 179) 32%,  rgb(146, 61, 179) 45%,  rgb(128, 62, 176) 60%, rgb(110,64,170) 90%);
+  height: 34px;
+  outline: none;
+  opacity: 0.8;
+  border: 0.3px solid white;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  border-radius: 5px;
+  box-shadow: 0px 1px 10px 1px black;
 
-  }
+}
 
-  .bubblechart_slider:hover {
-      opacity: 1;
-  }
+.bubblechart_slider:hover {
+  opacity: 1;
+}
 
-  .bubblechart_slider::after {
-      content: 'ALL';
-      color: black;
-      font-size: 16px;
-      position: absolute;
-      left: 93.5%;
-      top: 110%;
-  }
+.bubblechart_slider::after {
+  content: 'ALL';
+  color: black;
+  font-size: 16px;
+  position: absolute;
+  left: 93.5%;
+  top: 110%;
+}
 
-  .bubblechart_slider::before {
-    content: '1';
-    color: black;
-    font-size: 16px;
-    position: absolute;
-    left: 3.3%;
-    top: 110%;
-  }
+.bubblechart_slider::before {
+  content: '1';
+  color: black;
+  font-size: 16px;
+  position: absolute;
+  left: 3.3%;
+  top: 110%;
+}
 
-  .bubblechart_slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 40px;
-        height: 40px;
-        background: white;
-        border-radius: 50%;
-        cursor: pointer;
-  }
+.bubblechart_slider_value {
+    margin: auto;
+}
 
-  .bubblechart_slider::-moz-range-thumb {
-    width: 40px;
-    height: 40px;
-    background: white;
-    border-radius: 50%;
-    cursor: pointer;
-  }
+.bubblechart_slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.bubblechart_slider::-moz-range-thumb {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}

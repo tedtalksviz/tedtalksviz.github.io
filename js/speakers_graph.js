@@ -13,7 +13,7 @@ function createBubbleChart() {
     const margin = {top: 30, right: 200, bottom: 10, left: 200};
     const width = 1200;
     const height = 800;
-    const innerWidth = width - margin.right - margin.left; 
+    const innerWidth = width - margin.right - margin.left;
     //tooltip object for mouseover functionality, width 300
     const tooltip = floatingTooltip('speakers_tooltip', 300);
     const slidertooltip = floatingTooltip('slider_tooltip', 200);
@@ -47,9 +47,9 @@ function createBubbleChart() {
     simulation.stop();
 
     function getFillColorScale(data) {
-        const minNofTalks = d3.min(data, function(d) { return d.cnt_talks})
+        const minNofTalks = d3.min(data, function(d) { return d.nof_talks})
         console.log(minNofTalks)
-        const maxNofTalks = d3.max(data, function(d) { return d.cnt_talks})
+        const maxNofTalks = d3.max(data, function(d) { return d.nof_talks})
         console.log(maxNofTalks);
         return d3.scaleSequential([minNofTalks, maxNofTalks * 5], d3.interpolateRainbow);
     }
@@ -77,8 +77,8 @@ function createBubbleChart() {
                     value: +d.avg_views,
                     name: d.speaker.trim(),
                     occupation: d.speaker_occupation,
-                    nof_talks: +d.cnt_talks,
-                    year: +d.first_talk_date,
+                    nof_talks: +d.nof_talks,
+                    year: +d.film_date,
                     talks: JSON.parse(d.talks),
                     x: Math.random() * width, // random places to start
                     y: Math.random() * height  // random places to start
@@ -93,15 +93,17 @@ function createBubbleChart() {
 
     function setYears(rawData) {
         //Get speech years from raw data
+        console.log("set years");
+        console.log(rawData);
         const set_dateYear = new Set();
         rawData.forEach( (entry) => {
-            set_dateYear.add(+entry.first_talk_date)
+          set_dateYear.add(+entry.film_date)
         });
-        
+
         array_dateYear = Array.from(set_dateYear).sort()  // In the end sorted array: [1972, 1983, 1984,..., 2017]
         dateYear_length = 13 // WAS BEFORE array_dateYear.length;
         /**
-         * Calculate center of each year column in x-dimension and add the value to yearCenter dict. 
+         * Calculate center of each year column in x-dimension and add the value to yearCenter dict.
          * Center of the force is always in the middle of graph in y-dimension.
          * End result is somewhat
          * { 1972: {x: 19.583333333333332, y: 300},
@@ -117,14 +119,16 @@ function createBubbleChart() {
             // WAS BEFORE
             // yearCenters[year] = { x: (index / dateYear_length) * width  + 1 / ( dateYear_length * 2 ) * width, y: height / 2}
             // BUT SINCE 1972-2005 IS BEING GROUPED TOGETHER
-            if (year < 2006) { 
+            if (year < 2006) {
                 yearCenters[year] = { x: 1 / ( dateYear_length * 2 ) * innerWidth + margin.left, y: height / 2}
             } else {
-                yearCenters[year] = { x: (Math.abs(2005 - year) / dateYear_length) * innerWidth  + 1 / ( dateYear_length * 2 ) * innerWidth + margin.left, y: height / 2}
-            }            
+                yearCenters[year] = { x: (Math.abs(2005 - year) / dateYear_length) * innerWidth
+                + 1 / ( dateYear_length * 2 ) * innerWidth + margin.left,
+                y: height / 2}
+            }
         });
 
-        /** 
+        /**
          * X locations of the year titles. Same thing, but y-dimension is being left out i.e., dict is being simplified.
          * End result is somewhat
          * { 1972: 19.583333333333332,
@@ -140,7 +144,10 @@ function createBubbleChart() {
         array_dateYear.forEach( (year, index) => {
             // Experimentally tested values
             if(year == 2005) { yearsTitleX["-"+year] = 1 / ( dateYear_length * 2 ) * innerWidth + margin.left * 2 / 3 }
-            else { yearsTitleX[year] = (Math.abs(2005 - year) / dateYear_length) * (innerWidth + margin.right * 2 / 3)  + 1 / ( dateYear_length * 2 ) * innerWidth + margin.left * 2 / 3 }
+            else { yearsTitleX[year] =
+              (Math.abs(2005 - year) / dateYear_length) *
+              (innerWidth + margin.right * 2 / 3)
+              + 1 / ( dateYear_length * 2 ) * innerWidth + margin.left * 2 / 3 }
         });
     }
 
@@ -161,8 +168,8 @@ function createBubbleChart() {
     //  of the force layout. Now we can use it as a separate force!
     function charge(d) {
         return -Math.pow(d.radius, 2.0) *forceStrength;
-    }   
-    
+    }
+
     /*
     * Main entry point to the bubble chart. This function is returned
     * by the parent closure. It prepares the rawData for visualization
@@ -187,7 +194,6 @@ function createBubbleChart() {
         nodes = createNodes(rawData);
 
         const slider = d3.select("#bubblechart_slider");
-        slider.on('input', showSliderDetail);
 
         // Create a SVG element inside the provided selector
         // with desired size.
@@ -195,6 +201,14 @@ function createBubbleChart() {
                 .append('svg')
                 .attr('width', width)
                 .attr('height', height);
+
+        var spn = svg.selectAll('span').data(["Value: "]);
+        console.log("moi");
+        console.log(spn);
+        var spnE = spn.enter().append("p")
+                      .text(function(d) {return d});
+        spn.merge(spnE);
+        console.log(spn)
 
         // Add year headers to the chart immetiadely. Initialize opacity to 0.
         // Later function showYearTitles() will change the opacity to make titles appear.
@@ -229,7 +243,7 @@ function createBubbleChart() {
                                 .on('mouseover', showDetail)
                                 .on('mouseout', hideDetail);
 
-        // @v4 Merge the original empty selection and the enter selection
+        // Merge the original empty selection and the enter selection
         bubbles = bubbles.merge(bubblesE);
 
         // Fancy transition to make bubbles appear, ending with the
@@ -340,7 +354,7 @@ function createBubbleChart() {
         tooltip.showTooltip(content, d3.event);
     }
 
-    
+
     /*
     * Helper function to convert a number into a string
     * and add commas to it to improve presentation.
@@ -354,7 +368,7 @@ function createBubbleChart() {
         while (rgx.test(x1)) {
             x1 = x1.replace(rgx, '$1' + ',' + '$2');
         }
-    
+
         return x1 + x2;
     }
 
@@ -369,25 +383,6 @@ function createBubbleChart() {
         tooltip.hideTooltip();
     }
 
-    /*
-    * Function called on mouseover to display the
-    * details of a bubble in the tooltip.
-    */
-    function showSliderDetail(d) {
-        const sliderValue = document.getElementById('bubblechart_slider');
-        console.log(sliderValue.value);
-        var content = '<span class="name">Value: </span><span class="value">'+ sliderValue+'</span>';
-        console.log(content);
-        slidertooltip.showTooltip(content, d3.event);
-    }
-
-    /*
-    * Hides tooltip
-    */
-    function hideSliderDetail(d) {
-        // reset outline
-        slidertooltip.hideTooltip();
-    }
 
     /*
     * Externally accessible function (this is attached to the
@@ -411,7 +406,7 @@ function createBubbleChart() {
 
 
 
-   
+
 
 whenDocumentLoaded(() => {
    /*
@@ -449,7 +444,7 @@ whenDocumentLoaded(() => {
         if (error) {
         console.log(error);
         }
-    
+
         myBubbleChart('#single_var_content_1', data);
     }
 
@@ -458,6 +453,6 @@ whenDocumentLoaded(() => {
 
    // setup the buttons.
    setupButtons();
-    
-    
+
+
 });
