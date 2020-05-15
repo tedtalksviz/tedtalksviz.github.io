@@ -76,7 +76,6 @@ whenDocumentLoaded(() => {
      * According to MDN documentation of JSON.parse(),
      * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse,
      * it throws an error if the string contains ' -chars. */
-    console.log(data);
     //if dates is DICT:
     //dates[new Date(data.film_date).getFullYear()] = (dates[new Date(data.film_date).getFullYear()] || 0) + 1;
     dates.add(new Date(data.film_date).getFullYear())
@@ -93,7 +92,6 @@ whenDocumentLoaded(() => {
 
   function successCallBack_ratings() {
     const bubbleChartData = []
-    console.log(Array.from(dates).sort());
     for ([key, value] of Object.entries(dict_bubbleChart_Ratings)){
       bubbleChartData.push({'name': key, 'count': value});
     };
@@ -138,7 +136,6 @@ whenDocumentLoaded(() => {
     for ([key, value] of Object.entries(dict_bubbleChart_Ratings)){
       bubbleChartData.push({'name': key, 'count': value});
     };*/
-    console.log(speakers_bubbleChartData);
     const plot = new BubbleChart_Speakers('single_var_content_1', {'children': speakers_bubbleChartData});
   };
 

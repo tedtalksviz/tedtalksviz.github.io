@@ -30,12 +30,15 @@ class ParallelCoords {
     var row = 0
     var i = 0
     var dragging = {}
+    var timeparser = d3.timeParse("%Y-%m-%d")
 
 
-    var color_var = 'languages'
+    var color_var = 'film_date'
 
     // just hardcode the desired variables
-    var dimensions = [ 'views','comments', 'languages', 'duration', 'film_date', 'published_date']
+    var dimensions = [ 'duration', 'number_of_words','speed_of_speech', 'views',
+                        'comments','film_date','published_date',
+                         'movie_sentiment', 'twitter_sentiment',  'languages']
 
     // append the svg object to the body of the page
     var svg = d3.select(svg_element_id)
@@ -53,6 +56,8 @@ class ParallelCoords {
             data[row].logviews = Math.log(data[row]['views'])
             data[row].logduration = Math.log(data[row]['duration'])
             data[row].logcomments = Math.log(data[row]['comments'])
+            data[row].film_date = timeparser(data[row]['film_date'])
+            data[row].published_date = timeparser(data[row]['published_date'])
         }
     }
     data['columns'].push('logviews')
@@ -66,8 +71,8 @@ class ParallelCoords {
         return output_data
     }
 
-      data = filter_rows_start(data, 'duration', 0, 2000)
-      data = filter_rows_start(data, 'film_date', 1000000000, 2000000000)
+      data = filter_rows_start(data, 'duration', 0, 30)
+      data = filter_rows_start(data, 'film_date', timeparser('2000-01-01'), timeparser('2020-01-01'))
 
       var filtered_data = data
 
@@ -306,3 +311,4 @@ whenDocumentLoaded(() => {
 
 
 });
+
