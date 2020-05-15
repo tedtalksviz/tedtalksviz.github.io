@@ -139,3 +139,7 @@ class EventTimeseries {
   }
 }
 
+whenDocumentLoaded(() => {
+  const eventTimeseries = new EventTimeseries('#events_content',
+    'resources/events.csv');
+});

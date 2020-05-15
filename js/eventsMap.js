@@ -40,3 +40,7 @@ class EventsMap {
     });
   }
 }
+
+whenDocumentLoaded(() => {
+  const eventMap = new EventsMap('event-map');
+});

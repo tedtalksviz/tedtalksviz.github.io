@@ -1,13 +1,3 @@
-function whenDocumentLoaded(action) {
-	if (document.readyState === "loading") {
-		document.addEventListener("DOMContentLoaded", action);
-	} else {
-		// `DOMContentLoaded` already fired
-		action();
-	}
-}
-
-
 function createBubbleChart() {
     //Sizing
     const margin = {top: 30, right: 200, bottom: 10, left: 200};
@@ -48,9 +38,9 @@ function createBubbleChart() {
 
     function getFillColorScale(data) {
         const minNofTalks = d3.min(data, function(d) { return d.nof_talks})
-        console.log(minNofTalks)
+        //console.log(minNofTalks)
         const maxNofTalks = d3.max(data, function(d) { return d.nof_talks})
-        console.log(maxNofTalks);
+        //console.log(maxNofTalks);
         return d3.scaleSequential([minNofTalks, maxNofTalks * 5], d3.interpolateRainbow);
     }
 
@@ -93,8 +83,8 @@ function createBubbleChart() {
 
     function setYears(rawData) {
         //Get speech years from raw data
-        console.log("set years");
-        console.log(rawData);
+        //console.log("set years");
+        //console.log(rawData);
         const set_dateYear = new Set();
         rawData.forEach( (entry) => {
           set_dateYear.add(+entry.film_date)
@@ -140,7 +130,7 @@ function createBubbleChart() {
          */
         yearsTitleX = {};
         array_dateYear = array_dateYear.slice(11);
-        console.log(array_dateYear);
+        //console.log(array_dateYear);
         array_dateYear.forEach( (year, index) => {
             // Experimentally tested values
             if(year == 2005) { yearsTitleX["-"+year] = 1 / ( dateYear_length * 2 ) * innerWidth + margin.left * 2 / 3 }
@@ -189,7 +179,7 @@ function createBubbleChart() {
         maxAmount = updateMax(rawData);
         fillColor = getFillColorScale(rawData);
         setYears(rawData);
-        console.log(rawData);
+        //console.log(rawData);
         // convert raw data into nodes data
         nodes = createNodes(rawData);
 
@@ -203,12 +193,9 @@ function createBubbleChart() {
                 .attr('height', height);
 
         var spn = svg.selectAll('span').data(["Value: "]);
-        console.log("moi");
-        console.log(spn);
         var spnE = spn.enter().append("p")
                       .text(function(d) {return d});
         spn.merge(spnE);
-        console.log(spn)
 
         // Add year headers to the chart immetiadely. Initialize opacity to 0.
         // Later function showYearTitles() will change the opacity to make titles appear.
@@ -402,11 +389,6 @@ function createBubbleChart() {
     // return the chart function from closure.
     return bubbleChart;
 }
-
-
-
-
-
 
 whenDocumentLoaded(() => {
    /*
