@@ -49,16 +49,13 @@ d3.csv(data_address).then(function(data) {
   function filter_rows(input_data, dim, low, high, brush = true) {
     var output_data = input_data.filter(function(row){
       if(brush == true){
-        console.log(brush)
         return y[dim](row[dim]) <= (high) && y[dim](row[dim]) >= (low)
       }else{
-        console.log(brush)
         return row[dim] <= (high) && row[dim] >= (low)
       }
     })
     return output_data
   }
-
 
   data = filter_rows(data, 'duration', 0, 30, false)
   data = filter_rows(data, 'film_date', start_time, end_time, false)
@@ -174,7 +171,7 @@ d3.csv(data_address).then(function(data) {
 
     var dividor = Math.max(1,Math.log(len)-3)
     var viz = 1/dividor //used for opacity and stroke-width
-    console.log('visual smoother viz:', viz)
+    console.log('Visual smoother level:', viz)
 
     function handleMouseOver(d, i) {  // Add interactivity
       var coordinates= d3.mouse(this);
@@ -185,7 +182,6 @@ d3.csv(data_address).then(function(data) {
       d3.select(this).attr("stroke-width", viz*6)
       d3.select(this).style("opacity", 1)
 
-      console.log(d.name)
       // Specify where to put label of text
       svg.append("text")
         .style("text-anchor", "middle")
@@ -208,7 +204,7 @@ d3.csv(data_address).then(function(data) {
     }
 
     function handleClick(d, i) {  // Add interactivity
-          console.log(d.url)
+          console.log("Have a good time with ", d.url, '!')
           open(d.url)
     }
 
@@ -257,9 +253,7 @@ d3.csv(data_address).then(function(data) {
             });
           })
           .on("end", function(dim) {
-            if (dragging[dim] == x(dim)) {
-                // no movement -> click event
-                console.log(color_var)
+            if (dragging[dim] == x(dim)) {  // no movement -> click event
                 color_var = dim
             }else{ //reset axis place
                 d3.select(this).transition().attr("transform", "translate(" + x(dim) + ")");
@@ -349,4 +343,7 @@ d3.csv(data_address).then(function(data) {
   }
 }
 
-
+whenDocumentLoaded(() => {
+  const parallelCoords = new ParallelCoords('#correlation_content',
+    'resources/ted_main.csv');
+});
