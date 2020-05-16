@@ -139,15 +139,6 @@ d3.csv(data_address).then(function(data) {
               .domain(dimensions);
 
 
-  function get_scale_type(dim) {
-    if(['views', 'comments'].indexOf(dim) >= 0){
-      return d3.scaleLog()
-    }else if(['title', 'event_type'].indexOf(dim) >= 0){
-      return d3.scalePoint()
-    }else{
-      return d3.scaleLinear()
-    }
-  }
 
   function get_domain_type(dim) {
     if(['title'].indexOf(dim) >= 0){

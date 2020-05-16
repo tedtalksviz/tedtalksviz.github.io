@@ -1,0 +1,36 @@
+/* CSS-code here. Please, remember ordering. */
+
+html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
+
+.w3-top,.w3-bottom{width:100%;z-index:1}.w3-top{top:0}.w3-bottom{bottom:0}
+
+#topbar + .content {
+  padding-top: 55px;
+}
+
+#topbar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+#topbar-row{
+    color:#fff!important;
+    background-color:#000!important;
+    padding:8px 16px!important;
+}
+#topbar-row:after,#topbar-row:before{content:"";display:table;clear:both}
+
+.tp-holder {
+    width:14.285714286%;
+    float:left;
+}
+
+.tp-column{
+border:none;
+padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;
+
+display:block;width:100%;
+}
+
+.w3-button:hover{color:#000!important;background-color:#ccc!important}
+

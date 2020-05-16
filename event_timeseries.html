@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ted Talks</title>
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/correlation.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+</head>
+<body>
+  <script src="lib/d3.js"></script>
+  <script src="lib/d3-legend.min.js"></script>
+  <script src="js/eventTimeseries.js"></script>
+  <script src="js/common.js"></script>
+
+  <div class="content" id="events" style="padding-bottom:32px;">
+    <div class="" id="events_content">
+      <h5 class="w3-center w3-padding-48">
+        <span class="w3-tag w3-wide">EVENTS</span>
+      </h5>
+      <p>
+      Where are these Ted Talks given? How did they start? <b>(Sketch)</b>
+      </p>
+      <p>y-axis value:</p>
+      <form id="form">
+        <input type="radio" id="avg_views" name="stack" value="avg_views" checked="checked">
+        <!-- All text should be in a tag -->
+        <label for="avg_views">average views</label><br>
+        <input type="radio" name="stack" value="nof_talks" >
+        number of talks<br>
+        <input type="radio" name="stack" value="avg_speed_of_speech">
+        average speed of speech<br>
+        <input type="radio" name="stack" value="avg_duration">
+        average
+        duration
+      </form>
+    </div>
+  </div>
+</body>
+</html>
