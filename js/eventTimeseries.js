@@ -2,9 +2,9 @@ class EventTimeseries {
   constructor(svg_element_id, data_address) {
   const tooltip = floatingTooltip('eventTs_tooltip', 100);
   // set the dimensions and margins of the graph
-  var margin = {top: 30, right: 50, bottom: 30, left: 50},
-  width = 1400 - margin.left - margin.right,
-  height = 700 - margin.top - margin.bottom;
+  var margin = {top: 50, right: 30, bottom: 30, left: 50},
+  width = 1300 - margin.left - margin.right,
+  height = 800 - margin.top - margin.bottom;
   var row = 0
   var i = 0
   var timeparser = d3.timeParse("%Y-%m-%d")
@@ -133,34 +133,32 @@ class EventTimeseries {
       .on('mouseover', showDetail)
       .on('mouseout', hideDetail);
 
+    //event type legend
     svg.append("g")
       .attr("class", "legendSequential")
-      .attr("transform", "translate(20,20)");
-
+      .attr("transform", "translate(20,-40)");
     var legendSequential = d3.legendColor()
         .shapeWidth(100)
         .cells(10)
         .orient("horizontal")
         .scale(c)
-
     svg.select(".legendSequential")
       .call(legendSequential);
 
-    svg.append("g")
-      .attr("class", "legendSize")
-      .attr("transform", "translate(1000, 20)");
-
     // bubble size legend
-    var legendSize = d3.legendSize()
-      .scale(z)
-      .shape('circle')
-      .shapePadding(30)
-      .labelOffset(20)
-      .orient('horizontal');
+    //svg.append("g")
+    //  .attr("class", "legendSize")
+    //  .attr("transform", "translate(1000, 20)");
+    //var legendSize = d3.legendSize()
+    //  .scale(z)
+    //  .shape('circle')
+    //  .shapePadding(30)
+    //  .labelOffset(20)
+    //  .orient('horizontal');
 
-    svg.select(".legendSize")
-      .style("opacity", "0.7")
-      .call(legendSize);
+    //svg.select(".legendSize")
+    //  .style("opacity", "0.7")
+    //  .call(legendSize);
 
     }
     draw('nof_talks');

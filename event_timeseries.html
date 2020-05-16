@@ -17,27 +17,30 @@
   <script src="js/eventTimeseries.js"></script>
   <script src="js/topbar.js"></script>
 
-  <div class="content" id="events" style="padding-bottom:32px;">
+  <div class="content flexright" id="events">
     <div class="" id="events_content">
+      <span>y-axis value:</span>
+      <button value="nof_talks" class="button ts_input active">
+      number of talks
+      </button>
+      <button value="avg_views" class="button ts_input">
+      average views
+      </button>
+      <button value="avg_duration" class="button ts_input">
+      average duration
+      </button>
+    </div>
+    <div >
       <h5 class="w3-center w3-padding-48">
         <span class="w3-tag w3-wide">EVENTS</span>
       </h5>
       <p>
       Where are these Ted Talks given? How did they start? <b>(Sketch)</b>
+      Lorem ipsum dolor sit amet aasdasdasd asdasd ja jatkuu niin maan paljon
+      ett' lopulta tulee tarpekeksi tkesti' jotta saadaan enemm'n rivej' wau
+      mahtavaa hyv' topi anna palaa!
       </p>
-      <p>y-axis value:</p>
-      <form id="form">
-        <input type="radio" id="avg_views" name="stack" value="avg_views" checked="checked">
-        <!-- All text should be in a tag -->
-        <label for="avg_views">average views</label><br>
-        <input type="radio" name="stack" value="nof_talks" >
-        number of talks<br>
-        <input type="radio" name="stack" value="avg_speed_of_speech">
-        average speed of speech<br>
-        <input type="radio" name="stack" value="avg_duration">
-        average
-        duration
-      </form>
+      <p>How different ted events have developed over the years</p>
     </div>
   </div>
 </body>

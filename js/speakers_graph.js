@@ -1,7 +1,7 @@
 function createBubbleChart() {
     //Sizing
-    const margin = {top: 30, right: 200, bottom: 10, left: 200};
-    const width = 1200;
+    const margin = {top: 30, right: 30, bottom: 10, left: 30};
+    const width = 1300;
     const height = 800;
     const innerWidth = width - margin.right - margin.left;
     //tooltip object for mouseover functionality, width 300

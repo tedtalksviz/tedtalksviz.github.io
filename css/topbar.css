@@ -2,8 +2,6 @@
 
 html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
 
-.w3-top,.w3-bottom{width:100%;z-index:1}.w3-top{top:0}.w3-bottom{bottom:0}
-
 #topbar + .content {
   padding-top: 53px;
 }
