@@ -5,7 +5,7 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
 .w3-top,.w3-bottom{width:100%;z-index:1}.w3-top{top:0}.w3-bottom{bottom:0}
 
 #topbar + .content {
-  padding-top: 55px;
+  padding-top: 53px;
 }
 
 #topbar{
@@ -21,7 +21,7 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
 #topbar-row:after,#topbar-row:before{content:"";display:table;clear:both}
 
 .tp-holder {
-    width:14.285714286%;
+    width:12.5%;
     float:left;
 }
 
@@ -32,5 +32,5 @@ padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;colo
 display:block;width:100%;
 }
 
-.w3-button:hover{color:#000!important;background-color:#ccc!important}
+.tp-column:hover{color:#000!important;background-color:#ccc!important}
 

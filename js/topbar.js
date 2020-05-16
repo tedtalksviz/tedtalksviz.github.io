@@ -1,13 +1,4 @@
-function whenDocumentLoaded(action) {
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', action);
-	} else {
-		// `DOMContentLoaded` already fired
-		action();
-	}
-}
-
-  document.write(`
+document.write(`
     <link href="css/topbar.css" rel="stylesheet">
   <div id='topbar' class="w3-top">
     <div id='topbar-row'>
@@ -22,6 +13,10 @@ function whenDocumentLoaded(action) {
       <div class="tp-holder">
         <a href="/event_timeseries.html" class="tp-column">
             TIMESERIES</a>
+      </div>
+      <div class="tp-holder">
+        <a href="/speakers.html" class="tp-column">
+            SPEAKERS</a>
       </div>
       <div class="tp-holder">
         <a href="/ratings.html" class="tp-column">
@@ -43,9 +38,3 @@ function whenDocumentLoaded(action) {
   </div>
 `);
 
-
-
-whenDocumentLoaded(() => {
-
-
-});
