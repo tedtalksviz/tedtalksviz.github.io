@@ -18,7 +18,7 @@
   <script src="lib/d3-legend.min.js"></script>
   <script src="lib/topojson.min.js"></script>
   <script src="js/parallelCoords.js"></script>
-  <script src="js/eventTimeseries.js"></script>
+  <!--<script src="js/eventTimeseries.js"></script>-->
   <script src="js/talksGraph.js"></script>
   <script src="js/eventsMap.js"></script>
 
@@ -104,8 +104,9 @@
       </div>
     </div>
     <div class="w3-container" id="bubblegraph_toolbar">
-        <button id="all" class="button active">All Together</button>
-        <button id="year" class="button">Division by Year</button>
+        <button id="all" class="bubblegraph button active">All Together</button>
+        <button id="year" class="bubblegraph button">Division by Year</button>
+        <button id="views" class="bubblegraph button">Division by Average Views</button>
         <input type="range" class="bubblechart_slider" min="1" max="2159" value="2159" id="bubblechart_slider">
     </div>
     <div class="w3-container" id="single_var_content_1">

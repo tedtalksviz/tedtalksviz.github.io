@@ -82,11 +82,11 @@
 }
 
 .bubblechart_slider_value {
-    margin: auto;
-    font-size: 100px;
-    font-family: sans-serif;
+    font-size: 200px;
+    font-family: fantasy;
     fill: red;
     text-anchor: middle;
+    alignment-baseline: central;
 }
 
 .bubblechart_slider::-webkit-slider-thumb {
@@ -105,4 +105,24 @@
   background: white;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.bubblechart_xAxis {
+    color: rgb(246, 71, 141);
+    stroke-width: 3px;
+  }
+
+.bubblechart_xAxis:hover {
+    opacity: 1;
+}
+
+.bubblechart_xAxis text {
+  font-size: 21px;
+  font-weight: bold;
+  text-anchor: end;
+  text-shadow: black 1px 1px 2px;
+}
+
+#single_var_content_1 svg {
+    overflow: visible;
 }
