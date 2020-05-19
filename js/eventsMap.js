@@ -10,7 +10,7 @@ class EventsMap {
     // Think about a better way to set this scale.
     const projection = d3.geoMercator()
       .rotate([0, 0])
-      .scale(150)
+      .scale(350)
       .translate([this.svg_width / 2, this.svg_height / 2])
       .precision(.1);
 
@@ -19,16 +19,19 @@ class EventsMap {
 
     const map_promise = d3.json('resources/countries-50m.json')
       .then((topojson_raw) => {
-        console.log(topojson_raw);
         const countries_paths = topojson.feature(
           topojson_raw,
           topojson_raw.objects.countries);
         return countries_paths.features;
     });
 
+    const city_promise = d3.csv('resources/cities.csv');
+
     // Will add here promises for events locations as well.
-    Promise.all([map_promise]).then((results) => {
+    Promise.all([map_promise, city_promise]).then((results) => {
       let map_data = results[0];
+      let cities_data = results[1];
+      // Countries
       this.map_container = this.svg.append('g');
       this.map_container.selectAll('.country')
         .data(map_data)
@@ -37,6 +40,29 @@ class EventsMap {
         .classed('country', true)
         .attr('d', path)
         .style('fill', '#0000ff')
+      // Cities
+      this.map_container = this.svg.append('g');
+      this.map_container.selectAll('cirlce')
+        .data(cities_data)
+        .enter()
+        .append('circle')
+        .attr('cx', function(d) {
+          return projection([d.longitude, d.latitude])[0];
+        })
+        .attr('cy', function(d) {
+          return projection([d.longitude, d.latitude])[1];
+        })
+        .attr('r', function(d) {
+          return d.no_events * 2;
+        })
+        .style('fill', 'red')
+        .style('stroke', 'gray')
+        .style('stroke-width', 0.25)
+        .style('opacity', 0.75)
+        .append('title')
+        .text(function(d) {
+          return d.name;
+        });
     });
   }
 }
