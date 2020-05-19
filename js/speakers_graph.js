@@ -1,18 +1,17 @@
 function createBubbleChart() {
     //Sizing
     const margin = {top: 30, right: 30, bottom: 10, left: 30};
-    const width = 1300;
-    const height = 800;
+    const width = 1200;
+    const height = 600;
     const innerWidth = width - margin.right - margin.left;
     //tooltip object for mouseover functionality, width 300
     const tooltip = floatingTooltip('speakers_tooltip', 300);
-    const slidertooltip = floatingTooltip('slider_tooltip', 200);
     //Location where bubbles are moving, depends on the view mode
     const center = { x : width / 2, y : height / 2 };
     // These will be set in create_nodes and create_vis
     var svg = null;
     var bubbles = null;
-    var nodes = [];
+    var bubbleNodes = [];
     //Min and max values of avg_views
     var minAmount = null;
     var maxAmount = null;
@@ -23,14 +22,21 @@ function createBubbleChart() {
     var dateYear_length = null;
     var yearCenters = {};
     var yearsTitleX = {};
+    //For scaling bubbles and xAxis to avg_number view
+    var xScale = null;
+    //Dictionary for containing each speakers' x-axis value for avg-views view.
+    var avgViewsXAxis= {};
     //Strength to apply to the position forces
     const forceStrength = 0.05;
     //We create a force simulation now and add forces to it.
     const simulation = d3.forceSimulation()
-        .velocityDecay(0.2)
+        .velocityDecay(0.3)
         .force('x', d3.forceX().strength(forceStrength).x(center.x))
         .force('y', d3.forceY().strength(forceStrength).y(center.y))
-        .force('charge', d3.forceManyBody().strength(charge))
+        .force('charge', d3.forceManyBody().strength(d =>
+          charge(d, forceStrength)).distanceMax(100))
+        .force('collide', d3.forceCollide()
+        .radius(d => d.radius + 0.3).iterations(4))
         .on('tick', ticked);
     //Force starts up automatically,
     // which we don't want as there aren't any nodes yet.
@@ -53,12 +59,19 @@ function createBubbleChart() {
     }
 
     function createNodes(rawData) {
-
+        var dataLength = rawData.length
         // Sizes bubbles based on area.
         var radiusScale = d3.scalePow()
-                            .exponent(0.5)
-                            .range([2, 29])
-                            .domain([0, maxAmount]);
+          .exponent(0.5)
+          /**Range is using mathematical approximation to make bubbles fill the
+           * graph. Two similar power curve approximations are being used, one
+           * approximation for array length 1-50 and another one for array
+           * length 51-2159. Approximations were delivered online curve fitter
+           * https://mycurvefit.com/ */
+          .range([1,(dataLength < 50) ?
+            807.9411 *Math.pow(dataLength, -0.5692806)
+            : 289.547*Math.pow(dataLength, -0.3480572)])
+          .domain([0, maxAmount]);
 
         var myNodes = rawData.map(function (d) {
             return {
@@ -71,12 +84,10 @@ function createBubbleChart() {
                     year: +d.film_date,
                     talks: JSON.parse(d.talks),
                     x: Math.random() * width, // random places to start
-                    y: Math.random() * height  // random places to start
+                    y: Math.random() * height,  // random places to start
+                    fx: null
             };
         });
-
-        //before returning data set, sort descending order
-        myNodes.sort(function (a, b) { return b.value - a.value; });
         return myNodes;
     }
 
@@ -110,10 +121,10 @@ function createBubbleChart() {
             // yearCenters[year] = { x: (index / dateYear_length) * width  + 1 / ( dateYear_length * 2 ) * width, y: height / 2}
             // BUT SINCE 1972-2005 IS BEING GROUPED TOGETHER
             if (year < 2006) {
-                yearCenters[year] = { x: 1 / ( dateYear_length * 2 ) * innerWidth + margin.left, y: height / 2}
+                yearCenters[year] = { x: 1 / ( dateYear_length * 2 ) * width, y: height / 2}
             } else {
-                yearCenters[year] = { x: (Math.abs(2005 - year) / dateYear_length) * innerWidth
-                + 1 / ( dateYear_length * 2 ) * innerWidth + margin.left,
+                yearCenters[year] = { x: (Math.abs(2005 - year) / dateYear_length) * width
+                + 1 / ( dateYear_length * 2 ) * width,
                 y: height / 2}
             }
         });
@@ -133,14 +144,23 @@ function createBubbleChart() {
         //console.log(array_dateYear);
         array_dateYear.forEach( (year, index) => {
             // Experimentally tested values
-            if(year == 2005) { yearsTitleX["-"+year] = 1 / ( dateYear_length * 2 ) * innerWidth + margin.left * 2 / 3 }
+            if(year == 2005) { yearsTitleX["-"+year] = 1 / ( dateYear_length * 2 ) * width }
             else { yearsTitleX[year] =
-              (Math.abs(2005 - year) / dateYear_length) *
-              (innerWidth + margin.right * 2 / 3)
-              + 1 / ( dateYear_length * 2 ) * innerWidth + margin.left * 2 / 3 }
+              (Math.abs(2005 - year) / dateYear_length) * width
+              + 1 / ( dateYear_length * 2 ) * width }
         });
     }
 
+    function setAvgViewsXAxis() {
+      xScale = d3.scaleLog()
+      .domain([minAmount, maxAmount])
+      .range([0, width]);
+      avgViewsXAxis = bubbleNodes.map(function(d) {
+      return {
+        id: d.id,
+        xAxis: xScale(d.value)
+      }});
+    }
 
     // Charge function that is called for each node.
     // As part of the ManyBody force.
@@ -156,8 +176,8 @@ function createBubbleChart() {
     // Charge is negative because we want nodes to repel.
     // @v4 Before the charge was a stand-alone attribute
     //  of the force layout. Now we can use it as a separate force!
-    function charge(d) {
-        return -Math.pow(d.radius, 2.0) *forceStrength;
+    function charge(d, strength) {
+        return -Math.pow(d.radius, 2) *strength;
     }
 
     /*
@@ -180,22 +200,16 @@ function createBubbleChart() {
         fillColor = getFillColorScale(rawData);
         setYears(rawData);
         //console.log(rawData);
-        // convert raw data into nodes data
-        nodes = createNodes(rawData);
+        //convert raw data into nodes data
+        bubbleNodes = createNodes(rawData);
+        setAvgViewsXAxis();
 
-        const slider = d3.select("#bubblechart_slider");
-
-        // Create a SVG element inside the provided selector
+        // Create an SVG element inside the provided selector
         // with desired size.
         svg = d3.select(selector)
                 .append('svg')
                 .attr('width', width)
                 .attr('height', height);
-
-        var spn = svg.selectAll('span').data(["Value: "]);
-        var spnE = spn.enter().append("p")
-                      .text(function(d) {return d});
-        spn.merge(spnE);
 
         // Add year headers to the chart immetiadely. Initialize opacity to 0.
         // Later function showYearTitles() will change the opacity to make titles appear.
@@ -214,7 +228,7 @@ function createBubbleChart() {
 
         // Bind nodes data to what will become DOM elements to represent them.
         bubbles = svg.selectAll('.bubble')
-                        .data(nodes, function (d) { return d.id; }); // id is distinct
+                        .data(bubbleNodes, function (d) { return d.id; }); // id is distinct
 
         // Create new circle elements each with class `bubble`.
         // There will be one circle.bubble for each object in the nodes array.
@@ -222,13 +236,13 @@ function createBubbleChart() {
         // @v4 Selections are immutable, so lets capture the
         //  enter selection to apply our transtition to below.
         var bubblesE = bubbles.enter().append('circle')
-                                .classed('bubble', true)
-                                .attr('r', 0)         // set r to 0 in the beginning. It will be transformed to right size during transition
-                                .attr('fill', function (d) { return fillColor(d.nof_talks); })
-                                .attr('stroke', function (d) { return d3.rgb(fillColor(d.nof_talks)).darker(); })
-                                .attr('stroke-width', 2)
-                                .on('mouseover', showDetail)
-                                .on('mouseout', hideDetail);
+          .classed('bubble', true)
+          .attr('r', 0)         // set r to 0 in the beginning. It will be transformed to right size during transition
+          .attr('fill', function (d) { return fillColor(d.nof_talks); })
+          .attr('stroke', function (d) { return d3.rgb(fillColor(d.nof_talks)).darker(); })
+          .attr('stroke-width', 2)
+          .on('mouseover', showDetail)
+          .on('mouseout', hideDetail);
 
         // Merge the original empty selection and the enter selection
         bubbles = bubbles.merge(bubblesE);
@@ -236,15 +250,82 @@ function createBubbleChart() {
         // Fancy transition to make bubbles appear, ending with the
         // correct radius
         bubbles.transition()
-                .duration(2000)
+                .duration(3000)
                 .attr('r', function (d) { return d.radius; });
 
         // Set the simulation's nodes to our newly created nodes array.
         // @v4 Once we set the nodes, the simulation will start running automatically!
-        simulation.nodes(nodes);
+        simulation.nodes(bubbleNodes);
+
 
         // Set initial layout to a single group of bubbles.
-        groupBubbles();
+        groupBubbles(bubbleNodes);
+
+        const slider = document.getElementById("bubblechart_slider")
+
+        slider.onmousedown = function() {
+          // Instantiates text-field for representing slider values
+          const txt = svg.selectAll('.bubblechart_slider_value')
+          .data([""])
+          .enter()
+            .append('text')
+            .attr('opacity', 0)
+            .attr('x', width / 2)
+            .attr('y', height / 2)
+            .attr('id', 'bubblechart_slider_value')
+            .attr('alignment-baseline', 'middle')
+            .classed('bubblechart_slider_value', true)
+            .text("1 - " + this.value)
+            .transition().duration(500)
+              .style('opacity', 1);
+        }
+        slider.oninput = function() {
+
+          // Changes text field value according to slider value
+          document.getElementById("bubblechart_slider_value")
+            .innerHTML = "1 - " + this.value;
+        }
+
+        slider.onmouseup = function() {
+          svg
+            .selectAll('.bubblechart_slider_value')
+            .transition().duration(500)
+              .style('opacity', 0)
+              .on('end', function() { this.remove()});
+          bubbles = svg
+            .selectAll('.bubble')
+            .data([])
+              .exit().remove();
+          bubbleNodes = createNodes(rawData.slice(0, this.value));
+          bubbles = svg
+            .selectAll('.bubble')
+            .attr('r', 0)
+            .data(bubbleNodes, function (d) { return d.id; });
+          bubblesE = bubbles
+            .enter()
+              .append('circle')
+              .classed('bubble', true)
+              .attr('r', 0)
+              .attr('fill', function (d) { return fillColor(d.nof_talks); })
+              .attr('stroke', function (d) {
+                return d3.rgb(fillColor(d.nof_talks)).darker(); })
+              .attr('stroke-width', 2)
+              .on('mouseover', showDetail)
+              .on('mouseout', hideDetail);
+
+          bubbles = bubbles.merge(bubblesE);
+          // Fancy transition to make bubbles appear, ending with the
+          // correct radius
+          bubbles.transition()
+                  .duration(2000)
+                  .attr('r', function (d) { return d.radius; });
+
+          simulation.nodes(bubbleNodes);
+          var activeButton = document.getElementsByClassName('bubblegraph button active');
+
+          myBubbleChart.toggleDisplay(activeButton[0].id);
+
+        }
     };
 
     /*
@@ -268,20 +349,29 @@ function createBubbleChart() {
         return yearCenters[d.year].x;
     }
 
+    function nodeViewsPos(d) {
+      console.log(avgViewsXAxis[d.id])
+      return avgViewsXAxis[d.id].xAxis;
+    }
+
     /*
     * Sets visualization in "single group mode".
     * The year labels are hidden and the force layout
     * tick function is set to move all nodes to the
     * center of the visualization.
     */
-    function groupBubbles() {
+    function groupBubbles(nodes) {
         hideYearTitles();
+        hideViewsXAxis();
 
-        // @v4 Reset the 'x' force to draw the bubbles to the center.
+        // Reset the 'x' force to draw the bubbles to the center.
         simulation.force('x', d3.forceX().strength(forceStrength).x(center.x));
+        simulation.force('y', d3.forceY().strength(forceStrength).y(center.y));
+        simulation.force('charge', d3.forceManyBody().strength(d =>
+          charge(d, forceStrength)));
 
-        // @v4 We can reset the alpha value and restart the simulation
-        simulation.alpha(1).restart();
+        // We can reset the alpha value and restart the simulation
+        simulation.velocityDecay(0.3).alphaDecay(0).alpha(1).restart();
     }
 
     /*
@@ -290,34 +380,85 @@ function createBubbleChart() {
     * tick function is set to move nodes to the
     * yearCenter of their data's year.
     */
-    function splitBubbles() {
+    function splitBubblesYear(nodes) {
         showYearTitles();
+        hideViewsXAxis();
 
         //Reset the 'x' force to draw the bubbles to their year centers
-        simulation.force('x', d3.forceX().strength(0.2).x(nodeYearPos));
+        simulation.force('y', d3.forceY().strength(0.1).y(center.y));
+
+        simulation.force('x', d3.forceX().strength(5).x(nodeYearPos));
+        simulation.force('charge', d3.forceManyBody().strength(d =>
+          charge(d, 0.1)));
 
         //We can reset the alpha value and restart the simulation
-        simulation.alpha(1).restart();
+        simulation.velocityDecay(0.5).alphaDecay(0.02).alpha(0.1).restart();
+    }
+
+    function splitBubblesViews() {
+      hideYearTitles();
+      showViewsXAxis();
+
+      //Reset the 'x' force to draw the bubbles to their views centers
+      simulation.force('y', d3.forceY().strength(0.1).y(center.y));
+
+      simulation.force('x', d3.forceX().strength(5).x(nodeViewsPos));
+      simulation.force('charge', d3.forceManyBody().strength(d =>
+        charge(d, 0.1)));
+
+      //We can reset the alpha value and restart the simulation
+      simulation.velocityDecay(0.5).alphaDecay(0.02).alpha(0.1).restart();
     }
 
     /*
     * Hides Year title displays.
     */
     function hideYearTitles() {
-        svg.selectAll('.year')
-            .transition()
-            .duration(1000)
+      var titles=  svg
+            .selectAll('.year')
+            .transition().duration(1000)
             .attr('fill-opacity', 0);
+      titles.remove();
+
     }
 
     /*
     * Shows Year title displays.
     */
     function showYearTitles() {
-        svg.selectAll('.year')
-            .transition()
-            .duration(1500)
-            .attr('fill-opacity', 1);
+      var yearsData = d3.keys(yearsTitleX);
+      var years = svg.selectAll('.year')
+        .data(yearsData);
+
+      years.enter().append('text')
+        .attr('fill-opacity', 0)
+        .attr('class', 'year')
+        .attr('x', function (d) { return yearsTitleX[d]; })
+        .attr('y', 40)
+        .attr('text-anchor', 'middle')
+        .text(function (d) { return d; })
+          .transition()
+          .duration(1500)
+          .attr('fill-opacity', 1);
+    }
+
+    /*
+    * Shows Views axes.
+    */
+    function showViewsXAxis() {
+      var xAxis = svg.append('g')
+        .classed('bubblechart_xAxis', true)
+        .attr('fill-opacity', 0)
+        .attr('transform', 'translate(0, '+height/2+')')
+        .call(d3.axisBottom(xScale).ticks(12, ".0s"));
+      xAxis.selectAll(".tick text")
+        .attr('transform', 'rotate(-45), translate(-10, -1)')
+        .transition().duration(1000).attr('fill-opacity', 0.7);
+    }
+
+    //Removes views axis from svg
+    function hideViewsXAxis() {
+      svg.selectAll('.bubblechart_xAxis').remove();
     }
 
     /*
@@ -379,11 +520,12 @@ function createBubbleChart() {
     * displayName is expected to be a string and either 'year' or 'all'.
     */
     bubbleChart.toggleDisplay = function (displayName) {
+      console.log(displayName)
         if (displayName === 'year') {
-        splitBubbles();
-        } else {
-        groupBubbles();
-        }
+        splitBubblesYear(bubbleNodes);
+        } else if(displayName === 'all'){
+        groupBubbles(bubbleNodes);
+        } else {splitBubblesViews()}
     };
 
     // return the chart function from closure.
@@ -396,10 +538,10 @@ whenDocumentLoaded(() => {
    */
    function setupButtons() {
        d3.select('#bubblegraph_toolbar')
-           .selectAll('.erikinput')
+           .selectAll('.bubblegraph')
            .on('click', function () {
            // Remove active class from all buttons
-           d3.selectAll('.erikinput').classed('active', false);
+           d3.selectAll('.bubblegraph').classed('active', false);
            // Find the button just clicked
            var button = d3.select(this);
 
@@ -426,8 +568,13 @@ whenDocumentLoaded(() => {
         if (error) {
         console.log(error);
         }
-
-        myBubbleChart('#single_var_content_1', data);
+        console.log(data);
+        myBubbleChart('#single_var_content_1', data.sort(function (a, b) {
+          /** Before sending raw data, it must be sorted. Otherwise sorting is
+           * being called multiple times inside myBubbleChart. Sorts first by
+           * number of talks, second by views. */
+          return b.nof_talks - a.nof_talks || b.value - a.value;
+        }));
     }
 
    // Load the data and display bubble chart
@@ -435,6 +582,8 @@ whenDocumentLoaded(() => {
 
    // setup the buttons.
    setupButtons();
+
+   var maxDistance = 0;
 
 
 });

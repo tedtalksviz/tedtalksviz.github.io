@@ -94,11 +94,6 @@ b,strong{font-weight:bolder}dfn{font-style:italic}mark{background:#ff0;color:#00
   display: none;
 }
 
-.bubblechart_leaf:hover circle{
-  fill: black;
-  opacity: 1;
-}
-
 .w3-tiny{font-size:10px!important}
 .w3-small{font-size:12px!important}
 .w3-medium{font-size:15px!important}
