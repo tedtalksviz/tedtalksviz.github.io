@@ -121,7 +121,7 @@ class EventTimeseries {
     // Add dots
     svg.append('g')
       .selectAll("dot")
-      .data(data)
+      .data(data) //sort here
       .enter()
       .append("circle")
       .attr("cx", data =>  x(data.film_date)  )

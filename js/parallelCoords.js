@@ -214,7 +214,8 @@ d3.csv(data_address).then(function(data) {
         }
       }
       return d3.scaleSequential(
-        (d)=> d3.interpolateRdYlGn(scale.domain([max,min])(d))
+        (d)=> d3.interpolateRdYlGn(scale.domain([min,max])(d))
+        //(d)=> d3.interpolateRdYlGn(scale.domain([min,max*5])(d))
       )
     }
   }
