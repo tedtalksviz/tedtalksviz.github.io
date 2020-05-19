@@ -13,7 +13,6 @@
   margin: 0px 6px;
   -webkit-appearance: none;
   background:linear-gradient(90deg,  rgb(246, 71, 141) 1%,rgb(218, 63, 163) 3%,rgb(202, 61, 171) 10%, rgb(184, 60, 176) 20%, rgb(165, 60, 179) 32%,  rgb(146, 61, 179) 45%,  rgb(128, 62, 176) 60%, rgb(110,64,170) 90%);
-  height: 34px;
   outline: none;
   opacity: 0.8;
   border: 0.3px solid white;
@@ -57,16 +56,16 @@
 .bubblechart_slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   background: white;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .bubblechart_slider::-moz-range-thumb {
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   background: white;
   border-radius: 50%;
   cursor: pointer;

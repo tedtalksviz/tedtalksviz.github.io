@@ -1,8 +1,8 @@
 function createBubbleChart() {
     //Sizing
     const margin = {top: 30, right: 30, bottom: 10, left: 30};
-    const width = 1300;
-    const height = 800;
+    const width = 1200;
+    const height = 600;
     const innerWidth = width - margin.right - margin.left;
     //tooltip object for mouseover functionality, width 300
     const tooltip = floatingTooltip('speakers_tooltip', 300);
@@ -295,7 +295,6 @@ function createBubbleChart() {
           bubbles = svg
             .selectAll('.bubble')
             .data([])
-            .attr('r', d => d.radius)
               .exit().remove();
           bubbleNodes = createNodes(rawData.slice(0, this.value));
           bubbles = svg
@@ -365,14 +364,13 @@ function createBubbleChart() {
         hideYearTitles();
         hideViewsXAxis();
 
-        // @v4 Reset the 'x' force to draw the bubbles to the center.
+        // Reset the 'x' force to draw the bubbles to the center.
         simulation.force('x', d3.forceX().strength(forceStrength).x(center.x));
         simulation.force('y', d3.forceY().strength(forceStrength).y(center.y));
         simulation.force('charge', d3.forceManyBody().strength(d =>
           charge(d, forceStrength)));
 
-        nodes.map(function (d) { d.fx = null});
-        // @v4 We can reset the alpha value and restart the simulation
+        // We can reset the alpha value and restart the simulation
         simulation.velocityDecay(0.3).alphaDecay(0).alpha(1).restart();
     }
 
@@ -387,11 +385,9 @@ function createBubbleChart() {
         hideViewsXAxis();
 
         //Reset the 'x' force to draw the bubbles to their year centers
-        //nodes.map(function (d) { d.fx = nodeYearPos(d)
-          //+ Math.random() * -40 + 20});
         simulation.force('y', d3.forceY().strength(0.1).y(center.y));
 
-        simulation.force('x', d3.forceX().strength(2.5).x(nodeYearPos));
+        simulation.force('x', d3.forceX().strength(5).x(nodeYearPos));
         simulation.force('charge', d3.forceManyBody().strength(d =>
           charge(d, 0.1)));
 
