@@ -80,17 +80,18 @@
         </p>
         <svg id="event-map" viewBox="0 0 1000 550" width="1000" height="550">
         </svg>
-        <p>y-axis value:</p>
-        <form id="form">
-            <input type="radio" name="stack" value="avg_views" checked="checked">
-            average views<br>
-            <input type="radio" name="stack" value="nof_talks" >
-            number of talks<br>
-            <input type="radio" name="stack" value="avg_speed_of_speech">
-            average speed of speech<br>
-            <input type="radio" name="stack" value="avg_duration">
-            average duration
-        </form>
+        <p>How different ted events have developed over the years</p>
+        <button value="nof_talks" class="button ts_input active">
+        number of talks
+        </button>
+        <button value="avg_views" class="button ts_input">
+        average views
+        </button>
+        <button value="avg_duration" class="button ts_input">
+        average duration
+        </button>
+        </br>
+
       </div>
     </div>
 
@@ -107,6 +108,8 @@
         <button id="all" class="bubblegraph button active">All Together</button>
         <button id="year" class="bubblegraph button">Division by Year</button>
         <button id="views" class="bubblegraph button">Division by Average Views</button>
+        <!-- <button id="all" class="button erikinput active">All Together</button>
+        <button id="year" class="button erikinput">Division by Year</button>-->
         <input type="range" class="bubblechart_slider" min="1" max="2159" value="2159" id="bubblechart_slider">
     </div>
     <div class="w3-container" id="single_var_content_1">

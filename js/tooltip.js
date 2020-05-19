@@ -16,6 +16,8 @@ function floatingTooltip(tooltipId, width) {
     // Set a width if it is provided.
     if (width) {
       tt.style('width', width);
+      var ttw = tt.style('width');
+      console.log(ttw)
     }
 
     // Initially it is hidden.

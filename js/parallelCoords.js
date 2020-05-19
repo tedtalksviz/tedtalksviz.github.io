@@ -1,20 +1,89 @@
 class ParallelCoords {
   constructor(svg_element_id, data_address) {
+
+  var timeparser = d3.timeParse("%Y-%m-%d")
+  var tp_sh = d3.timeParse("%Y")
+  var start_time = tp_sh('2001')
+  var end_time = tp_sh('2018')
+
+  const time_axis_ticks = [tp_sh('2001'),tp_sh('2002'), tp_sh('2003'),
+    tp_sh('2004'), tp_sh('2005'), tp_sh('2006'), tp_sh('2007'), tp_sh('2008'),
+    tp_sh('2009'), tp_sh('2009'), tp_sh('2010'), tp_sh('2011'), tp_sh('2012'),
+    tp_sh('2013'), tp_sh('2014'), tp_sh('2015'), tp_sh('2016'), tp_sh('2017'),
+    tp_sh('2018')]
+
+  var dim_pars = {
+    "views" : {
+      'description' : "number of views",
+      'scale_type' : function() {return d3.scaleLog()},
+      'axis' : d3.axisRight()
+                    .ticks(7)
+                    .tickSize(4,0)
+                    .tickFormat( d3.format(".2s")),
+    },
+    "comments" : {
+      'description': "number of comments",
+      'scale_type' : function() {return d3.scaleLog()},
+      'axis' : d3.axisRight()
+                    .ticks(7)
+                    .tickSize(4,0)
+                    .tickFormat( d3.format(".2s"))
+    },
+    "film_date" : {
+      'description': "film date",
+      'scale_type' : function() {return d3.scaleLinear()},
+      'axis' : d3.axisRight()
+                    .tickValues(time_axis_ticks)
+                    .tickSize(4,0)
+                    .tickFormat( d3.timeFormat("%Y"))
+    },
+    "published_date" : {
+      'description': "published date",
+      'scale_type' : function() {return d3.scaleLinear()},
+      'axis' : d3.axisRight()
+                    .tickValues(time_axis_ticks)
+                    .tickSize(4,0)
+                    .tickFormat( d3.timeFormat("%Y"))
+    },
+    "speed_of_speech" : {
+      'description': "speed of speech (wpm)",
+      'scale_type' : function() {return d3.scaleLinear()},
+      'axis' : d3.axisRight()
+                    .ticks(7)
+                    .tickSize(4,0)
+                    .tickFormat( d3.format(".2s"))
+    },
+    "duration" : {
+      'description': "duration (min)",
+      'scale_type' : function() {return d3.scaleLinear()},
+      'axis' : d3.axisRight()
+                    .ticks(7)
+                    .tickSize(4,0)
+                    .tickFormat( d3.format(".2s"))
+    },
+    "event_type" : {
+      'description': "event type",
+      'scale_type' : function() {return d3.scalePoint()},
+      'axis' : d3.axisRight()
+                    .ticks(7)
+                    .tickSize(4,0)
+                    .tickFormat( function(d, i) { return d},)
+    }
+  }
+
+
   // set the dimensions and margins of the graph
   var margin = {top: 30, right: 10, bottom: 10, left: 0},
-  width = 1800 - margin.left - margin.right,
+  width = 1300 - margin.left - margin.right,
   height = 800 - margin.top - margin.bottom;
   var row = 0
   var i = 0
   var dragging = {}
-  var timeparser = d3.timeParse("%Y-%m-%d")
-  var start_time = timeparser('2001-01-01')
-  var end_time = timeparser('2017-12-31')
-
   var color_var = 'published_date'
   // just hardcode the desired variables
-  var dimensions = [ 'views', 'comments', 'film_date', 'published_date',
-                      'speed_of_speech', 'duration', 'event_type' ]
+  var dimensions = ['duration','speed_of_speech','film_date', 'published_date',
+                    'comments', 'views', 'event_type' ]
+
 
   // append the svg object to the body of the page
   var svg = d3.select(svg_element_id)
@@ -27,7 +96,8 @@ class ParallelCoords {
 
 // use the data
 d3.csv(data_address).then(function(data) {
-  var event_types = ['tedx','salon','main','external','women','global','youth']
+  var event_types = ['external','salon','global','main','youth',
+                        'med','women','tedx', 'satellite']
   var titles = []
   for (row in data){
     if (row != 'columns'){ //columns is a part of the object
@@ -68,15 +138,7 @@ d3.csv(data_address).then(function(data) {
               .padding(1)
               .domain(dimensions);
 
-  function get_scale_type(dim) {
-    if(['views', 'comments'].indexOf(dim) >= 0){
-      return d3.scaleLog()
-    }else if(['title', 'event_type'].indexOf(dim) >= 0){
-      return d3.scalePoint()
-    }else{
-      return d3.scaleLinear()
-    }
-  }
+
 
   function get_domain_type(dim) {
     if(['title'].indexOf(dim) >= 0){
@@ -95,7 +157,8 @@ d3.csv(data_address).then(function(data) {
   var y = {}
   for (i in dimensions) {
     name = dimensions[i]
-    var scale = get_scale_type(name)
+    //var scale = get_scale_type(name)
+    var scale = dim_pars[name]['scale_type']()
     var domain = get_domain_type(name)
     y[name] = scale
               .domain( domain )
@@ -137,9 +200,9 @@ d3.csv(data_address).then(function(data) {
 
   //colors according to the current **filtered** color_var
   function create_color_dimension() {
-    var scale = get_scale_type(color_var)
+    var scale = dim_pars[color_var]['scale_type']()
     if(color_var == 'event_type'){
-        return d3.scaleOrdinal(data.map(x => x.event_type), d3.schemeSet1)
+        return d3.scaleOrdinal(event_types, d3.schemeCategory10)
     }else{
       var min = 100000000000000
       var max = 0
@@ -173,6 +236,7 @@ d3.csv(data_address).then(function(data) {
     var viz = 1/dividor //used for opacity and stroke-width
     console.log('Visual smoother level:', viz)
 
+    ///// HANDLE EVENTS
     function handleMouseOver(d, i) {  // Add interactivity
       var coordinates= d3.mouse(this);
       var x = coordinates[0];
@@ -194,13 +258,13 @@ d3.csv(data_address).then(function(data) {
     }
 
     function handleMouseOut(d, i) {
-          //change properties back to normal
-          d3.select(this).attr('stroke', row => z(row[color_var]) )
-          d3.select(this).attr("stroke-width", viz*3)
-          d3.select(this).style("opacity", viz/3)
+      //change properties back to normal
+      d3.select(this).attr('stroke', row => z(row[color_var]) )
+      d3.select(this).attr("stroke-width", viz*3)
+      d3.select(this).style("opacity", viz/3)
 
-          // Select text by id and then remove
-          d3.select("#t" + '' +  "-" + '' + "-" + i).remove();  // Remove text location
+      // Select text by id and then remove
+      d3.select("#t" + '' +  "-" + '' + "-" + i).remove();  // Remove text location
     }
 
     function handleClick(d, i) {  // Add interactivity
@@ -208,101 +272,82 @@ d3.csv(data_address).then(function(data) {
           open(d.url)
     }
 
+    ///// DRAW THE ELEMENTS
+    // Draw the lines
+    svg
+      .style("fill", "none")
+      .selectAll("myPath")
+      .data(filtered_data.slice().sort((a, b) => d3.ascending(a[color_var], b[color_var])))
+      .enter().append("path")
+      .attr("stroke", row => z(row[color_var]))
+      .style("opacity", viz/3)
+      .attr("stroke-width", viz*3)
+      .join("myPath")
+      .attr("d",  path)
+      .on('mouseover', handleMouseOver)
+      .on('mouseout', handleMouseOut)
+      .on('click', handleClick)
 
-      // Draw the lines
-      svg
-        .style("fill", "none")
-        .selectAll("myPath")
-        .data(filtered_data.slice().sort((a, b) => d3.ascending(a[color_var], b[color_var])))
-        .enter().append("path")
-       // .style("stroke", "#69b3a2")
-        .attr("stroke", row => z(row[color_var]))
-        .style("opacity", viz/3)
-        .attr("stroke-width", viz*3)
-        .join("myPath")
-        .attr("d",  path)
-        .on('mouseover', handleMouseOver)
-        .on('mouseout', handleMouseOut)
-        .on('click', handleClick)
-
-
-
-
-
-      // Draw the axis:
-      var all_axes = svg.selectAll(".dimension")
-        .data(dimensions)
-        .enter()
-        .append("g") //grouping for each dimension
-        .attr("transform", function(d) { //element to its position on x axis
-            return "translate(" + position(d) + ")";
+    // Draw the axis:
+    var all_axes = svg.selectAll(".dimension")
+      .data(dimensions)
+      .enter()
+      .append("g") //grouping for each dimension
+      .attr("transform", function(d) { //element to its position on x axis
+          return "translate(" + position(d) + ")";
+      })
+      .call(d3.drag()
+          .on("start", function(dim) {
+            dragging[dim] = this.__origin__ = x(dim);
+          })
+          .on("drag", function(dim) {
+              dragging[dim] = Math.min(width, Math.max(0, this.__origin__ += d3.event.dx));
+              //dragging[dim] = 900
+              dimensions.sort(function(a, b) {
+                  return position(a) - position(b);
+              });
+              x.domain(dimensions);
+          all_axes.attr("transform", function(dim) {
+              return "translate(" + position(dim) + ")";
+          });
         })
-        .call(d3.drag()
-            .on("start", function(dim) {
-              dragging[dim] = this.__origin__ = x(dim);
-            })
-            .on("drag", function(dim) {
-                dragging[dim] = Math.min(width, Math.max(0, this.__origin__ += d3.event.dx));
-                //dragging[dim] = 900
-                dimensions.sort(function(a, b) {
-                    return position(a) - position(b);
-                });
-                x.domain(dimensions);
-            all_axes.attr("transform", function(dim) {
-                return "translate(" + position(dim) + ")";
-            });
-          })
-          .on("end", function(dim) {
-            if (dragging[dim] == x(dim)) {  // no movement -> click event
-                color_var = dim
-            }else{ //reset axis place
-                d3.select(this).transition().attr("transform", "translate(" + x(dim) + ")");
-            }
-            //rerender whether just colormap or order changed
-            setTimeout(function(){draw_all()}, 500);
+        .on("end", function(dim) {
+          if (dragging[dim] == x(dim)) {  // no movement -> click event
+              color_var = dim
+          }else{ //reset axis place
+              d3.select(this).transition().attr("transform", "translate(" + x(dim) + ")");
+          }
+          //rerender whether just colormap or order changed
+          setTimeout(function(){draw_all()}, 500);
 
-            delete this.__origin__;
-            delete dragging[dim];
-          })
-        )
+          delete this.__origin__;
+          delete dragging[dim];
+        })
+      )
 
-    function get_tick_type(dim) {
-        if(['film_date', 'published_date'].indexOf(dim) >=0 ){
-            return d3.timeFormat("%m/%Y")
-        }else if(['title', 'event_type'].indexOf(dim) >= 0){
-            return function(d, i) { return d }
-        }else{
-            return d3.format(".2s")
-        }
-    }
-
+    // class for axes
     all_axes.each(function(dim){
         d3.select(this).attr("class", dim+" dimension")
     })
 
-    //create axis
+    // create axis
     all_axes.each(function(dim) {
             d3.select(this)
-            .call(
-                 d3.axisRight()
+            .call(dim_pars[dim]['axis']
                     .scale(y[dim])
-                    .ticks(7)
-                    .tickSize(4,0)
-                    .tickFormat( get_tick_type(dim) )
             )
             .style("color", "black")
         })
 
-    //label
+    // label
     all_axes.append("text")
         .style("text-anchor", "middle")
         .attr("y", -15)
-        .text(function(dim) { return dim; })
+        .text(function(dim) { return dim_pars[dim]['description']; })
         .style("fill", "black")
         .attr("class", "var_name")
 
-    //brush
-
+    // brush
     function get_saved_brush(dim) {
         var to_return = []
         if(saved_brushes[dim] == undefined){
@@ -311,13 +356,12 @@ d3.csv(data_address).then(function(data) {
             if (saved_brushes[dim] == null){
                 to_return = null
             }else{
-                var savedyay = saved_brushes[dim]
-                to_return = [savedyay[0][1],savedyay[1][1]]
+                var saved = saved_brushes[dim]
+                to_return = [saved[0][1],saved[1][1]]
             }
         }
         return to_return
     }
-
 
     all_axes.append("g")
         .attr("class", "brush")

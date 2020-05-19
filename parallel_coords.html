@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ted Talks</title>
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/correlation.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+</head>
+<body>
+  <script src="lib/d3.js"></script>
+  <script src="lib/d3-legend.min.js"></script>
+  <script src="js/whenDocumentLoaded.js"></script>
+  <script src="js/parallelCoords.js"></script>
+  <script src="js/topbar.js"></script>
+
+  <div class="content flexright" id="correlation">
+    <div class="" id="correlation_content">
+    </div>
+    <div >
+      <h5 class="w3-center w3-padding-48">
+        <span class="w3-tag w3-wide">CORRELATIONS BETWEEN VARIABLES</span>
+      </h5>
+
+      <p><span class="w3-tag">parallel coordinates / sets</span>
+        <ol>
+          <li>Click title to change the coloring.</li>
+          <li>Hover to see the name.</li>
+          <li>Click path to open the talk.</li>
+          <li>Drag to adjust dimensions.</li>
+        </ol>
+      </p>
+      <p>Adjustments to the data:
+        <ol>
+          <li>Filter rows with under 2000 duration</li>
+          <li>Film date over 1 000 000 000 (timestamp)</li>
+        </ol>
+      </p>
+      <p>brown == high, green == low</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,8 +1,8 @@
 function createBubbleChart() {
     //Sizing
-    const margin = {top: 30, right: 100, bottom: 10, left: 100};
-    const width = 1200;
-    const height = 500;
+    const margin = {top: 30, right: 30, bottom: 10, left: 30};
+    const width = 1300;
+    const height = 800;
     const innerWidth = width - margin.right - margin.left;
     //tooltip object for mouseover functionality, width 300
     const tooltip = floatingTooltip('speakers_tooltip', 300);
@@ -542,10 +542,10 @@ whenDocumentLoaded(() => {
    */
    function setupButtons() {
        d3.select('#bubblegraph_toolbar')
-           .selectAll('.button')
+           .selectAll('.bubblegraph')
            .on('click', function () {
            // Remove active class from all buttons
-           d3.selectAll('.button').classed('active', false);
+           d3.selectAll('.bubblegraph').classed('active', false);
            // Find the button just clicked
            var button = d3.select(this);
 
