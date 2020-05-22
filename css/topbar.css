@@ -6,7 +6,7 @@
 }
 
 #topbar + .content { 
-  padding-top: 53px;
+  padding-top: 7vh;
 }
 
 #topbar-row{
@@ -23,7 +23,7 @@
 
 /* ------ elements inside topbar --------------*/
 .tp-holder {
-  width: 14.285714286%; /*width:12.5%;*/
+  width: 14.285714286%; 
   float: left;
 }
 
@@ -60,6 +60,17 @@
 
 /* ------ next button has some common characteristics --------------*/
 .next{
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  display: block;
+
   color: #fff;
   background-color: #000;
   border: 2px solid black;
