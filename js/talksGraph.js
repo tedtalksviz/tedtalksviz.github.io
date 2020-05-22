@@ -54,22 +54,11 @@ class TalksGraph {
         .on('zoom', function() {
           svg.attr('transform', d3.event.transform);
         }));
-
-      function zoomed1() {
-        let edges = d3.select('#edges');
-        let nodes = d3.select('#nodes');
-        let svg = d3.select('#talk_network');
-        svg.attr('transform', d3.event.transform);
-        //edges.attr('transform', d3.event.transform);
-        //nodes.attr('transform', d3.event.transform);
-      }
     });
-  }
-
-  zoomed() {
   }
 }
 
 whenDocumentLoaded(() => {
+  topbar('network');
   const talksGraph = new TalksGraph('talk_network');
 });

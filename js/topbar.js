@@ -30,6 +30,10 @@ document.write(`
         <a id="network_link" href="/talk_network.html" class="tp-column">
             NETWORK</a>
       </div>
+      <div class="tp-holder">
+        <a id="random_link" href="/random.html" class="tp-column">
+            RANDOM TALK</a>
+      </div>
     </div>
   </div>
 `);

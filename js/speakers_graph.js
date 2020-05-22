@@ -573,71 +573,71 @@ function setScale() {
 }
 
 whenDocumentLoaded(() => {
- /*
- * Sets up the layout buttons to allow for toggling between view modes.
- */
- function setupButtons() {
-     d3.select('#bubblegraph_toolbar')
-         .selectAll('.bubblegraph')
-         .on('click', function () {
-         // Remove active class from all buttons
-         d3.selectAll('.bubblegraph').classed('active', false);
-         // Find the button just clicked
-         var button = d3.select(this);
-
-         // Set it as the active button
-         button.classed('active', true);
-
-         // Get the id of the button
-         var buttonId = button.attr('id');
-
-         // Toggle the bubble chart based on
-         // the currently clicked button.
-         myBubbleChart.toggleDisplay(buttonId);
-         });
- }
-
- //Initialize bubble chart
- var myBubbleChart = createBubbleChart();
-
+  topbar('speakers');
   /*
-  * Function called once data is loaded from CSV.
-  * Calls bubble chart function to display inside #vis div.
-  */
-  function display(data, error) {
-      if (error) {
-      console.log(error);
-      }
-      myBubbleChart('#single_var_content_1', data.sort(function (a, b) {
-        /** Before sending raw data, it must be sorted. Otherwise sorting is
-         * being called multiple times inside myBubbleChart. Sorts first by
-         * number of talks, second by views. */
-        return b.nof_talks - a.nof_talks || b.value - a.value;
-      }));
+   * Sets up the layout buttons to allow for toggling between view modes.
+   */
+  function setupButtons() {
+    d3.select('#bubblegraph_toolbar')
+      .selectAll('.bubblegraph')
+      .on('click', function () {
+        // Remove active class from all buttons
+        d3.selectAll('.bubblegraph').classed('active', false);
+        // Find the button just clicked
+        var button = d3.select(this);
+
+        // Set it as the active button
+        button.classed('active', true);
+
+        // Get the id of the button
+        var buttonId = button.attr('id');
+
+        // Toggle the bubble chart based on
+        // the currently clicked button.
+        myBubbleChart.toggleDisplay(buttonId);
+      });
   }
 
- // Load the data and display bubble chart
- d3.csv("resources/speaker.csv").then(display);
+  //Initialize bubble chart
+  var myBubbleChart = createBubbleChart();
 
- const slider = document.getElementById("bubblechart_slider")
- slider.addEventListener('mouseup', function() {
-   /**
+  /*
+   * Function called once data is loaded from CSV.
+   * Calls bubble chart function to display inside #vis div.
+   */
+  function display(data, error) {
+    if (error) {
+      console.log(error);
+    }
+    myBubbleChart('#single_var_content_1', data.sort(function (a, b) {
+      /** Before sending raw data, it must be sorted. Otherwise sorting is
+      * being called multiple times inside myBubbleChart. Sorts first by
+      * number of talks, second by views. */
+      return b.nof_talks - a.nof_talks || b.value - a.value;
+    }));
+  }
+
+  // Load the data and display bubble chart
+  d3.csv("resources/speaker.csv").then(display);
+
+  const slider = document.getElementById("bubblechart_slider")
+  slider.addEventListener('mouseup', function() {
+    /**
     * Draw bubbles again to the graph based on the value in the slider.
     * This function also calls the simulation with new bubbles again in the
     * end.
-   */
-   myBubbleChart.mouseUpEvent();
- });
- slider.addEventListener('mousedown', function() {
-  /**
-   * Draw bubbles again to the graph based on the value in the slider.
-   * This function also calls the simulation with new bubbles again in the
-   * end.
-  */
-  myBubbleChart.mouseDownEvent();
-});
-slider.addEventListener('input', myBubbleChart.inputEvent);
-
- // setup the buttons.
- setupButtons();
+    */
+    myBubbleChart.mouseUpEvent();
+  });
+  slider.addEventListener('mousedown', function() {
+    /**
+     * Draw bubbles again to the graph based on the value in the slider.
+     * This function also calls the simulation with new bubbles again in the
+     * end.
+    */
+    myBubbleChart.mouseDownEvent();
+  });
+  slider.addEventListener('input', myBubbleChart.inputEvent);
+  // setup the buttons.
+  setupButtons();
 });

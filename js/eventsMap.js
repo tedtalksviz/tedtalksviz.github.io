@@ -68,5 +68,6 @@ class EventsMap {
 }
 
 whenDocumentLoaded(() => {
+  topbar('locations');
   const eventMap = new EventsMap('event-map');
 });

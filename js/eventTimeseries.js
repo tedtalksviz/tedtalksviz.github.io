@@ -183,6 +183,7 @@ class EventTimeseries {
 }
 
 whenDocumentLoaded(() => {
+  topbar('timeseries');
   const eventTimeseries = new EventTimeseries('#events_content',
     'resources/events.csv');
 });

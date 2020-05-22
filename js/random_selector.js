@@ -1,6 +1,5 @@
-
-
 whenDocumentLoaded(() => {
+  topbar('random');
   d3.csv('resources/ted_main.csv').then(function(data) {
     console.log(data)
     //html = `<div id='topbar' class="w3-top">
@@ -20,10 +19,7 @@ whenDocumentLoaded(() => {
         frameborder="0" scrolling="no" allowfullscreen></iframe>
     </div>
       `
-
-
     //var svg = d3.select("#random-video")
     //            .append(html)
-
   })
 });

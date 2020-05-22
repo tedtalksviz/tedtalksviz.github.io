@@ -398,6 +398,7 @@ d3.csv(data_address).then(function(data) {
 }
 
 whenDocumentLoaded(() => {
+  topbar('parallel');
   const parallelCoords = new ParallelCoords('#correlation_content',
     'resources/ted_main.csv');
 });
