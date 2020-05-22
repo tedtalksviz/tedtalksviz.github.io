@@ -1,16 +1,21 @@
 class EventsMap {
   constructor(svg_element_id) {
-    this.svg = d3.select('#' + svg_element_id);
+    const height = 800;
+    const width = 1300;
+    const svg = d3.select('#' + svg_element_id)
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height)
+      .attr('viewBox', '0 0 ' + width.toString() + ' '+ height.toString());
 
 		// may be useful for calculating scales
-		const svg_viewbox = this.svg.node().viewBox.animVal;
-		this.svg_width = svg_viewbox.width;
-		this.svg_height = svg_viewbox.height;
+		this.svg_width = width;
+		this.svg_height = height;
 
     // Think about a better way to set this scale.
     const projection = d3.geoMercator()
       .rotate([0, 0])
-      .scale(350)
+      .scale(200)
       .translate([this.svg_width / 2, this.svg_height / 2])
       .precision(.1);
 
@@ -25,6 +30,9 @@ class EventsMap {
         return countries_paths.features;
     });
 
+    // Add tooltip when hovering over events
+    const tooltip = floatingTooltip('event_tooltip');
+
     const city_promise = d3.csv('resources/cities.csv');
 
     // Will add here promises for events locations as well.
@@ -32,17 +40,16 @@ class EventsMap {
       let map_data = results[0];
       let cities_data = results[1];
       // Countries
-      this.map_container = this.svg.append('g');
+      this.map_container = svg.append('g');
       this.map_container.selectAll('.country')
         .data(map_data)
         .enter()
         .append('path')
-        .classed('country', true)
         .attr('d', path)
-        .style('fill', '#0000ff')
+        .style('fill', '#793fae')
       // Cities
-      this.map_container = this.svg.append('g');
-      this.map_container.selectAll('cirlce')
+      this.map_container = svg.append('g');
+      this.map_container.selectAll('circle')
         .data(cities_data)
         .enter()
         .append('circle')
@@ -59,9 +66,16 @@ class EventsMap {
         .style('stroke', 'gray')
         .style('stroke-width', 0.25)
         .style('opacity', 0.75)
-        .append('title')
-        .text(function(d) {
-          return d.name;
+        .on('mouseover', function(d) {
+          var content = 
+            '<span class="name">Name: </span>' + 
+              '<span class="value">' + d.name + '</span><br/>' +
+            '<span class="name">Number of events: </span>' + 
+              '<span class="value">' + d.no_events.toString() + '</span><br/>';
+          tooltip.showTooltip(content, d3.event);
+        })
+        .on('mouseout', function(d) {
+          tooltip.hideTooltip();
         });
     });
   }
@@ -69,5 +83,5 @@ class EventsMap {
 
 whenDocumentLoaded(() => {
   topbar('locations');
-  const eventMap = new EventsMap('event-map');
+  const eventMap = new EventsMap('events-map');
 });
