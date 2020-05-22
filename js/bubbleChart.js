@@ -5,6 +5,8 @@ class BubbleChart {
 
     this.plot_area =  this.svg.append('svg')
                               .attr('viewBox','0 0 400 400') // this is magic ! define viewbox area of 400, use that same in pack size, and it scales to the viewPort perfectly!
+                              .attr('width', 1300)
+                              .attr('height', 800)
                               .classed('bubblechart', true);
 
     const hierarchicalData = d3.hierarchy(this.data).sum(function(d) {return d.count}).sort((a,b) => -(a.value - b.value));
