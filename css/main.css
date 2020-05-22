@@ -85,7 +85,7 @@ b,strong{font-weight:bolder}dfn{font-style:italic}mark{background:#ff0;color:#00
   background-position: center;
   background-size: cover;
   background-image: url("../images/ted_large_2.jpg");
-  height: 300px;
+  height: 100vh;
   min-height: 75%;
   text-align:center;
 }

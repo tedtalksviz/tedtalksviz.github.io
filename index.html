@@ -11,14 +11,14 @@
 <body>
   <script src="lib/d3.js"></script>
   <script src="lib/d3-legend.min.js"></script>
-  <script src="js/topbar.js"></script>
+  <script src="js/main_scripts.js"></script>
+  <script> whenDocumentLoaded(() => topbar('home') ); </script> 
 
-  <div class="content" id="home" style="padding-bottom:32px;">
-        <div class="bgimg">
+  <script src="js/topbar.js"></script>
+  <div class="content bgimg" id="home" style="padding-bottom:32px;">
+        <div>
           <span class="w3-text-white" style="font-size:90px">TED-talk analysis</span>
         </div>
-      <!-- Header with image -->
-
       <!-- Add a background color and large text to the whole page -->
       <div class="w3-large">
         <!-- About Container -->
@@ -26,9 +26,21 @@
           <div class="w3-content">
             <h5 class="w3-center w3-padding-64">
               <span class="w3-tag w3-wide">ABOUT TED TALKS</span>
+              <p>This project presents data visualizations on TED talk dataset.
+              Datset has been downloaded from 
+              <a href="https://www.kaggle.com/rounakbanik/ted-talks"
+              target="_blank">
+                Kaggle
+              </a>
+              </p>
            </h5>
+           <p>Click the next button to continue on your journey,
+           <a href="/random.html">
+             or perhaps just enjoy a random talk?
+           </a>
+           </p>
 
-           take some icon:
+           ####take some icon:
             https://www.flaticon.com/packs/essential-set-2
 
             <p>TED Talks are a collection of free online talks centered around
@@ -39,7 +51,8 @@
               <p><i>"Vision begins with the eyes, but it truly takes place in the brain."</i></p>
               <p>Fei-Fei Li - TED2015 Vancouver</p>
             </div>
-            <img src="./images/ted_logo.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+            <!--<img src="./images/ted_logo.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+            -->
           </div>
         </div>
       </div>

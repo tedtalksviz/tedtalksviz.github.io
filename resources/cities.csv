@@ -1,0 +1,4 @@
+latitude,longitude,name,desc,color,source,precision,no_events
+36.596808,-121.897127,Monterey,"Monterey, Monterey County, CA, US",,MapQuest,city/town, 12
+33.767168,-118.193723,Long Beach,"Long Beach, Los Angeles County, CA, US",,MapQuest,city/town,  5
+49.263566,-123.138572,Vancouver,"Vancouver, BC, CA",,MapQuest,city/town, 4
