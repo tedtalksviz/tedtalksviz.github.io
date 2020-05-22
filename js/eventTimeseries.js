@@ -46,7 +46,7 @@ class EventTimeseries {
     data = filter_rows(data, 'film_date', tp_sh('2001'), tp_sh('2018'))
 
     var x = d3.scaleLinear()
-              .domain( [tp_sh('2001'), tp_sh('2018')] )
+              .domain( [timeparser('2000-10-01'), tp_sh('2018')] )
               .range([0, width])
 
 

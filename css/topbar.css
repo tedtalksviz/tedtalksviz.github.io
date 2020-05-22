@@ -19,7 +19,7 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
 #topbar-row:after,#topbar-row:before{content:"";display:table;clear:both}
 
 .tp-holder {
-    width:12.5%;
+    width:14.285714286%; /*width:12.5%;*/
     float:left;
 }
 
@@ -31,4 +31,6 @@ display:block;width:100%;
 }
 
 .tp-column:hover{color:#000!important;background-color:#ccc!important}
+.tp-column.active{color:#432!important;background-color:#e62b1e!important}
+.tp-column.active:hover{color:#000!important;background-color:#ccc!important}
 

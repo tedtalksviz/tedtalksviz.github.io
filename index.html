@@ -11,8 +11,10 @@
 <body>
   <script src="lib/d3.js"></script>
   <script src="lib/d3-legend.min.js"></script>
-  <script src="js/topbar.js"></script>
+  <script src="js/main_scripts.js"></script>
+  <script> whenDocumentLoaded(() => topbar('home') ); </script> 
 
+  <script src="js/topbar.js"></script>
   <div class="content" id="home" style="padding-bottom:32px;">
         <div class="bgimg">
           <span class="w3-text-white" style="font-size:90px">TED-talk analysis</span>
@@ -27,6 +29,8 @@
             <h5 class="w3-center w3-padding-64">
               <span class="w3-tag w3-wide">ABOUT TED TALKS</span>
            </h5>
+           <p> or perhaps just enjoy a random talk?</p>
+            <a href="/random.html" class="tp-column">
 
            take some icon:
             https://www.flaticon.com/packs/essential-set-2
