@@ -11,11 +11,6 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
   top: 0;
   width: 100%;
 }
-#topbar-row{
-    color:#fff!important;
-    background-color:#000!important;
-    padding:8px 16px!important;
-}
 #topbar-row:after,#topbar-row:before{content:"";display:table;clear:both}
 
 .tp-holder {
@@ -24,13 +19,28 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
 }
 
 .tp-column{
-border:none;
-padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;
+  border:none;
+  padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;
 
-display:block;width:100%;
+  display:block;width:100%;
 }
 
-.tp-column:hover{color:#000!important;background-color:#ccc!important}
+#topbar-row, .prev, .next{
+  color:#fff!important;
+  background-color:#000!important
+}
+.prev, .next{
+  width:15%;
+  float: right;
+}
+
+#topbar-row{
+  padding:8px 16px!important;
+}
+
+.prev:hover, .next:hover, .tp-column:hover{
+  color:#000!important;background-color:#ccc!important
+}
 .tp-column.active{color:#432!important;background-color:#e62b1e!important}
 .tp-column.active:hover{color:#000!important;background-color:#ccc!important}
 
