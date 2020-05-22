@@ -119,9 +119,16 @@ class EventTimeseries {
 
 
     // Add dots
+    console.log(
+      data.sort(function(a,b){
+        a.nof_talks-b.nof_talks
+      }) //sort here
+    )
     svg.append('g')
       .selectAll("dot")
-      .data(data) //sort here
+      .data(data.sort(function(a,b){
+        return b.nof_talks-a.nof_talks
+      })) //sort here
       .enter()
       .append("circle")
       .attr("cx", data =>  x(data.film_date)  )
