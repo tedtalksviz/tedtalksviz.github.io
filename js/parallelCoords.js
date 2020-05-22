@@ -213,9 +213,18 @@ d3.csv(data_address).then(function(data) {
           max = Math.max(max, filtered_data[row][color_var])
         }
       }
+      console.log(scale.domain([min,max]))
+
+      //if(['comments','views'].indexOf(color_var)>=0){
+      //return d3.scaleSequentialLog(
+      //  [min, max], d3.interpolateHcl('#000000','#e62b1e')
+      //)
+      //}else{
+      //  [min, max], d3.interpolateHsl('#e62b1e','#000000')
+      //)
       return d3.scaleSequential(
-        (d)=> d3.interpolateRdYlGn(scale.domain([min,max])(d))
-        //(d)=> d3.interpolateRdYlGn(scale.domain([min,max*5])(d))
+        //[min, max ], d3.interpolateRdYlGn
+        (d)=> d3.interpolateRgbBasis(['#000000','#771a9b','#e62b1e'])(scale.domain([min,max])(d))
       )
     }
   }
