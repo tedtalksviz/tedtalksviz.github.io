@@ -82,7 +82,7 @@ class EventTimeseries {
       console.log(d)
       d3.select(this).attr('fill', 'black')
                       .attr('stroke', 'black');
-      var content = '<span class="name">Name: </span><span class="value">'        + d.name +
+      var content = '<span class="name">Event: </span><span class="value">'        + d.event.toString() +
                   '</span><br/>' +
                   '<span class="name">Talks: </span><span class="value">'        + d.nof_talks.toString() +
                   '</span><br/>' +
