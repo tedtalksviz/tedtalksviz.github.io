@@ -41,6 +41,6 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
 .prev:hover, .next:hover, .tp-column:hover{
   color:#000!important;background-color:#ccc!important
 }
-.tp-column.active{color:#432!important;background-color:#e62b1e!important}
+.tp-column.active{color:white;background-color:#e62b1e!important}
 .tp-column.active:hover{color:#000!important;background-color:#ccc!important}
 
