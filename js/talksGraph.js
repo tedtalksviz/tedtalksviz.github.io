@@ -1,6 +1,8 @@
 class TalksGraph {
   constructor(svg_element_id) {
-    this.svg = d3.select('#' + svg_element_id)
+    const svg = d3.select('#' + svg_element_id)
+    const width = 1300;
+    const height = 1000;
     const network_promise = d3.json('resources/network.json');
 
     Promise.all([network_promise]).then((results) => {
@@ -20,8 +22,9 @@ class TalksGraph {
         }
       });
 
+      // Add tooltip when hovering over nodes
       const tooltip = floatingTooltip('talk_tooltip', 100);
-      this.svg.selectAll('circle')
+      svg.selectAll('circle')
         .on('mouseover', function(d) {
           let node_id = this.getAttribute('class').substring(3);
           let details = nodes.find(node => node.id == node_id);
@@ -42,7 +45,28 @@ class TalksGraph {
         .on('mouseout', function(d) {
           tooltip.hideTooltip();
         });
+
+      // Add zoom 
+      console.log(svg);
+      svg.call(d3.zoom()
+        .extent([[-1883, -2013], [4173, 4155]])
+        .scaleExtent([1, 8])
+        .on('zoom', function() {
+          svg.attr('transform', d3.event.transform);
+        }));
+
+      function zoomed1() {
+        let edges = d3.select('#edges');
+        let nodes = d3.select('#nodes');
+        let svg = d3.select('#talk_network');
+        svg.attr('transform', d3.event.transform);
+        //edges.attr('transform', d3.event.transform);
+        //nodes.attr('transform', d3.event.transform);
+      }
     });
+  }
+
+  zoomed() {
   }
 }
 
