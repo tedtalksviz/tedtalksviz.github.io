@@ -157,7 +157,7 @@ function createBubbleChart() {
 function setScale() {
     xScale = d3.scaleLog()
     .domain([minAmount, maxAmount])
-    .range([0, width]);
+    .range([0+margin.left, width-margin.right]);
     xScaleTalks = d3.scaleLinear()
     .domain([1, 9])
     .range([0+margin.left*3, width-margin.right]);
