@@ -35,7 +35,7 @@ function createBubbleChart() {
       .force('x', d3.forceX().strength(forceStrength).x(center.x))
       .force('y', d3.forceY().strength(forceStrength).y(center.y))
       .force('charge', d3.forceManyBody().strength(d =>
-        charge(d, forceStrength)).distanceMax(100))
+        charge(d, forceStrength)).distanceMax(10))
       .force('collide', d3.forceCollide()
       .radius(d => d.radius + 0.3).iterations(4))
       .on('tick', ticked);
@@ -160,7 +160,7 @@ function setScale() {
     .range([0, width]);
     xScaleTalks = d3.scaleLinear()
     .domain([1, 9])
-    .range([0+margin.left*2, width-margin.right]);
+    .range([0+margin.left*3, width-margin.right]);
   }
 
   // Charge function that is called for each node.
@@ -341,11 +341,11 @@ function setScale() {
     //Reset the 'x' force to draw the bubbles to their views centers
     simulation.force('y', d3.forceY().strength(0.1).y(center.y));
 
-    simulation.force('x', d3.forceX().strength(20).x(nodeViewsPos));
+    simulation.force('x', d3.forceX().strength(5).x(nodeViewsPos));
     simulation.force('charge', d3.forceManyBody().strength(d =>
       charge(d, 0.1)));
     //We can reset the alpha value and restart the simulation
-    simulation.velocityDecay(0.99).alphaDecay(0.02).alpha(1).restart();
+    simulation.velocityDecay(0.8).alphaDecay(0).alpha(0.3).restart();
   }
 
   function splitBubblesTalks() {
@@ -354,13 +354,13 @@ function setScale() {
     showTalksXAxis();
 
     //Reset the 'x' force to draw the bubbles to their views centers
-    simulation.force('y', d3.forceY().strength(0.2).y(center.y));
+    simulation.force('y', d3.forceY().strength(0.1).y(center.y));
 
-    simulation.force('x', d3.forceX().strength(1.5).x(nodeTalksPos));
+    simulation.force('x', d3.forceX().strength(2.5).x(nodeTalksPos));
     simulation.force('charge', d3.forceManyBody().strength(d =>
-      charge(d, 0.1)));
+      charge(d, 0.5)).distanceMax(10));
     //We can reset the alpha value and restart the simulation
-    simulation.velocityDecay(0.9).alphaDecay(0.02).alpha(1).restart();
+    simulation.velocityDecay(0.9).alphaDecay(0.02).alpha(0.5).restart();
   }
 
   /*
