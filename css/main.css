@@ -1,4 +1,19 @@
-/* CSS-code here. Please, remember ordering. */
+html {
+  overflow-x:hidden
+}
+
+body {
+  margin: 0;
+}
+
+body, html {
+  height: 100%;
+  font-family:Verdana,sans-serif;
+  font-size:15px;
+  line-height:1.5
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
 
 .w3-text-white,.w3-hover-text-white:hover{color:#fff!important}
 .flexright {
@@ -64,16 +79,7 @@ h1 {
     color: blue;
 }
 
-html{overflow-x:hidden}
-body, html {
-  height: 100%;
-  font-family: "Inconsolata", sans-serif;
-}
-html,body{
-  font-family:Verdana,sans-serif;
-  font-size:15px;
-  line-height:1.5
-}
+
 
 h1{font-size:36px}h2{font-size:30px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}.w3-serif{font-family:serif}
 h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:10px 0}.w3-wide{letter-spacing:4px}
