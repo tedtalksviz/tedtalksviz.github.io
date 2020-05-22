@@ -77,14 +77,14 @@
   }
 
 .bubblechart_xAxis:hover {
-    opacity: 1;
+    fill-opacity: 1;
 }
 
 .bubblechart_xAxis text {
-  font-size: 21px;
+  font-size: 25px;
   font-weight: bold;
   text-anchor: end;
-  text-shadow: black 1px 1px 2px;
+  text-shadow: black 2px 2px 2px;
 }
 
 #single_var_content_1 svg {

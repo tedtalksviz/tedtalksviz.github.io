@@ -37,7 +37,7 @@ function createBubbleChart() {
       .force('charge', d3.forceManyBody().strength(d =>
         charge(d, forceStrength)).distanceMax(10))
       .force('collide', d3.forceCollide()
-      .radius(d => d.radius + 0.3).iterations(4))
+      .radius(d => d.radius).strength(1.2).iterations(4))
       .on('tick', ticked);
   //Force starts up automatically,
   // which we don't want as there aren't any nodes yet.
@@ -158,9 +158,9 @@ function setScale() {
     xScale = d3.scaleLog()
     .domain([minAmount, maxAmount])
     .range([0+margin.left, width-margin.right]);
-    xScaleTalks = d3.scaleLinear()
+    xScaleTalks = d3.scaleLog()
     .domain([1, 9])
-    .range([0+margin.left*3, width-margin.right]);
+    .range([0+margin.left*4, width-margin.right]);
   }
 
   // Charge function that is called for each node.
@@ -339,13 +339,13 @@ function setScale() {
     showViewsXAxis();
 
     //Reset the 'x' force to draw the bubbles to their views centers
-    simulation.force('y', d3.forceY().strength(0.1).y(center.y));
+    simulation.force('y', d3.forceY().strength(d => 0.04 + 0.5*Math.pow((nodeViewsPos(d) - center.x) / 1000, 2)).y(center.y));
 
-    simulation.force('x', d3.forceX().strength(5).x(nodeViewsPos));
+    simulation.force('x', d3.forceX().strength(3).x(nodeViewsPos));
     simulation.force('charge', d3.forceManyBody().strength(d =>
-      charge(d, 0.1)));
+      charge(d, forceStrength)).distanceMax(10));
     //We can reset the alpha value and restart the simulation
-    simulation.velocityDecay(0.8).alphaDecay(0).alpha(0.3).restart();
+    simulation.velocityDecay(0.8).alphaDecay(0.05).alpha(0.5).restart();
   }
 
   function splitBubblesTalks() {
@@ -354,13 +354,13 @@ function setScale() {
     showTalksXAxis();
 
     //Reset the 'x' force to draw the bubbles to their views centers
-    simulation.force('y', d3.forceY().strength(0.1).y(center.y));
+    simulation.force('y', d3.forceY().strength(d => 0.03*2*d.nof_talks).y(center.y));
 
-    simulation.force('x', d3.forceX().strength(2.5).x(nodeTalksPos));
+    simulation.force('x', d3.forceX().strength(0.3).x(nodeTalksPos));
     simulation.force('charge', d3.forceManyBody().strength(d =>
-      charge(d, 0.5)).distanceMax(10));
+      charge(d, forceStrength)).distanceMax(10));
     //We can reset the alpha value and restart the simulation
-    simulation.velocityDecay(0.9).alphaDecay(0.02).alpha(0.5).restart();
+    simulation.velocityDecay(0.3).alphaDecay(0.05).alpha(0.3).restart();
   }
 
   /*
@@ -401,12 +401,11 @@ function setScale() {
   function showViewsXAxis() {
     var xAxis = svg.append('g')
       .classed('bubblechart_xAxis', true)
-      .attr('fill-opacity', 0)
+      .attr('fill-opacity', 0.7)
       .attr('transform', 'translate(0, '+height/2+')')
       .call(d3.axisBottom(xScale).ticks(12, ".0s"));
     xAxis.selectAll(".tick text")
-      .attr('transform', 'rotate(-45), translate(-10, -1)')
-      .transition().duration(1000).attr('fill-opacity', 0.7);
+      .attr('transform', 'rotate(-45), translate(-10, -1)');
   }
 
   //Removes views axis from svg
@@ -420,11 +419,9 @@ function setScale() {
  function showTalksXAxis() {
   var xAxis = svg.append('g')
     .classed('bubblechart_xAxis', true)
-    .attr('fill-opacity', 0)
+    .attr('fill-opacity', 0.7)
     .attr('transform', 'translate(0, '+height/2+')')
-    .call(d3.axisBottom(xScaleTalks).ticks(9));
-  xAxis.selectAll(".tick text")
-    .transition().duration(1000).attr('fill-opacity', 0.7);
+    .call(d3.axisBottom(xScaleTalks).ticks(9, "d"));
 }
 
   /*
