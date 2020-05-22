@@ -19,10 +19,6 @@ document.write(`
             SPEAKERS</a>
       </div>
       <div class="tp-holder">
-        <a id="ratings_link" href="/ratings.html" class="tp-column">
-            RATINGS</a>
-      </div>
-      <div class="tp-holder">
         <a id="parallel_link" href="/parallel_coords.html" class="tp-column">
             PARALLEL COORDINATES</a>
       </div>
