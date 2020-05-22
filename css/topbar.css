@@ -1,11 +1,18 @@
-#topbar + .content {
-  padding-top: 53px;
-}
-
+/* ------ topbar --------------*/
 #topbar{
   position: fixed;
   top: 0;
   width: 100%;
+}
+
+#topbar + .content { 
+  padding-top: 53px;
+}
+
+#topbar-row{
+  color: #fff;
+  background-color: #000;
+  padding: 8px 16px;
 }
 
 #topbar-row:after, #topbar-row:before {
@@ -14,6 +21,7 @@
   clear: both;
 }
 
+/* ------ elements inside topbar --------------*/
 .tp-holder {
   width: 14.285714286%; /*width:12.5%;*/
   float: left;
@@ -34,21 +42,7 @@
   width: 100%;
 }
 
-#topbar-row, .prev, .next{
-  color: #fff;
-  background-color: #000;
-}
-
-.prev, .next{
-  width: 15%;
-  float: right;
-}
-
-#topbar-row {
-  padding: 8px 16px;
-}
-
-.prev:hover, .next:hover, .tp-column:hover{
+.tp-column:hover{
   color: #000;
   background-color: #ccc;
 }
@@ -63,3 +57,17 @@
   background-color: #ccc;
 }
 
+
+/* ------ next button has some common characteristics --------------*/
+.next{
+  color: #fff;
+  background-color: #000;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 15%;
+  float: right;
+}
+.next:hover {
+  color: #000;
+  background-color: #ccc;
+}
