@@ -4,9 +4,11 @@ class TalksGraph {
     const width = 1300;
     const height = 1000;
     const network_promise = d3.json('resources/network.json');
+    const edges_promise = d3.tsv('resources/edges.tsv');
 
     Promise.all([network_promise]).then((results) => {
       let graph = results[0];
+      let data_edges = results[1];
 
       const nodes = graph.nodes.map(function(d) {
         return {
@@ -23,23 +25,25 @@ class TalksGraph {
       });
 
       // Add tooltip when hovering over nodes
-      const tooltip = floatingTooltip('talk_tooltip', 100);
+      const tooltip = floatingTooltip('talk_tooltip', 250);
       svg.selectAll('circle')
         .on('mouseover', function(d) {
+          // Hide other nodes
+
           let node_id = this.getAttribute('class').substring(3);
           let details = nodes.find(node => node.id == node_id);
           var content = 
-            '<span class="name">Title: </span>' + 
-              '<span class="value">' + details.title + '</span><br/>' +
-            '<span class="name">Speaker: </span>' + 
-              '<span class="value">' + details.speaker + '</span><br/>' +
-           '<span class="name">Description: </span>' + 
-              '<span class="value">' + details.description + '</span><br/>' +
-           '<span class="name">Duration: </span>' + 
+            '<div class="tooltip-text"><span class="name">Title: </span>' + 
+              '<span class="value">' + details.title + '</span></div>' +
+            '<div class="tooltip-text"><span class="name">Speaker: </span>' + 
+              '<span class="value">' + details.speaker + '</span></div>' +
+           '<div class="tooltip-text"><span class="name">Description: </span>' + 
+              '<span class="value">' + details.description + '</span></div>' +
+           '<div class="tooltip-text"><span class="name">Duration: </span>' + 
               '<span class="value">' + Math.floor(details.duration).toString() + 
-              ' minutes </span><br/>' +
-           '<span class="name">Event: </span>' + 
-              '<span class="value">' + details.event + '</span><br/>';
+              ' minutes </span></div>' +
+           '<div class="tooltip-text"><span class="name">Event: </span>' + 
+              '<span class="value">' + details.event + '</span></div>';
           tooltip.showTooltip(content, d3.event);
         }) 
         .on('mouseout', function(d) {
@@ -56,6 +60,7 @@ class TalksGraph {
         }));
     });
   }
+
 }
 
 whenDocumentLoaded(() => {

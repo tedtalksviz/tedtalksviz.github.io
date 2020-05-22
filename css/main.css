@@ -67,7 +67,7 @@ b,strong{font-weight:bolder}dfn{font-style:italic}mark{background:#ff0;color:#00
   opacity: .8;
   color: black;
   padding: 10px;
-  font-size: 12px;
+  font-size: 18px;
   z-index: 10;
 }
 
@@ -77,6 +77,10 @@ b,strong{font-weight:bolder}dfn{font-style:italic}mark{background:#ff0;color:#00
 
 .content{
   height:93vh;
+}
+
+.tooltip-text {
+  margin: 10px 0;
 }
 
 .left-content{
@@ -126,6 +130,3 @@ b,strong{font-weight:bolder}dfn{font-style:italic}mark{background:#ff0;color:#00
 .w3-tiny{font-size:10px!important}
 .w3-small{font-size:12px!important}
 .w3-medium{font-size:15px!important}
-
-
-
