@@ -12,7 +12,9 @@
 #topbar-row{
   color: #fff;
   background-color: #000;
-  padding: 8px 16px;
+  /* ---- Flex container utilities ----*/
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 #topbar-row:after, #topbar-row:before {
@@ -23,23 +25,22 @@
 
 /* ------ elements inside topbar --------------*/
 .tp-holder {
-  width: 14.285714286%; 
-  float: left;
+  /* ---- Flex container utilities ----*/
+  width: 100%;
+  margin: 0px;
+  text-align: center;
 }
 
 .tp-column{
   border: none;
-  padding: 8px 16px;
-  vertical-align: middle;
+  padding: 16px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
   background-color: inherit;
-  text-align: center;
   cursor: pointer;
   white-space: nowrap;
   display: block;
-  width: 100%;
 }
 
 .tp-column:hover{
@@ -61,16 +62,11 @@
 /* ------ next button has some common characteristics --------------*/
 .next{
   padding: 8px 16px;
-  vertical-align: middle;
   overflow: hidden;
   text-decoration: none;
-  color: inherit;
-  background-color: inherit;
   text-align: center;
   cursor: pointer;
-  white-space: nowrap;
   display: block;
-
   color: #fff;
   background-color: #000;
   border: 2px solid black;

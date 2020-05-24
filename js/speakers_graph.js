@@ -5,7 +5,7 @@ function createBubbleChart() {
   const height = 600;
   const innerWidth = width - margin.right - margin.left;
   //tooltip object for mouseover functionality, width 300
-  const tooltip = floatingTooltip('speakers_tooltip', 300);
+  const tooltip = floatingTooltip('speakers_tooltip', 350);
   //Location where bubbles are moving, depends on the view mode
   const center = { x : width / 2, y : height / 2 };
   // These will be set in create_nodes and create_vis

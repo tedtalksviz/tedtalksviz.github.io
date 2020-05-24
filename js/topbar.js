@@ -1,6 +1,6 @@
 document.write(`
     <link href="css/topbar.css" rel="stylesheet">
-  <div id='topbar' class="w3-top">
+  <div id='topbar'>
     <div id='topbar-row'>
       <div class="tp-holder">
         <a id="home_link" href="/" class="tp-column">
