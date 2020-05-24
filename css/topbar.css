@@ -1,46 +1,84 @@
-/* CSS-code here. Please, remember ordering. */
-
-html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
-
-#topbar + .content {
-  padding-top: 53px;
-}
-
+/* ------ topbar --------------*/
 #topbar{
   position: fixed;
   top: 0;
   width: 100%;
 }
-#topbar-row:after,#topbar-row:before{content:"";display:table;clear:both}
 
-.tp-holder {
-    width:14.285714286%; /*width:12.5%;*/
-    float:left;
-}
-
-.tp-column{
-  border:none;
-  padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;
-
-  display:block;width:100%;
-}
-
-#topbar-row, .prev, .next{
-  color:#fff!important;
-  background-color:#000!important
-}
-.prev, .next{
-  width:15%;
-  float: right;
+#topbar + .content { 
+  padding-top: 7vh;
 }
 
 #topbar-row{
-  padding:8px 16px!important;
+  color: #fff;
+  background-color: #000;
+  padding: 8px 16px;
 }
 
-.prev:hover, .next:hover, .tp-column:hover{
-  color:#000!important;background-color:#ccc!important
+#topbar-row:after, #topbar-row:before {
+  content: "";
+  display: table;
+  clear: both;
 }
-.tp-column.active{color:#432!important;background-color:#e62b1e!important}
-.tp-column.active:hover{color:#000!important;background-color:#ccc!important}
 
+/* ------ elements inside topbar --------------*/
+.tp-holder {
+  width: 14.285714286%; 
+  float: left;
+}
+
+.tp-column{
+  border: none;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+}
+
+.tp-column:hover{
+  color: #000;
+  background-color: #ccc;
+}
+
+.tp-column.active {
+  color: #fff;
+  background-color: #e62b1e;
+}
+
+.tp-column.active:hover {
+  color: #000;
+  background-color: #ccc;
+}
+
+
+/* ------ next button has some common characteristics --------------*/
+.next{
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  display: block;
+
+  color: #fff;
+  background-color: #000;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 15%;
+  float: right;
+}
+.next:hover {
+  color: #000;
+  background-color: #ccc;
+}

@@ -1,51 +1,83 @@
 class TalksGraph {
   constructor(svg_element_id) {
-    this.svg = d3.select('#' + svg_element_id)
-    const network_promise = d3.json('resources/network.json');
+    const svg = d3.select('#' + svg_element_id)
+    const width = 1300;
+    const height = 1000;
+    const talks_promise = d3.csv('resources/ted_main.csv');
+    const nodes_g = d3.select('#nodes');
+    const edges_g = d3.select('#edges');
 
-    Promise.all([network_promise]).then((results) => {
-      let graph = results[0];
+    Promise.all([talks_promise]).then((results) => {
+      let talks = results[0];
+      let data_edges = results[1];
 
-      const nodes = graph.nodes.map(function(d) {
+      const nodes = talks.map(function(d) {
         return {
-          'id': parseInt(d.id),
-          'x': d.x,
-          'y': d.y,
-          'r': d.size,
-          'duration': d.attributes.duration,
-          'speaker': d.attributes.main_speaker,
-          'description': d.attributes.description,
-          'title': d.attributes.title,
-          'event': d.attributes.event
+          'id': parseInt(d.talk_id),
+          'duration': d.duration,
+          'speaker': d.main_speaker,
+          'description': d.description,
+          'title': d.title,
+          'event': d.event,
+          'related_talks': JSON.parse(d.related_talks)
         }
       });
 
-      const tooltip = floatingTooltip('talk_tooltip', 100);
-      this.svg.selectAll('circle')
+      // Add tooltip when hovering over nodes
+      const tooltip = floatingTooltip('talk_tooltip', 250);
+      svg.selectAll('circle')
         .on('mouseover', function(d) {
           let node_id = this.getAttribute('class').substring(3);
+
+          // Hide other nodes
+          svg.selectAll('circle').attr('fill-opacity', 0.5);
+          this.setAttribute('fill-opacity', 1);
+          var related_talks_classes = 
+            nodes.find(node => node.id == node_id).related_talks
+            .map(id => { return '.id_' + id.toString(); })
+            .join();
+          svg.selectAll('circle')
+            .filter(related_talks_classes)
+            .attr('fill-opacity', 1);
+          svg.selectAll('.id_' + node_id.toString()).filter('path')
+            .attr('stroke-width', 2);
+
           let details = nodes.find(node => node.id == node_id);
           var content = 
-            '<span class="name">Title: </span>' + 
-              '<span class="value">' + details.title + '</span><br/>' +
-            '<span class="name">Speaker: </span>' + 
-              '<span class="value">' + details.speaker + '</span><br/>' +
-           '<span class="name">Description: </span>' + 
-              '<span class="value">' + details.description + '</span><br/>' +
-           '<span class="name">Duration: </span>' + 
+            '<div class="tooltip-text"><span class="name">Title: </span>' + 
+              '<span class="value">' + details.title + '</span></div>' +
+            '<div class="tooltip-text"><span class="name">Speaker: </span>' + 
+              '<span class="value">' + details.speaker + '</span></div>' +
+           '<div class="tooltip-text"><span class="name">Description: </span>' + 
+              '<span class="value">' + details.description + '</span></div>' +
+           '<div class="tooltip-text"><span class="name">Duration: </span>' + 
               '<span class="value">' + Math.floor(details.duration).toString() + 
-              ' minutes </span><br/>' +
-           '<span class="name">Event: </span>' + 
-              '<span class="value">' + details.event + '</span><br/>';
+              ' minutes </span></div>' +
+           '<div class="tooltip-text"><span class="name">Event: </span>' + 
+              '<span class="value">' + details.event + '</span></div>';
           tooltip.showTooltip(content, d3.event);
         }) 
         .on('mouseout', function(d) {
           tooltip.hideTooltip();
+          svg.selectAll('circle').attr('fill-opacity', 1);
+          let node_id = this.getAttribute('class').substring(3);
+          svg.selectAll(".id_" + node_id.toString()).filter('path')
+            .attr('stroke-width', 0.5);
         });
+
+      svg.call(d3.zoom()
+        .extent([[-1883, -2013], [4173, 4155]])
+        .scaleExtent([1, 8])
+        .on('zoom', function() {
+          nodes_g.attr('transform', d3.event.transform);
+          edges_g.attr('transform', d3.event.transform);
+        }));
     });
   }
+
 }
 
 whenDocumentLoaded(() => {
+  topbar('network');
   const talksGraph = new TalksGraph('talk_network');
 });

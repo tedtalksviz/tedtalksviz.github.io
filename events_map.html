@@ -4,45 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Ted Talks</title>
-    <link href="../css/main.css" rel="stylesheet">
-    <link href="../css/correlation.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="icon" href="ted_icon.png">
 </head>
 <body>
-  <script src="../lib/d3.js"></script>
-  <script src="../lib/d3-legend.min.js"></script>
-  <script src="../lib/topojson.min.js"></script>
   <script src="lib/d3.js"></script>
-  <script src="lib/d3-legend.min.js"></script>
   <script src="lib/topojson.min.js"></script>
   <script src="js/main_scripts.js"></script>
-  <script src="js/eventsMap.js"></script>
-  <script> whenDocumentLoaded(() => topbar('locations') ); </script> 
+  <script src="js/tooltip.js"></script>
   <script src="js/eventsMap.js"></script>
   <script src="js/topbar.js"></script>
   
-  <div class="content flexright" id="events_map">
-    <svg id="event-map" viewBox="0 0 2300 1100" style="width:2300px; height:1100px"></svg>
-
-    <div>
-      <h5>
-        <span >EVENT MAP</span>
-      </h5>
-
-      <span>The map ov events and the events of map</span>
+  <div class="content flexright">
+    <div class='left-content' id="events-map">
+    </div>
+    <div class="right-content">
+      <h5 class='header'>LOCATIONS</h5>
       <p>
-      Lorem ipsum dolor sit amet aasdasdasd asdasd ja jatkuu niin maan paljon
-      ett' lopulta tulee tarpekeksi tkesti' jotta saadaan enemm'n rivej' wau
-      mahtavaa hyv' topi anna palaa!
-
-      and for some reason the width cannot really be set to 1300, though other
-      graphs seem to work fine, which creates a large discrepancy asdaa asdfa
-      asdf
-
-      there are some beautyful cities
-
-      <a href="/event_timeseries.html" class="tp-column next">NEXT</a>
+      The main TED events started taking place in Monterey, California, then 
+      moved to Long Beach and finally to Vancouver, Canada. Over the years,
+      these events expanded and independently organized TEDx events spread
+      throughout the world. 
       </p>
+
+      <p>
+      Most of these events take place in USA or Canada. Discover the other
+      other places where TED events are held by dragging or zooming the map!
+      </p>
+
+      <a href="/event_timeseries.html" class="next">NEXT</a>
     </div>
   </div>
 </body>

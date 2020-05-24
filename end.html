@@ -7,12 +7,14 @@
     <link href="css/main.css" rel="stylesheet">
     <link href="css/correlation.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="icon" href="ted_icon.png">
 </head>
 <body>
   <script src="lib/d3.js"></script>
   <script src="lib/d3-legend.min.js"></script>
   <script src="lib/topojson.min.js"></script>
   <script src="js/main_scripts.js"></script>
+  <script src="js/random_selector.js"></script>
   <script src="js/topbar.js"></script>
   <div class="content bgimg" id="end" style="padding-bottom:32px;">
     <div class="main-content">
@@ -22,8 +24,17 @@
       </p>
       <p>
       Still not convinced? Check out a random TED talk from our collection:
-        <a href="/random.html" class="tp-column next">
-        RANDOM VIDEO</a>
+
+      <div id="random-video">
+        <div style="max-width:854px">
+          <div style="position:relative;height:0;padding-bottom:56.25%">
+            <iframe src="https://embed.ted.com/talks/joshua_smith_new_nanotech_to_detect_cancer_early" 
+              width="854" height="480" style="position:absolute;left:0;top:0;width:100%;height:100%" 
+              frameborder="0" scrolling="no" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
       </p>
     </div>
   </div>

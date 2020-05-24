@@ -7,20 +7,19 @@
     <link href="css/main.css" rel="stylesheet">
     <link href="css/correlation.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="icon" href="ted_icon.png">
 </head>
 <body>
   <script src="lib/d3.js"></script>
   <script src="lib/d3-legend.min.js"></script>
-  <script src="lib/topojson.min.js"></script>
   <script src="js/main_scripts.js"></script>
   <script src="js/tooltip.js"></script>
   <script src="js/eventTimeseries.js"></script>
-  <script> whenDocumentLoaded(() => topbar('timeseries') ); </script> 
   <script src="js/topbar.js"></script>
 
-  <div class="content flexright" id="events">
-    <div class="" id="events_content">
-      <span>y-axis value:</span>
+  <div class="content flexright">
+    <div class='left-content' id="events_content">
+      <span style='margin-left:10px'>y-axis value:</span>
       <button value="nof_talks" class="button ts_input active">
       number of talks
       </button>
@@ -31,10 +30,8 @@
       average duration
       </button>
     </div>
-    <div >
-      <h5 class="w3-center w3-padding-48">
-        <span class="w3-tag w3-wide">EVENTS</span>
-      </h5>
+    <div class="right-content">
+      <h5 class='header'>TIMESERIES</h5>
       <p>
       Where are these Ted Talks given? How did they start? <b>(Sketch)</b>
       Lorem ipsum dolor sit amet aasdasdasd asdasd ja jatkuu niin maan paljon
@@ -42,7 +39,7 @@
       mahtavaa hyv' topi anna palaa!
       </p>
       <p>How different ted events have developed over the years</p>
-      <a id="locations_link" href="/speakers.html" class="tp-column next">
+      <a id="locations_link" href="/speakers.html" class="next">
       NEXT</a>
     </div>
   </div>

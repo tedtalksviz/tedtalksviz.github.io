@@ -1,6 +1,40 @@
-/* CSS-code here. Please, remember ordering. */
+body {
+  height: 100%;
+  font-family:Verdana,sans-serif;
+  font-size:15px;
+  line-height:1.5
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  overflow-x:hidden;
+  margin: 0;
+}
 
-.w3-text-white,.w3-hover-text-white:hover{color:#fff!important}
+p{
+  padding: 13px;
+  font-size:20px;
+}
+
+h5{
+  font-size:25px;
+  font-family:"Segoe UI",Arial,sans-serif;
+  font-weight:400;
+  margin:10px 0;
+}
+.multiline{
+  white-space: pre-wrap;
+}
+
+a{background-color:transparent}a:active,a:hover{outline-width:0}
+
+b,strong{font-weight:bolder}dfn{font-style:italic}mark{background:#ff0;color:#000}
+
+
+.title{
+  padding-top: 100px;
+  padding-bottom: 50px;
+  font-size:90px;
+  color:#fff;
+}
 .flexright {
     display: flex;
     flex-direction: right;
@@ -33,7 +67,7 @@
   opacity: .8;
   color: black;
   padding: 10px;
-  font-size: 12px;
+  font-size: 18px;
   z-index: 10;
 }
 
@@ -41,46 +75,44 @@
   font-weight: bold;
 }
 
+.content{
+  height:93vh;
+}
 
-.w3-tag{background-color:#000;color:#fff;display:inline-block;padding-left:8px;padding-right:8px;text-align:center}
+.tooltip-text {
+  margin: 10px 0;
+}
 
+.left-content{
+  width: 1300px;
+  overflow-y: hidden;
+}
+
+.right-content{
+  width: 500px;
+  overflow-y: scroll;
+}
 .main-content{
+  width: 900px;
+}
+.right-content, .main-content{
+  padding: 10px;
   margin-left:auto;
   margin-right:auto;
-  background-color: white;
+  background: rgba(230,230,255,0.7);
   border-radius:20px;
-  opacity:70%;
-  max-width:900px
 }
-.w3-padding-64{padding-top:64px!important;padding-bottom:64px!important}
 
-
-
-.w3-center{
+.header{
+  letter-spacing:4px;
+  background-color:#000;
+  color:#fff;
+  display:inline-block;
+  padding-left:8px;
+  padding-right:8px;
   text-align:center;
 }
 
-h1 {
-    color: blue;
-}
-
-html{overflow-x:hidden}
-body, html {
-  height: 100%;
-  font-family: "Inconsolata", sans-serif;
-}
-html,body{
-  font-family:Verdana,sans-serif;
-  font-size:15px;
-  line-height:1.5
-}
-
-h1{font-size:36px}h2{font-size:30px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}.w3-serif{font-family:serif}
-h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:10px 0}.w3-wide{letter-spacing:4px}
-
-a{background-color:transparent}a:active,a:hover{outline-width:0}
-
-b,strong{font-weight:bolder}dfn{font-style:italic}mark{background:#ff0;color:#000}
 
 .bgimg {
   background-position: center;
@@ -98,6 +130,3 @@ b,strong{font-weight:bolder}dfn{font-style:italic}mark{background:#ff0;color:#00
 .w3-tiny{font-size:10px!important}
 .w3-small{font-size:12px!important}
 .w3-medium{font-size:15px!important}
-
-
-

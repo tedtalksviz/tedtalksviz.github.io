@@ -1,6 +1,6 @@
 class EventTimeseries {
   constructor(svg_element_id, data_address) {
-  const tooltip = floatingTooltip('eventTs_tooltip', 100);
+  const tooltip = floatingTooltip('eventTs_tooltip');
   // set the dimensions and margins of the graph
   var margin = {top: 50, right: 30, bottom: 30, left: 50},
   width = 1300 - margin.left - margin.right,
@@ -183,6 +183,7 @@ class EventTimeseries {
 }
 
 whenDocumentLoaded(() => {
+  topbar('timeseries');
   const eventTimeseries = new EventTimeseries('#events_content',
     'resources/events.csv');
 });

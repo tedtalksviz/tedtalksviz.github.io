@@ -19,16 +19,16 @@ document.write(`
             SPEAKERS</a>
       </div>
       <div class="tp-holder">
-        <a id="ratings_link" href="/ratings.html" class="tp-column">
-            RATINGS</a>
-      </div>
-      <div class="tp-holder">
         <a id="parallel_link" href="/parallel_coords.html" class="tp-column">
             PARALLEL COORDINATES</a>
       </div>
       <div class="tp-holder">
         <a id="network_link" href="/talk_network.html" class="tp-column">
             NETWORK</a>
+      </div>
+      <div class="tp-holder">
+        <a id="random_link" href="/random.html" class="tp-column">
+            RANDOM TALK</a>
       </div>
     </div>
   </div>
