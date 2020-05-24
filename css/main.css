@@ -1,33 +1,46 @@
 body {
   height: 100%;
-  font-family:Verdana,sans-serif;
+  font-family:Verdana;
   font-size:15px;
-  line-height:1.5
+  line-height:1.5;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  overflow-x:hidden;
+  overflow-x: hidden;
   margin: 0;
 }
 
-p{
+p {
   padding: 13px;
   font-size:20px;
 }
 
-h5{
+h5 {
   font-size:25px;
   font-family:"Segoe UI",Arial,sans-serif;
   font-weight:400;
   margin:10px 0;
 }
-.multiline{
+
+.multiline {
   white-space: pre-wrap;
 }
 
-a{background-color:transparent}a:active,a:hover{outline-width:0}
+a {
+  background-color:transparent;
+}
 
-b,strong{font-weight:bolder}dfn{font-style:italic}mark{background:#ff0;color:#000}
+a:active, a:hover {
+  outline-width:0;
+}
 
+b, strong {
+  font-weight:bolder;
+}
+
+mark {
+  background:#ff0;
+  color:#000;
+}
 
 .title{
   padding-top: 100px;
