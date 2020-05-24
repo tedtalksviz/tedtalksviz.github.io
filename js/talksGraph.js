@@ -4,7 +4,6 @@ class TalksGraph {
     const width = 1300;
     const height = 1000;
     const talks_promise = d3.csv('resources/ted_main.csv');
-    const edges_promise = d3.tsv('resources/edges.tsv');
     const nodes_g = d3.select('#nodes');
     const edges_g = d3.select('#edges');
 
@@ -12,7 +11,6 @@ class TalksGraph {
       let talks = results[0];
       let data_edges = results[1];
 
-      console.log(talks)
       const nodes = talks.map(function(d) {
         return {
           'id': parseInt(d.talk_id),
@@ -20,7 +18,8 @@ class TalksGraph {
           'speaker': d.main_speaker,
           'description': d.description,
           'title': d.title,
-          'event': d.event
+          'event': d.event,
+          'related_talks': JSON.parse(d.related_talks)
         }
       });
 
@@ -28,12 +27,21 @@ class TalksGraph {
       const tooltip = floatingTooltip('talk_tooltip', 250);
       svg.selectAll('circle')
         .on('mouseover', function(d) {
+          let node_id = this.getAttribute('class').substring(3);
+
           // Hide other nodes
           svg.selectAll('circle').attr('fill-opacity', 0.5);
           this.setAttribute('fill-opacity', 1);
-          let node_id = this.getAttribute('class').substring(3);
-          svg.selectAll(".id_" + node_id.toString()).filter('path')
+          var related_talks_classes = 
+            nodes.find(node => node.id == node_id).related_talks
+            .map(id => { return '.id_' + id.toString(); })
+            .join();
+          svg.selectAll('circle')
+            .filter(related_talks_classes)
+            .attr('fill-opacity', 1);
+          svg.selectAll('.id_' + node_id.toString()).filter('path')
             .attr('stroke-width', 2);
+
           let details = nodes.find(node => node.id == node_id);
           var content = 
             '<div class="tooltip-text"><span class="name">Title: </span>' + 
