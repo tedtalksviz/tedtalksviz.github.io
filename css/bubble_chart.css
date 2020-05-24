@@ -48,7 +48,7 @@
 .bubblechart_slider_value {
     font-size: 200px;
     font-family: fantasy;
-    fill: red;
+    fill: #e62b1e;
     text-anchor: middle;
     alignment-baseline: central;
 }
@@ -72,7 +72,7 @@
 }
 
 .bubblechart_xAxis {
-    color: rgb(246, 71, 141);
+    color:#e62b1e;
     stroke-width: 3px;
   }
 
