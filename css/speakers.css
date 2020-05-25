@@ -1,0 +1,96 @@
+/*---- Speakers graph svg ----*/
+
+#speakers_content svg {
+  overflow: visible;
+}
+
+/*---- Range slider above graph ----*/
+
+.bubblechart_slider {
+  width: 550px;
+  position: absolute;
+  padding: 4px 5px;
+  margin: 0px 6px;
+  -webkit-appearance: none;
+  background:linear-gradient(90deg,  rgb(246, 71, 141) 1%,rgb(218, 63, 163) 3%,rgb(202, 61, 171) 10%, rgb(184, 60, 176) 20%, rgb(165, 60, 179) 32%,  rgb(146, 61, 179) 45%,  rgb(128, 62, 176) 60%, rgb(110,64,170) 90%);
+  outline: none;
+  opacity: 0.8;
+  border: 0.3px solid white;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  border-radius: 5px;
+  box-shadow: 0px 1px 10px 1px black;
+
+}
+
+.bubblechart_slider:hover {
+  opacity: 1;
+}
+
+.bubblechart_slider::after {
+  content: 'ALL';
+  color: black;
+  font-size: 16px;
+  position: absolute;
+  left: 95%;
+  top: 110%;
+}
+
+.bubblechart_slider::before {
+  content: '1';
+  color: black;
+  font-size: 16px;
+  position: absolute;
+  left: 1.8%;
+  top: 110%;
+}
+
+/*---- Range slider value appearing in front of bubbles ----*/
+
+.bubblechart_slider_value {
+    font-size: 200px;
+    font-family: fantasy;
+    fill: black;
+    text-anchor: middle;
+    alignment-baseline: central;
+}
+
+/*---- Slider "balloon", chrome settings ----*/
+
+.bubblechart_slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/*---- Slider "balloon", mozilla settings ----*/
+
+.bubblechart_slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/*--x-axis that appears in front of the graph avg_views and # of talks views--*/
+
+.bubblechart_xAxis {
+    color:#e62b1e;
+    stroke-width: 3px;
+  }
+
+.bubblechart_xAxis:hover {
+    fill-opacity: 1;
+}
+
+.bubblechart_xAxis text {
+  font-size: 25px;
+  font-weight: bold;
+  text-anchor: end;
+  text-shadow: black 2px 2px 2px;
+}
