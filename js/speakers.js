@@ -137,7 +137,7 @@ function createBubbleChart() {
       //console.log(array_dateYear);
       array_dateYear.forEach( (year, index) => {
           // Experimentally tested values
-          if(year == 2005) { yearsTitleX["-"+year] = 1 / ( dateYear_length * 2 ) * width }
+          if(year == 2005) { yearsTitleX["1972-2005"] = 1 / ( dateYear_length * 2 ) * width }
           else { yearsTitleX[year] =
             (Math.abs(2005 - year) / dateYear_length) * width
             + 1 / ( dateYear_length * 2 ) * width }
@@ -194,7 +194,8 @@ function setScale() {
       //console.log(rawData);
       //convert raw data into nodes data
       setScale()
-      bubbleNodes = createNodes(rawData);
+      const value = document.getElementById("bubblechart_slider").value
+      bubbleNodes = createNodes(rawData).slice(0, value);
 
       // Create an SVG element inside the provided selector
       // with desired size.
@@ -419,10 +420,9 @@ function setScale() {
   * details of a bubble in the tooltip.
   */
   function showDetail(d) {
-    console.log(typeof d.value);
     // change outline to indicate hover state.
     d3.select(this).attr('fill', 'black')
-                    .attr('stroke', 'black');
+      .attr('stroke', 'black');
 
     var content =
     '<span class="name">Name: </span><span class="value">'+ d.name +
@@ -446,7 +446,7 @@ function setScale() {
   function hideDetail(d) {
       // reset outline
       d3.select(this).attr('fill', fillColor(d.nof_talks))
-                      .attr('stroke', d3.rgb(fillColor(d.nof_talks)).darker());
+        .attr('stroke', d3.rgb(fillColor(d.nof_talks)).darker());
 
       tooltip.hideTooltip();
   }

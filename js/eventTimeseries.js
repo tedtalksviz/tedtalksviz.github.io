@@ -86,7 +86,7 @@ class EventTimeseries {
                   '</span><br/>' +
                   '<span class="name">Talks: </span><span class="value">'        + d.nof_talks.toString() +
                   '</span><br/>' +
-                  '<span class="name">Average views: </span><span class="value">' + Math.round(d.avg_views).toString() +
+                  '<span class="name">Average views: </span><span class="value">' + Math.round(d.avg_views).toLocaleString() +
                   '</span><br/>' +
                   '<span class="name">Average duration: </span><span class="value">' + Math.round(d.avg_duration).toString() +
                   '</span>';
