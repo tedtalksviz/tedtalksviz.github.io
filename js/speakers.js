@@ -36,7 +36,7 @@ function createBubbleChart() {
       .force('charge', d3.forceManyBody().strength(d =>
         charge(d, forceStrength)).distanceMax(10))
       .force('collide', d3.forceCollide()
-      .radius(d => d.radius).strength(1.2).iterations(4))
+        .radius(d => d.radius).strength(1.2).iterations(4))
       .on('tick', ticked);
   // Force starts up automatically,
   // which we don't want as there aren't any nodes yet.
@@ -45,7 +45,7 @@ function createBubbleChart() {
   function getFillColorScale(data) {
       const minNofTalks = d3.min(data, function(d) { return d.nof_talks})
       const maxNofTalks = d3.max(data, function(d) { return d.nof_talks})
-      return d3.scaleSequential([minNofTalks, maxNofTalks * 5], d3.interpolateRainbow);
+      return d3.scaleSequential([minNofTalks, maxNofTalks], d3.interpolateRgbBasis(['#8439a2','#e62b1e']));
   }
 
   function updateMin(data) {
