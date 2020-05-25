@@ -61,14 +61,7 @@ function createBubbleChart() {
       // Sizes bubbles based on area.
       var radiusScale = d3.scalePow()
         .exponent(0.5)
-        /**Range is using mathematical approximation to make bubbles fill the
-         * graph. Two similar power curve approximations are being used, one
-         * approximation for array length 1-50 and another one for array
-         * length 51-2159. Approximations were delivered online curve fitter
-         * https://mycurvefit.com/ */
-        .range([1,(dataLength < 50) ?
-          264.670 *Math.pow(dataLength, -0.447)
-          : 123.337*Math.pow(dataLength, -0.237)])
+        .range([1, 20])
         .domain([0, maxAmount]);
 
       var myNodes = rawData.map(function (d) {
