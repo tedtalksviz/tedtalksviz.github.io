@@ -57,8 +57,9 @@
   stroke: #fff;
   stroke-width: 1px;
 }
-#correlation_content {
 
+#events_content > span {
+  margin-left:10px;
 }
 
 pre {
