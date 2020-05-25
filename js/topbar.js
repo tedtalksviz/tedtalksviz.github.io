@@ -20,11 +20,11 @@ document.write(`
       </div>
       <div class="tp-holder">
         <a id="parallel_link" href="/parallel_coords.html" class="tp-column">
-            PARALLEL COORDINATES</a>
+            CORRELATIONS</a>
       </div>
       <div class="tp-holder">
         <a id="network_link" href="/talk_network.html" class="tp-column">
-            NETWORK</a>
+            RELATED TALKS</a>
       </div>
       <div class="tp-holder">
         <a id="random_link" href="/random.html" class="tp-column">
