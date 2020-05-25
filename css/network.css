@@ -6,3 +6,16 @@ path {
 circle {
   fill: #793fae;
 }
+
+.input {
+  font-size: 18px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.label {
+  margin-left: 20px;
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}

@@ -8,7 +8,6 @@ function floatingTooltip(id, width) {
     .style('pointer-events', 'none');
 
   if (width) {
-    console.log('setting');
     tt.style('width', width.toString() + 'px');
   }
 
