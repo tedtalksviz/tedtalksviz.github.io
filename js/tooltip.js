@@ -57,7 +57,6 @@ function floatingTooltip(id, width) {
 
   return {
     showTooltip: showTooltip,
-    hideTooltip: hideTooltip,
-    updatePosition: updatePosition
+    hideTooltip: hideTooltip
   };
 }
