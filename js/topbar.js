@@ -3,7 +3,7 @@ document.write(`
   <div id='topbar'>
     <div id='topbar-row'>
       <div class="tp-holder">
-        <a id="home_link" href="/" class="tp-column">
+        <a id="home_link" href="/index.html" class="tp-column">
             HOME</a>
       </div>
       <div class="tp-holder">

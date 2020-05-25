@@ -9,6 +9,10 @@
   padding-top: 7vh;
 }
 
+#topbar + .stick-top {
+  padding-top: 4vh;
+}
+
 #topbar-row{
   color: #fff;
   background-color: #000;

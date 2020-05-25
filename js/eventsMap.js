@@ -1,12 +1,13 @@
 class EventsMap {
   constructor(svg_element_id) {
     const height = 800;
-    const width = 1300;
+    const width = 1280;
     const svg = d3.select('#' + svg_element_id)
       .append('svg')
       .attr('width', width)
       .attr('height', height)
-      .attr('viewBox', '0 0 ' + width.toString() + ' '+ height.toString());
+      .attr('viewBox', '0 0 ' + width.toString() + ' '+ height.toString())
+      .attr('style', 'margin-left: 20px');
 
 		// may be useful for calculating scales
 		this.svg_width = width;
@@ -37,6 +38,8 @@ class EventsMap {
     const zooming = function(d) {
       var transform = [d3.event.transform.x, d3.event.transform.y];
       var newScale = d3.event.transform.k * 2000;
+      var direction = d3.event.wheelData < 0 ? 'down' : 'up';
+      console.log(d3.event)
       projection
         .translate(transform)
         .scale(newScale);
@@ -47,25 +50,31 @@ class EventsMap {
         })
         .attr('cy', function(d) {
           return projection([d.longitude, d.latitude])[1];
+        })
+        .attr('r', function(d) {
+          var size = 0;
+          if (d.count < 10) {
+            size = d.count * 4;
+          } else {
+            size = d.count * 2;
+          }
+          return size * d3.event.transform.k * 10 / 2;
         });
     }
     const zoom = d3.zoom()
       .on('zoom', zooming);
 
-    
     Promise.all([map_promise, city_promise]).then((results) => {
       let map_data = results[0];
       let cities_data = results[1];
       // Countries
-      var center = projection([31, -7]);
       this.map_container = svg
         .append('g')
         .attr('id', 'map')
         .call(zoom)
         .call(zoom.transform, d3.zoomIdentity
-            .translate(width/2, height/2)
-            .scale(0.105)
-            .translate(-center[0], -center[1]));
+            .translate(width/2-40, height/2+110)
+            .scale(0.105));
       this.map_container.append('rect')
         .attr('x', 0)
         .attr('y', 0)

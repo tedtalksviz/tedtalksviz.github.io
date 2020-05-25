@@ -156,3 +156,10 @@ mark {
 .menu {
   display: none;
 }
+
+.quote {
+  display: inline-block;
+  color: white;
+  background-color: black;
+  border-radius: 20px;
+}
