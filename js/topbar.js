@@ -7,12 +7,12 @@ document.write(`
             HOME</a>
       </div>
       <div class="tp-holder">
-        <a id="locations_link" href="/events_map.html" class="tp-column">
-            LOCATIONS</a>
-      </div>
-      <div class="tp-holder">
         <a id="timeseries_link" href="/event_timeseries.html" class="tp-column">
             TIMESERIES</a>
+      </div>
+      <div class="tp-holder">
+        <a id="locations_link" href="/events_map.html"  class="tp-column">
+            LOCATIONS</a>
       </div>
       <div class="tp-holder">
         <a id="speakers_link" href="/speakers.html" class="tp-column">
