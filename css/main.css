@@ -59,11 +59,6 @@ b, strong {
   color:#fff;
 }
 
-.flexright {
-    display: flex;
-    flex-direction: right;
-}
-
 .button {
   min-width: 150px;
   padding: 4px 5px;
@@ -99,22 +94,32 @@ b, strong {
   font-weight: bold;
 }
 
-.content {
-  height:94vh;
-}
 
 .tooltip-text {
   margin: 10px 0;
 }
 
+.content {
+  height:94vh;
+}
+
+.flexright {
+  display: flex;
+  direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .left-content {
   width: 1300px;
   overflow-y: hidden;
+  flex-grow: 0;
 }
 
 .right-content {
   width: 500px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  flex-grow: 2;
 }
 .main-content {
   width: 900px;
@@ -122,9 +127,12 @@ b, strong {
 }
 .right-content, .main-content {
   padding: 10px;
-  margin-left:auto;
-  margin-right:auto;
   background: rgba(230,230,255,0.7);
+}
+
+.main-content {
+  margin-left:auto;
+  margin-right: auto;
 }
 
 .header{
