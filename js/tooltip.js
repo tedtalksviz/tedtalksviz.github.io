@@ -27,8 +27,8 @@ function floatingTooltip(id, width) {
     var xOffset = 20;
     var yOffset = 10;
 
-    var ttw = tt.style('width');
-    var tth = tt.style('height');
+    var ttw = parseInt(tt.style('width'));
+    var tth = parseInt(tt.style('height'));
 
     var wscrY = window.scrollY;
     var wscrX = window.scrollX;
@@ -47,6 +47,10 @@ function floatingTooltip(id, width) {
 
     if (tttop < wscrY + yOffset) {
       tttop = curY + yOffset;
+    }
+
+    if (tttop + tth > window.innerHeight) {
+      tttop = curY + yOffset - tth;
     }
 
     tt
