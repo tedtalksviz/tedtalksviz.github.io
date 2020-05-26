@@ -1,59 +1,49 @@
 latitude,longitude,name,desc,color,source,precision
 36.596808,-121.897127,"Monterey, United States","Monterey, Monterey County, CA, US",,MapQuest,city/town
-52.045827,5.670201,"Ede, Netherlands","Ede, NL",,MapQuest,city/town
-28.63243,77.21879,"Wer, India",IN,,MapQuest,country
-13.212495,18.339682,"Ati, Chad","Ati, TD",,MapQuest,city/town
-34.36379,-89.535826,"University, United States","University, Lafayette County, MS, US",,MapQuest,city/town
--23.263883,-47.298892,"Itu, Brazil","Itu, SP, BR",,MapQuest,city/town
-40.717981,-74.358745,"Summit, United States","Summit, Union County, NJ, US",,MapQuest,city/town
-6.61266,0.468893,"Ho, Ghana","Ho, GH",,MapQuest,city/town
-26.544154,80.489929,"Un, India","Unnao, Unnao district, IN",,MapQuest,city/town
-25.93911,83.571613,"Mau, India","Mau, IN",,MapQuest,city/town
-13.299087,-4.898281,"San, Mali","San, SÉGOU REGION, ML",,MapQuest,city/town
-10.064589,-2.50595,"Wa, Ghana","Wa, GH",,MapQuest,city/town
-53.959056,-1.081536,"York, United Kingdom","York, North Yorkshire, GB",,MapQuest,city/town
--34.055,18.4756,"Retreat, South Africa","Retreat, Cape Town, WESTERN CAPE, ZA",,MapQuest,city/town
-41.022809,40.519612,"Rize, Turkey","Rize, TR",,MapQuest,city/town
-36.071012,139.744169,"Satte, Japan","Satte, JP",,MapQuest,city/town
--3.132862,-59.986529,"Manaus, Brazil","Manaus, AM, BR",,MapQuest,city/town
-42.452705,-83.157142,"New Yrok, United States","[8500 - 8599] New, YROK, Royal Oak Twp, Oakland, MI, US",,MapQuest,street
-39.738453,-104.984853,"Denver, United States","Denver, Denver County, CO, US",,MapQuest,city/town
-52.587895,0.381641,"Denver, United Kingdom","Denver, Norfolk, GB",,MapQuest,city/town
--43.530955,172.636646,"Christchurch, New Zealand","Christchurch, CANTERBURY, NZ",,MapQuest,city/town
-50.061947,19.936856,"Krakow, Poland","Kraków, LESSER POLAND VOIVODESHIP, PL",,MapQuest,city/town
-41.883229,-87.632398,"Chicago, United States","Chicago, Cook County, IL, US",,MapQuest,city/town
-58.590913,16.190348,"Norrkoping, Sweden","Norrköping, SE",,MapQuest,city/town
-46.201756,6.146601,"Geneve, Switzerland","Geneva, GENÈVE, CH",,MapQuest,city/town
-37.78008,-122.420168,"San Francisco, United States","San Francisco, San Francisco County, CA, US",,MapQuest,city/town
-29.651958,-82.325024,"Gainesville, United States","Gainesville, Alachua County, FL, US",,MapQuest,city/town
-34.3668,-89.518625,"Oxford, United States","Oxford, Lafayette County, MS, US",,MapQuest,city/town
 40.713054,-74.007228,"New York, United States","New York, New York County, NY, US",,MapQuest,city/town
+41.824461,-71.412747,"Providence, United States","Providence, Providence County, RI, US",,MapQuest,city/town
+40.442169,-79.994945,"Pittsburgh, United States","Pittsburgh, Allegheny County, PA, US",,MapQuest,city/town
+42.251704,-79.501693,"Chautauqua, United States","Chautauqua, Chautauqua County, NY, US",,MapQuest,city/town
+36.169202,-115.140597,"Las Vegas, United States","Las Vegas, Clark County, NV, US",,MapQuest,city/town
+48.13641,11.57753,"Munich, Germany","Munich, FREE STATE OF BAVARIA, DE",,MapQuest,city/town
+51.507276,-0.12766,"London, United Kingdom","London, Westminster, GB",,MapQuest,city/town
+32.739977,-97.340038,"Fort Worth, United States","Ft Worth, Tarrant County, TX, US",,MapQuest,city/town
+42.365248,-71.105015,"Cambridge, United States","Cambridge, Middlesex County, MA, US",,MapQuest,city/town
+18.403223,73.506771,"Lavasa, India","Lavasa, IN",,MapQuest,city/town
+46.201756,6.146601,"Geneva, Switzerland","Geneva, GENÈVE, CH",,MapQuest,city/town
+40.35198,-74.660744,"Princeton, United States","Princeton, Mercer County, NJ, US",,MapQuest,city/town
+34.14955,-118.141452,"Pasadena, United States","Pasadena, Los Angeles County, CA, US",,MapQuest,city/town
+51.752155,-1.258214,"Oxford, United Kingdom","Oxford, Oxfordshire, GB",,MapQuest,city/town
+37.437516,-122.165747,"Stanford, California","Stanford, Santa Clara County, CA, US",,MapQuest,city/town
+50.116003,-122.959426,"Whistler, Canada","Whistler, BC, CA",,MapQuest,city/town
+36.618806,-121.91871,"Pacific Grove, United States","Pacific Grove, Monterey County, CA, US",,MapQuest,city/town
 33.767168,-118.193723,"Long Beach, United States","Long Beach, Los Angeles County, CA, US",,MapQuest,city/town
 49.263566,-123.138572,"Vancouver, Canada","Vancouver, BC, CA",,MapQuest,city/town
 52.517037,13.38886,"Berlin, Germany","Berlin, Berlin, BERLIN, DE",,MapQuest,city/town
-7.1,4.833333,"Ondo, Nigeria","Ondo City, NG",,MapQuest,city/town
 48.856506,2.352133,"Paris, France","Paris, Paris, ÎLE-DE-FRANCE, FR",,MapQuest,city/town
--31.430518,-62.0811,"San Francisco, Argentina","San Francisco, CÓRDOBA, AR",,MapQuest,city/town
-44.561198,6.082002,"Gap, France","Gap, Hautes-Alpes, FR",,MapQuest,city/town
-31.185899,75.993622,"Banga, India","Banga, PUNJAB, IN",,MapQuest,city/town
+37.78008,-122.420168,"San Francisco, United States","San Francisco, San Francisco County, CA, US",,MapQuest,city/town
+1.290453,103.852038,"Singapore, Singapore","Singapore, SG",,MapQuest,city/town
+12.97912,77.5913,"Bangalore, India","Bengaluru, KARNATAKA, IN",,MapQuest,city/town
 43.551208,7.012695,"Cannes, France","Cannes, Maritime Alps, FR",,MapQuest,city/town
+37.352395,-121.953076,"Santa Clara, United States","Santa Clara, Santa Clara County, CA, US",,MapQuest,city/town
 -26.205,28.049722,"Johannesburg, South Africa","Johannesburg, GAUTENG, ZA",,MapQuest,city/town
+42.332916,-83.047853,"Detroit, United States","Detroit, Wayne County, MI, US",,MapQuest,city/town
 -1.283253,36.817245,"Nairobi, Kenya","Nairobi, KE",,MapQuest,city/town
-52.977041,-0.023984,"Boston, United Kingdom","Boston, Lincolnshire, GB",,MapQuest,city/town
-51.752155,-1.258214,"Oxford, United Kingdom","Oxford, Oxfordshire, GB",,MapQuest,city/town
+30.264979,-97.746598,"Austin, United States","Austin, Travis County, TX, US",,MapQuest,city/town
+38.892062,-77.019912,"Washington, United States","Washington, District of Columbia, DC, US",,MapQuest,city/town
+42.358894,-71.056742,"Boston, United States","Boston, Suffolk County, MA, US",,MapQuest,city/town
+39.841454,-88.955851,"Decatur, United States","Decatur, Macon County, IL, US",,MapQuest,city/town
+33.830302,-116.546843,"Palm Springs, United States","Palm Springs, Riverside County, CA, US",,MapQuest,city/town
 -3.366956,36.691552,"Arusha, Tanzania","Arusha, Hai District, TZ",,MapQuest,city/town
 55.94834,-3.193272,"Edinburgh, United Kingdom","Edinburgh, Midlothian, GB",,MapQuest,city/town
 -22.911014,-43.209373,"Rio de Janeiro, Brazil","Rio de Janeiro, Rio de Janeiro, RJ, BR",,MapQuest,city/town
-42.867972,-76.985573,"Geneva, United States","Geneva, Ontario County, NY, US",,MapQuest,city/town
-17.17446,75.955376,"Indi, India","Indi, KARNATAKA, IN",,MapQuest,city/town
-50.909433,4.201565,"Asse, Belgium","Asse, Flemish Brabant, BE",,MapQuest,city/town
+18.95238,72.832711,"Mumbai, India","Mumbai, MAHARASHTRA, IN",,MapQuest,city/town
+6.455058,3.39418,"Lagos, Nigeria","Lagos, NG",,MapQuest,city/town
 32.71576,-117.163817,"San Diego, United States","San Diego, San Diego County, CA, US",,MapQuest,city/town
-38.892062,-77.019912,"Washington, United States","Washington, District of Columbia, DC, US",,MapQuest,city/town
-33.830302,-116.546843,"Palm Springs, United States","Palm Springs, Riverside County, CA, US",,MapQuest,city/town
-60.384672,23.128638,"Salo, Finland","Salo, LÄNSI-SUOMI, FI",,MapQuest,city/town
-11.117496,122.643299,"Passi, Philippines","Passi City, ILOILO PROVINCE, PH",,MapQuest,city/town
+51.178506,-115.574277,"Banff, Canada","Banff, AB, CA",,MapQuest,city/town
 29.950621,-90.074948,"New Orleans, United States","New Orleans, Orleans Parish, LA, US",,MapQuest,city/town
 35.084248,-106.649241,"Albuquerque, United States","Albuquerque, Bernalillo County, NM, US",,MapQuest,city/town
+-3.132862,-59.986529,"Manaus, Brazil","Manaus, AM, BR",,MapQuest,city/town
 34.420867,-119.698342,"Santa Barbara, United States","Santa Barbara, Santa Barbara County, CA, US",,MapQuest,city/town
 43.091975,-71.462332,"Hooksett, United States","Hooksett, Merrimack County, NH, US",,MapQuest,city/town
 52.371009,4.900112,"Amsterdam, Netherlands","Amsterdam, NL",,MapQuest,city/town
@@ -61,7 +51,6 @@ latitude,longitude,name,desc,color,source,precision
 35.595889,-82.550039,"ASHEVILLE, United States","Asheville, Buncombe County, NC, US",,MapQuest,city/town
 37.984149,23.727984,"Athens, Greece","Athens, GR",,MapQuest,city/town
 33.748547,-84.391502,"Atlanta, United States","Atlanta, Fulton County, GA, US",,MapQuest,city/town
-30.264979,-97.746598,"Austin, United States","Austin, Travis County, TX, US",,MapQuest,city/town
 42.697721,23.322596,"Sofia, Bulgaria","Sofia, BG",,MapQuest,city/town
 42.333674,-71.120879,"Brookline, United States","Brookline, Norfolk County, MA, US",,MapQuest,city/town
 33.89592,35.47843,"Beirut, Lebanon","Beirut, LB",,MapQuest,city/town
@@ -69,47 +58,44 @@ latitude,longitude,name,desc,color,source,precision
 37.869058,-122.270455,"Berkeley, United States","Berkeley, Alameda County, CA, US",,MapQuest,city/town
 42.098702,-75.912543,"Binghamton, United States","Binghamton, Broome County, NY, US",,MapQuest,city/town
 39.166587,-86.534893,"Bloomington, United States","Bloomington, Monroe County, IN, US",,MapQuest,city/town
-42.358894,-71.056742,"Boston, United States","Boston, Suffolk County, MA, US",,MapQuest,city/town
 40.015831,-105.27927,"Boulder, United States","Boulder, Boulder County, CO, US",,MapQuest,city/town
 48.065466,17.113207,"Bratislava, Slovakia","Bratislava, BRATISLAVSKÝ KRAJ, SK",,MapQuest,city/town
 50.82204,-0.137406,"Brighton, United Kingdom","Brighton, East Sussex, GB",,MapQuest,city/town
 50.844041,4.367202,"Brussels, Belgium","Brussels, BRUSSELS-CAPITAL REGION, BE",,MapQuest,city/town
 46.232841,6.081779,"Meyrin, Switzerland","Meyrin, GENÈVE, CH",,MapQuest,city/town
 46.521827,6.632703,"Lausanne, Switzerland","Lausanne, VAUD, CH",,MapQuest,city/town
-40.442169,-79.994945,"Pittsburgh, United States","Pittsburgh, Allegheny County, PA, US",,MapQuest,city/town
 45.437191,12.33459,"Venice, Italy","Venice, Province of Venice, VENETO, IT",,MapQuest,city/town
-34.14955,-118.141452,"Pasadena, United States","Pasadena, Los Angeles County, CA, US",,MapQuest,city/town
-42.365248,-71.105015,"Cambridge, United States","Cambridge, Middlesex County, MA, US",,MapQuest,city/town
 -35.282071,149.128667,"Canberra, Australia","Canberra, ACT, AU",,MapQuest,city/town
+42.452705,-83.157142,"New Yrok, United States","[8500 - 8599] New, YROK, Royal Oak Twp, Oakland, MI, US",,MapQuest,street
 33.791489,-117.853096,"Orange, United States","Orange, Orange County, CA, US",,MapQuest,city/town
 34.096606,-117.719315,"Claremont, United States","Claremont, Los Angeles County, CA, US",,MapQuest,city/town
 44.552839,-69.631309,"Waterville, United States","Waterville, Kennebec County, ME, US",,MapQuest,city/town
 38.835224,-104.819798,"Colorado Springs, United States","Colorado Springs, El Paso County, CO, US",,MapQuest,city/town
 39.962649,-82.996216,"Columbus, United States","Columbus, Franklin County, OH, US",,MapQuest,city/town
-43.208452,-71.536941,"Concord, United States","Concord, Merrimack County, NH, US",,MapQuest,city/town
 45.516018,-122.681425,"Portland, United States","Portland, Multnomah County, OR, US",,MapQuest,city/town
 32.08059,-81.090103,"Savannah, United States","Savannah, Chatham County, GA, US",,MapQuest,city/town
 34.052238,-118.243344,"Los Angeles, United States","Los Angeles, Los Angeles County, CA, US",,MapQuest,city/town
+39.738453,-104.984853,"Denver, United States","Denver, Denver County, CO, US",,MapQuest,city/town
+52.587895,0.381641,"Denver, United Kingdom","Denver, Norfolk, GB",,MapQuest,city/town
 47.498382,19.040471,"Budapest, Hungary","Budapest, HU",,MapQuest,city/town
 52.011402,4.35839,"Delft, Netherlands","Delft, NL",,MapQuest,city/town
 41.588822,-93.620309,"Des Moines, United States","Des Moines, Polk County, IA, US",,MapQuest,city/town
 25.268352,55.296196,"Dubai, United Arab Emirates","Dubai, AE",,MapQuest,city/town
 53.349307,-6.261175,"Dublin, Ireland","Dublin, IE",,MapQuest,city/town
-51.507276,-0.12766,"London, United Kingdom","London, Westminster, GB",,MapQuest,city/town
+-43.530955,172.636646,"Christchurch, New Zealand","Christchurch, CANTERBURY, NZ",,MapQuest,city/town
 53.546135,-113.491213,"Edmonton, Canada","Edmonton, AB, CA",,MapQuest,city/town
 50.725647,-3.526661,"Exeter, United Kingdom","Exeter, Devon, GB",,MapQuest,city/town
 50.110653,8.682093,"Frankfurt am Main, Germany","Frankfurt, Frankfurt am Main, HESSE, DE",,MapQuest,city/town
-18.95238,72.832711,"Mumbai, India","Mumbai, MAHARASHTRA, IN",,MapQuest,city/town
 51.099884,3.739013,"Gent, Belgium","Ghent, East Flanders, BE",,MapQuest,city/town
 55.861147,-4.249989,"Glasgow, United Kingdom","Glasgow, GB",,MapQuest,city/town
 42.965446,-85.670209,"Grand Rapids, United States","Grand Rapids, Kent County, MI, US",,MapQuest,city/town
 34.010932,-118.491512,"Santa Monica, United States","Santa Monica, Los Angeles County, CA, US",,MapQuest,city/town
 53.219065,6.568008,"Groningen, Netherlands","Groningen, NL",,MapQuest,city/town
-44.074347,22.099129,"Bor, Serbia","Bor, RS",,MapQuest,city/town
-12.787417,78.718821,"Ambur, India","Ambur, TAMIL NADU, IN",,MapQuest,city/town
+57.706407,11.968629,"Göteborg, Sweden","Gothenburg, SE",,MapQuest,city/town
+53.550341,10.000654,"Hamburg, Germany","Hamburg, HAMBURG, DE",,MapQuest,city/town
 42.375805,-72.519871,"Amherst, United States","Amherst, Hampshire County, MA, US",,MapQuest,city/town
 52.095942,5.110414,"Utrecht, Netherlands","Utrecht, NL",,MapQuest,city/town
-40.945259,40.268568,"Of, Turkey","Of, TR",,MapQuest,city/town
+37.128849,-84.083677,"London, United States","London, Laurel County, KY, US",,MapQuest,city/town
 29.760803,-95.369506,"Houston, United States","Houston, Harris County, TX, US",,MapQuest,city/town
 39.76845,-86.156212,"Indianapolis, United States","Indianapolis, Marion County, IN, US",,MapQuest,city/town
 43.212502,-78.826103,"Northridge, United States","North Ridge, Niagara County, NY, US",,MapQuest,city/town
@@ -117,16 +103,18 @@ latitude,longitude,name,desc,color,source,precision
 39.099792,-94.578559,"Kansas City, United States","Kansas City, Jackson County, MO, US",,MapQuest,city/town
 49.338206,-123.168017,"West Vancouver, Canada","West Vancouver, BC, CA",,MapQuest,city/town
 50.717356,4.397805,"Waterloo, Belgium","Waterloo, Walloon Brabant, BE",,MapQuest,city/town
+50.061947,19.936856,"Krakow, Poland","Kraków, LESSER POLAND VOIVODESHIP, PL",,MapQuest,city/town
 35.01858,135.763835,"Kyoto, Japan","Kyoto, JP",,MapQuest,city/town
 50.879202,4.701168,"Leuven, Belgium","Leuven, Flemish Brabant, BE",,MapQuest,city/town
 56.878718,14.809439,"Växjö, Sweden","Växjö, SE",,MapQuest,city/town
 25.710291,-80.268654,"Coral Gables, United States","Coral Gables, Miami-Dade, FL, US",,MapQuest,city/town
 50.851244,5.690977,"Maastricht, Netherlands","Maastricht, NL",,MapQuest,city/town
 53.479147,-2.244745,"Manchester, United Kingdom","Manchester, Lancashire, GB",,MapQuest,city/town
-24.130284,79.597973,"Hatta, India","Hatta, MADHYA PRADESH, IN",,MapQuest,city/town
 33.920861,-118.415947,"El Segundo, United States","El Segundo, Los Angeles County, CA, US",,MapQuest,city/town
 37.974575,-122.531868,"San Rafael, United States","San Rafael, Marin County, CA, US",,MapQuest,city/town
 20.888034,-156.46785,"Kahului, United States","Kahului, Maui, HI, US",,MapQuest,city/town
+34.3668,-89.518625,"Oxford, United States","Oxford, Lafayette County, MS, US",,MapQuest,city/town
+41.883229,-87.632398,"Chicago, United States","Chicago, Cook County, IL, US",,MapQuest,city/town
 32.500759,-92.111225,"Monroe, United States","Monroe, Ouachita Parish, LA, US",,MapQuest,city/town
 45.509062,-73.553363,"Montréal, Canada","Montreal, QC, CA",,MapQuest,city/town
 41.20237,-76.786061,"Muncy, United States","Muncy, Lycoming County, PA, US",,MapQuest,city/town
@@ -135,6 +123,7 @@ latitude,longitude,name,desc,color,source,precision
 -32.927288,151.781253,"Newcastle, Australia","Newcastle, NSW, AU",,MapQuest,city/town
 35.595889,-82.550039,"Asheville, United States","Asheville, Buncombe County, NC, US",,MapQuest,city/town
 51.842739,5.86347,"nijmegen, Netherlands","Nijmegen, NL",,MapQuest,city/town
+58.590913,16.190348,"Norrkoping, Sweden","Norrköping, SE",,MapQuest,city/town
 42.052157,-87.687867,"Evanston, United States","Evanston, Cook County, IL, US",,MapQuest,city/town
 41.149456,-8.610766,"Porto, Portugal","Porto, PT",,MapQuest,city/town
 41.258652,-95.937195,"Omaha, United States","Omaha, Douglas County, NE, US",,MapQuest,city/town
@@ -143,12 +132,12 @@ latitude,longitude,name,desc,color,source,precision
 59.913269,10.739111,"Oslo, Norway","Oslo, NO",,MapQuest,city/town
 40.801899,-77.856697,"University Park, United States","University Park, Centre County, PA, US",,MapQuest,city/town
 48.856506,2.352133,"PARIS, France","Paris, Paris, ÎLE-DE-FRANCE, FR",,MapQuest,city/town
-18.736151,73.09498,"Pen, India","Pen, MAHARASHTRA, IN",,MapQuest,city/town
+40.896694,-77.838886,"Pennsylvania, United States","PA, US",,MapQuest,state/province
 38.892062,-77.019912,"Washington, DC, United States","Washington, District of Columbia, DC, US",,MapQuest,city/town
 -30.986943,150.442157,"Crawley, Australia","Carroll, NSW, AU",,MapQuest,city/town
 33.41514,-111.831498,"Mesa, United States","Mesa, Maricopa County, AZ, US",,MapQuest,city/town
+46.201756,6.146601,"Geneve, Switzerland","Geneva, GENÈVE, CH",,MapQuest,city/town
 10.657214,-61.51803,"Port of Spain, Trinidad and Tobago","Port of Spain, TT",,MapQuest,city/town
-41.824461,-71.412747,"Providence, United States","Providence, Providence County, RI, US",,MapQuest,city/town
 41.003604,-80.344422,"Newcastle, United States","New Castle, Lawrence County, PA, US",,MapQuest,city/town
 47.603229,-122.33028,"Seattle, United States","Seattle, King County, WA, US",,MapQuest,city/town
 -34.612869,-58.445979,"Buenos Aires, Argentina","Buenos Aires, AR",,MapQuest,city/town
@@ -165,6 +154,7 @@ latitude,longitude,name,desc,color,source,precision
 37.437516,-122.165747,"Stanford, United States","Stanford, Santa Clara County, CA, US",,MapQuest,city/town
 38.439698,-122.715642,"Santa Rosa, United States","Santa Rosa, Sonoma County, CA, US",,MapQuest,city/town
 -27.468968,153.023499,"Brisbane, Australia","Brisbane, QLD, AU",,MapQuest,city/town
+25.285252,51.526837,"Doha, Qatar","Doha, QA",,MapQuest,city/town
 -33.854816,151.216454,"Sydney, Australia","Sydney, NSW, AU",,MapQuest,city/town
 44.977479,-93.264346,"Minneapolis / St. Paul, United States","Minneapolis, Hennepin County, MN, US",,MapQuest,city/town
 32.080481,34.780527,"Tel Aviv, Israel","Tel Aviv, TEL AVIV DISTRICT, IL",,MapQuest,city/town
@@ -172,6 +162,7 @@ latitude,longitude,name,desc,color,source,precision
 35.663914,139.697927,"Shibuya-ku, Japan","Shibuya, JP",,MapQuest,city/town
 43.651893,-79.381713,"Toronto, Canada","Toronto, ON, CA",,MapQuest,city/town
 43.604462,1.444247,"toulouse, France","Toulouse, Haute-Garonne, FR",,MapQuest,city/town
+29.651958,-82.325024,"Gainesville, United States","Gainesville, Alachua County, FL, US",,MapQuest,city/town
 40.116328,-88.243522,"Champaign, United States","Champaign, Champaign County, IL, US",,MapQuest,city/town
 43.465041,-80.523566,"Waterloo, Canada","Waterloo, ON, CA",,MapQuest,city/town
 45.509062,-73.553363,"Montreal, Canada","Montreal, QC, CA",,MapQuest,city/town
@@ -185,7 +176,5 @@ latitude,longitude,name,desc,color,source,precision
 51.046362,-114.05803,"Calgary, Canada","Calgary, AB, CA",,MapQuest,city/town
 53.260664,-2.125516,"Macclesfield, United Kingdom","Macclesfield, Borough of Cheshire East, GB",,MapQuest,city/town
 47.368559,8.540443,"Zurich, Switzerland","Zurich, ZURICH, CH",,MapQuest,city/town
-47.092105,5.492546,"Dole, France","Arrondissement of Dole, FRANCHE-COMTÉ, FR",,MapQuest,city/town
-7.841054,3.931536,"Oyo, Nigeria","Oyo, NG",,MapQuest,city/town
-7.481356,4.551406,"Ifo, Nigeria","Ife, NG",,MapQuest,city/town
-34.034116,-5.013348,"Fes, Morocco","Fes, MA",,MapQuest,city/town
+38.297242,-122.289405,"Napa, United States","Napa, Napa County, CA, US",,MapQuest,city/town
+37.804828,-122.27248,"Oakland, United States","Oakland, Alameda County, CA, US",,MapQuest,city/town
