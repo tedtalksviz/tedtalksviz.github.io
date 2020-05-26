@@ -103,6 +103,7 @@ b, strong {
   height:94vh;
 }
 
+/*---  Flex-container utilities for graph and text-part next to the graph ---*/
 .flexright {
   display: flex;
   direction: row;
@@ -121,10 +122,13 @@ b, strong {
   overflow-y: auto;
   flex-grow: 2;
 }
+/*--------*/
+
 .main-content {
   width: 900px;
   border-radius:20px;
 }
+
 .right-content, .main-content {
   padding: 10px;
   background: rgba(230,230,255,0.7);
