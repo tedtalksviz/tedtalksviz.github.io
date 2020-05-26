@@ -91,7 +91,9 @@ class EventsMap {
       // Cities
       this.map_container = svg.append('g');
       this.map_container.selectAll('circle')
-        .data(cities_data)
+        .data(cities_data.sort(function(x, y) {
+          return x.count < y.count;
+        }))
         .enter()
         .append('circle')
         .attr('cx', function(d) {
