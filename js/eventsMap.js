@@ -30,7 +30,7 @@ class EventsMap {
     });
 
     // Add tooltip when hovering over events
-    const tooltip = floatingTooltip('event_tooltip');
+    const tooltip = floatingTooltip('event_tooltip', 350);
 
     const city_promise = d3.csv('resources/cities.csv');
 
@@ -67,8 +67,13 @@ class EventsMap {
         } else {
           size = city.count * 2;
         }
+        var string = city.events;
+        if (string[1] == "'") {
+          string = city.events.replace(/'/g, '"');
+        }
         return {
           ...city,
+          'events': JSON.parse(string),
           'size': size
         };
       }).sort(function(x, y) {
@@ -114,6 +119,10 @@ class EventsMap {
           var content =
             '<span class="name">Name: </span>' +
               '<span class="value">' + d.desc + '</span><br/>' +
+            '<span class="name">Number of events: </span>' + 
+              '<span class="value">' + d.count.toString() + '</span><br/>' +
+            '<span class="name">Events: </span>' + 
+              '<span class="value">' + d.events.join(', ') + '</span><br/>';
             '<span class="name">Number of events: </span>' +
               '<span class="value">' + d.count.toString() + '</span><br/>';
           d3.select(this)
