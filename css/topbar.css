@@ -6,11 +6,7 @@
 }
 
 #topbar + .content { 
-  padding-top: 7vh;
-}
-
-#topbar + .stick-top {
-  padding-top: 4vh;
+  padding-top: 6vh;
 }
 
 #topbar-row{

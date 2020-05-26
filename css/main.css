@@ -100,7 +100,7 @@ b, strong {
 }
 
 .content {
-  height:93vh;
+  height:94vh;
 }
 
 .tooltip-text {
@@ -118,13 +118,13 @@ b, strong {
 }
 .main-content {
   width: 900px;
+  border-radius:20px;
 }
 .right-content, .main-content {
   padding: 10px;
   margin-left:auto;
   margin-right:auto;
   background: rgba(230,230,255,0.7);
-  border-radius:20px;
 }
 
 .header{
