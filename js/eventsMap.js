@@ -70,11 +70,8 @@ class EventsMap {
       // Countries
       this.map_container = svg
         .append('g')
-        .attr('id', 'map')
-        .call(zoom)
-        .call(zoom.transform, d3.zoomIdentity
-            .translate(width/2-40, height/2+110)
-            .scale(0.105));
+        .attr('id', 'map');
+        
       this.map_container.append('rect')
         .attr('x', 0)
         .attr('y', 0)
@@ -86,7 +83,6 @@ class EventsMap {
         .enter()
         .append('path')
         .attr('d', path)
-        //.style('fill', '#793fae')
         .style('fill', '#2a1740');
       // Cities
       this.map_container = svg.append('g');
@@ -105,22 +101,35 @@ class EventsMap {
         .attr('r', function(d) {
           return d.count * 2;
         })
-        .style('fill', 'red')
+        .style('fill', '#e62b1e')
         .style('stroke', 'gray')
         .style('stroke-width', 0.25)
-        .style('opacity', 0.75)
+        .style('opacity', 0.7)
         .on('mouseover', function(d) {
           var content = 
             '<span class="name">Name: </span>' + 
               '<span class="value">' + d.desc + '</span><br/>' +
             '<span class="name">Number of events: </span>' + 
               '<span class="value">' + d.count.toString() + '</span><br/>';
+          d3.select(this)
+            .style('fill', '#e6e6ff')
+            .style('stoke', 'white')
+            .style('stroke-width', 1);
           tooltip.showTooltip(content, d3.event);
         })
         .on('mouseout', function(d) {
           tooltip.hideTooltip();
+          d3.select(this)
+            .style('fill', '#e62b1e')
+            .style('stroke-width', 0.25)
+            .style('stroke', 'gray');
         });
-    });
+      d3.select('#map')
+        .call(zoom)
+        .call(zoom.transform, d3.zoomIdentity
+          .translate(width/2-40, height/2+110)
+          .scale(0.105));
+      });
   }
 }
 
