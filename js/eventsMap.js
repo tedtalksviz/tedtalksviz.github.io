@@ -30,7 +30,7 @@ class EventsMap {
     });
 
     // Add tooltip when hovering over events
-    const tooltip = floatingTooltip('event_tooltip');
+    const tooltip = floatingTooltip('event_tooltip', 350);
 
     const city_promise = d3.csv('resources/cities.csv');
 
@@ -39,7 +39,6 @@ class EventsMap {
       var transform = [d3.event.transform.x, d3.event.transform.y];
       var newScale = d3.event.transform.k * 2000;
       var direction = d3.event.wheelData < 0 ? 'down' : 'up';
-      console.log(d3.event)
       projection
         .translate(transform)
         .scale(newScale);
@@ -61,7 +60,6 @@ class EventsMap {
     Promise.all([map_promise, city_promise]).then((results) => {
       let map_data = results[0];
       let cities_data = results[1];
-      console.log(cities_data);
       cities_data = cities_data.map(city => {
         var size = city.count;
         if (city.count < 10) {
@@ -69,19 +67,23 @@ class EventsMap {
         } else {
           size = city.count * 2;
         }
+        var string = city.events;
+        if (string[1] == "'") {
+          string = city.events.replace(/'/g, '"');
+        }
         return {
           ...city,
+          'events': JSON.parse(string),
           'size': size
         };
       }).sort(function(x, y) {
         return y.size - x.size;
       });
-      console.log(cities_data);
       // Countries
       this.map_container = svg
         .append('g')
         .attr('id', 'map');
-        
+
       this.map_container.append('rect')
         .attr('x', 0)
         .attr('y', 0)
@@ -114,10 +116,14 @@ class EventsMap {
         .style('stroke-width', 0.25)
         .style('opacity', 0.7)
         .on('mouseover', function(d) {
-          var content = 
-            '<span class="name">Name: </span>' + 
+          var content =
+            '<span class="name">Name: </span>' +
               '<span class="value">' + d.desc + '</span><br/>' +
             '<span class="name">Number of events: </span>' + 
+              '<span class="value">' + d.count.toString() + '</span><br/>' +
+            '<span class="name">Events: </span>' + 
+              '<span class="value">' + d.events.join(', ') + '</span><br/>';
+            '<span class="name">Number of events: </span>' +
               '<span class="value">' + d.count.toString() + '</span><br/>';
           d3.select(this)
             .style('fill', '#e6e6ff')
