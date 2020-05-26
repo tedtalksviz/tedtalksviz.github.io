@@ -68,10 +68,8 @@ class TalksGraph {
       const input = d3.select('#search');
       input.on('keyup', function(d) {
         var str = this.value.toLowerCase();
-        console.log(str);
         var possible_nodes = nodes.filter(node => 
           node.title.toLowerCase().includes(str));
-        console.log(typeof possible_nodes);
         if (possible_nodes.length == 1) {
           var node_id = possible_nodes[0].id;
           const circle = document.querySelector(
