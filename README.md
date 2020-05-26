@@ -129,7 +129,7 @@ Functional prototype: [tedtalksviz.github.io](https://tedtalksviz.github.io).
 
 ### Usage
 
-Our project can be easily used with a local server. Recommended steps are:
+Our website can be easily used with a local server. Recommended steps are:
 
 * Clone the project
 ```
@@ -152,3 +152,9 @@ python -m http.server
 ```
 
 In both cases the server will start on: http://127.0.0.1:8080.
+
+For data processing, install the libraries in [requierments.txt].
+```
+pip install -r requierments.txt
+```
+
