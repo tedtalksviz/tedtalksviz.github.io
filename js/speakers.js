@@ -153,20 +153,12 @@ function setScale() {
     .range([0+margin.left*4, width-margin.right]);
   }
 
-  // Charge function that is called for each node.
-  // As part of the ManyBody force.
-  // This is what creates the repulsion between nodes.
-  //
-  // Charge is proportional to the diameter of the
-  // circle (which is stored in the radius attribute
-  // of the circle's associated data.
-  //
-  // This is done to allow for accurate collision
-  // detection with nodes of different sizes.
-  //
-  // Charge is negative because we want nodes to repel.
-  // @v4 Before the charge was a stand-alone attribute
-  //  of the force layout. Now we can use it as a separate force!
+  /* Creates the repulsion between nodes.
+  *  Charge is proportional to the diameter of the
+  *  circle (which is stored in the radius attribute
+  *  of the circle's associated data.
+  *  Charge is negative because we want nodes to repel.
+  */
   function charge(d, strength) {
       return -Math.pow(d.radius, 2) *strength;
   }
