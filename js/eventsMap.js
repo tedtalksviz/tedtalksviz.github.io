@@ -52,13 +52,7 @@ class EventsMap {
           return projection([d.longitude, d.latitude])[1];
         })
         .attr('r', function(d) {
-          var size = 0;
-          if (d.count < 10) {
-            size = d.count * 4;
-          } else {
-            size = d.count * 2;
-          }
-          return size * d3.event.transform.k * 10 / 2;
+          return d.size * d3.event.transform.k * 10 / 2;
         });
     }
     const zoom = d3.zoom()
@@ -67,6 +61,22 @@ class EventsMap {
     Promise.all([map_promise, city_promise]).then((results) => {
       let map_data = results[0];
       let cities_data = results[1];
+      console.log(cities_data);
+      cities_data = cities_data.map(city => {
+        var size = city.count;
+        if (city.count < 10) {
+          size = city.count * 4;
+        } else {
+          size = city.count * 2;
+        }
+        return {
+          ...city,
+          'size': size
+        };
+      }).sort(function(x, y) {
+        return y.size - x.size;
+      });
+      console.log(cities_data);
       // Countries
       this.map_container = svg
         .append('g')
@@ -87,9 +97,7 @@ class EventsMap {
       // Cities
       this.map_container = svg.append('g');
       this.map_container.selectAll('circle')
-        .data(cities_data.sort(function(x, y) {
-          return x.count < y.count;
-        }))
+        .data(cities_data)
         .enter()
         .append('circle')
         .attr('cx', function(d) {
@@ -99,7 +107,7 @@ class EventsMap {
           return projection([d.longitude, d.latitude])[1];
         })
         .attr('r', function(d) {
-          return d.count * 2;
+          return d.size;
         })
         .style('fill', '#e62b1e')
         .style('stroke', 'gray')
