@@ -145,11 +145,11 @@ mark {
 
 
 .bgimg {
+  background-image: url("../images/ted_large_2.jpg");
   background-position: center;
   background-size: cover;
-  background-image: url("../images/ted_large_2.jpg");
-  height: 100vh;
-  min-height: 75%;
+  background-attachment: fixed;
+  min-height: 100vh;
   text-align:center;
 }
 
