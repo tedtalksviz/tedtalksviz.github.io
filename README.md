@@ -153,7 +153,7 @@ python -m http.server
 
 In both cases the server will start on: http://127.0.0.1:8080.
 
-For data processing, install the libraries in [requierments.txt].
+For data processing, install the libraries in [requirements.txt](https://github.com/com-480-data-visualization/com-480-project-robert-drop-table-students/blob/master/requirements.txt).
 ```
 pip install -r requierments.txt
 ```
