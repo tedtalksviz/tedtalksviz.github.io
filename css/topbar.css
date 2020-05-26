@@ -3,6 +3,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  height: 6vh;
 }
 
 #topbar + .content { 
@@ -15,6 +16,7 @@
   /* ---- Flex container utilities ----*/
   display: flex;
   flex-wrap: nowrap;
+  height: inherit;
 }
 
 #topbar-row:after, #topbar-row:before {
@@ -33,7 +35,7 @@
 
 .tp-column{
   border: none;
-  padding: 16px;
+  padding-top: 2vh;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
@@ -41,6 +43,7 @@
   cursor: pointer;
   white-space: nowrap;
   display: block;
+  height: 4vh;
 }
 
 .tp-column:hover{
