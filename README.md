@@ -127,3 +127,21 @@ Functional prototype: [tedtalksviz.github.io](https://tedtalksviz.github.io).
 
 **80% of the final grade**
 
+### Usage
+
+Our project can be easily used with a local server. Recommended steps are:
+
+1. Clone the project
+```
+git clone https://github.com/com-480-data-visualization/com-480-project-robert-drop-table-students.git project
+```
+
+2. Start a local server
+
+You can easily do this with [http-server](https://www.npmjs.com/package/http-server)
+```
+npm install -g http-server
+cd project
+http-server
+```
+The server will start on: http://127.0.0.1:8080
