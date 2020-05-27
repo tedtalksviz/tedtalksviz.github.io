@@ -148,10 +148,10 @@ http-server
 Or you can also use python3 like this:
 ```
 cd project 
-python -m http.server
+python -m http.server 8080
 ```
 
-In both cases the server will start on: http://127.0.0.1:8080.
+In both cases the server will start on: http://localhost:8080/index.html.
 
 For data processing, install the libraries in [requirements.txt](https://github.com/com-480-data-visualization/com-480-project-robert-drop-table-students/blob/master/requirements.txt).
 ```
@@ -166,5 +166,5 @@ The processbook can be viewed here: [Processbook.pdf](https://github.com/com-480
 
 ### Screencast
 
-Here is a Youtube link to our screencast: https://www.youtube.com/watch?v=n7Lsy_XmB-g&feature=youtu.be 
+Here is a Youtube link to our screencast: https://www.youtube.com/watch?v=n7Lsy_XmB-g 
 
