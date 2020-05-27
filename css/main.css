@@ -172,6 +172,10 @@ b, strong {
   opacity: 0.75;
 }
 
+.remark{
+  font-size: 10px;
+}
+
 .input {
   font-size: 18px;
   margin-top: 5px;
