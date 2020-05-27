@@ -158,3 +158,13 @@ For data processing, install the libraries in [requirements.txt](https://github.
 pip install -r requierments.txt
 ```
 
+The website should work on all modern browsers except on Firefox on Windows.
+
+### Processbook
+
+The processbook can be viewed here: [Processbook.pdf](https://github.com/com-480-data-visualization/com-480-project-robert-drop-table-students/blob/master/Processbook.pdf)
+
+### Screencast
+
+Here is a Youtube link to our screencast: https://youtu.be/n7Lsy\_XmB-g
+
