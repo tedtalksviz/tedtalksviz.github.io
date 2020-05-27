@@ -325,7 +325,7 @@ class ParallelCoords {
                 d3.select(this).transition().attr("transform", "translate(" + x(dim) + ")");
               }
               //rerender whether just colormap or order changed
-              setTimeout(function(){draw_all()}, 500);
+              setTimeout(function(){draw_all()}, 300);
 
               delete this.__origin__;
               delete dragging[dim];
@@ -393,7 +393,7 @@ class ParallelCoords {
         const input = d3.select('#search');
         input.on('keyup', function(d) {
           var str = this.value.toLowerCase();
-          var possible = filtered_data.filter(row => 
+          var possible = filtered_data.filter(row =>
             row.title.toLowerCase().includes(str));
           if (possible.length == 1) {
             console.log('found');
