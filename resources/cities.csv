@@ -15,7 +15,6 @@ latitude,longitude,desc,events,count
 6.455058,3.3941800000000004,Lagos,['TEDLagos Ideas Search'],1
 10.657214,-61.51803,Port of Spain,['TEDxPortofSpain'],1
 12.97912,77.5913,Bengaluru,['TED@Bangalore'],1
-18.403223,73.506771,Lavasa,['INK Conference'],1
 18.952379999999998,72.832711,Mumbai,"['TEDxGatewayWomen', 'TEDIndia 2009']",2
 20.888034,-156.46785,Kahului,['TEDxMaui'],1
 20.913903,-100.744012,San Miguel De Allende,['TEDxSanMigueldeAllende'],1
@@ -31,7 +30,6 @@ latitude,longitude,desc,events,count
 32.08059,-81.090103,Savannah,['TEDxCreativeCoast'],1
 32.500759,-92.111225,Monroe,['TEDxMonroeCorrectionalComplex'],1
 32.715759999999996,-117.163817,San Diego,"['TEDMED 2010', 'TEDMED 2009']",2
-32.739977,-97.340038,Ft Worth,['Fort Worth City Council'],1
 32.777977,-96.796215,Dallas,['TEDxSMU'],1
 33.41514,-111.831498,Mesa,['TEDxPhoenix'],1
 33.663857,-117.904765,Costa Mesa,['TEDxOrangeCoast'],1
@@ -44,15 +42,14 @@ latitude,longitude,desc,events,count
 34.010932000000004,-118.49151200000001,Santa Monica,['TEDxGreatPacificGarbagePatch'],1
 34.052238,-118.243344,Los Angeles,"['TEDxCrenshaw', 'TEDxUSC']",2
 34.096606,-117.719315,Claremont,['TEDxClaremontColleges'],1
-34.14955,-118.141452,Pasadena,"['TEDxCaltech', 'Serious Play 2008']",2
+34.14955,-118.141452,Pasadena,['TEDxCaltech'],1
 34.3668,-89.518625,Oxford,"['TEDxUM', 'TEDxMiamiUniversity']",2
 34.420867,-119.698342,Santa Barbara,['TEDxAmericanRiviera'],1
 35.01858,135.763835,Kyoto,['TEDxKyoto'],1
 35.084247999999995,-106.64924099999999,Albuquerque,['TEDxABQ'],1
 35.595889,-82.550039,Asheville,"['TEDxAsheville', 'TEDxNextGenerationAsheville']",2
 35.663914,139.697927,Shibuya,['TEDxTokyo'],1
-36.169202,-115.140597,Las Vegas,['DICE Summit 2010'],1
-36.596808,-121.897127,Monterey,"['TEDWomen 2015', 'TEDxMonterey', 'TEDxSingapore', 'EG 2008', 'TED2008', 'EG 2007', 'TED2007', 'TED2006', 'TED2005', 'TED2004', 'TED2002', 'TED2003', 'TED2001', 'TED1998', 'TED1994', 'TED1990', 'TED1984']",17
+36.596808,-121.897127,Monterey,"['TEDWomen 2015', 'TEDxMonterey', 'TEDxSingapore', 'TED2008', 'TED2007', 'TED2006', 'TED2005', 'TED2004', 'TED2002', 'TED2003', 'TED2001', 'TED1998', 'TED1994', 'TED1990', 'TED1984']",15
 36.618806,-121.91871,Pacific Grove,['TED Fellows Retreat 2015'],1
 37.028265000000005,-76.342338,Hampton,['TEDxNASA'],1
 37.051095000000004,-122.01469499999999,Scotts Valley,['TEDxSantaCruz'],1
@@ -60,15 +57,13 @@ latitude,longitude,desc,events,count
 37.225854999999996,-80.410073,Blacksburg,['TEDxVirginiaTech'],1
 37.334807,-121.88812800000001,San Jose,['TEDxSanJoseCA'],1
 37.352395,-121.953076,Santa Clara,['TED@Intel'],1
-37.437515999999995,-122.165747,Stanford,"['TEDxStanford', 'TEDxSiliconValley', 'Stanford University']",3
+37.437515999999995,-122.165747,Stanford,"['TEDxStanford', 'TEDxSiliconValley']",2
 37.566601,127.0,Seoul,['TEDxSeoul'],1
 37.78008,-122.42016799999999,San Francisco,"['TEDWomen 2016', 'TED@IBM', 'TED@BCG San Francisco', 'TEDWomen 2013', 'TEDxFiDiWomen', 'TEDxGoldenGatePark 2012', 'TEDxSF', 'TEDxNASA@SiliconValley']",8
-37.804828,-122.27248,Oakland,['University of California'],1
 37.869058,-122.270455,Berkeley,['TEDxBerkeley'],1
 37.941399,-122.483902,San Quentin,['TEDxSanQuentin'],1
 37.974575,-122.53186799999999,San Rafael,['TEDxMarin'],1
 37.984149,23.727984,Athens,['TEDxAthens'],1
-38.297242,-122.289405,Napa,['Taste3 2008'],1
 38.439698,-122.71564199999999,Santa Rosa,['TEDxSonomaCounty'],1
 38.835224,-104.81979799999999,Colorado Springs,['TEDxColoradoSprings'],1
 38.892062,-77.019912,Washington,"['TEDxPennsylvaniaAvenue', 'TEDMED 2015', 'TEDMED 2014', 'TEDMED 2013', 'TEDxDeExtinction', 'TEDxMidAtlantic 2013', 'TEDxGeorgetown', 'TEDMED 2012', 'TEDxWomen 2012', 'TEDMED 2011', 'TEDxPennQuarter', 'TEDxOilSpill', 'TEDWomen 2010', 'TEDxMidAtlantic', 'TED@State']",15
@@ -81,10 +76,9 @@ latitude,longitude,desc,events,count
 39.962649,-82.996216,Columbus,"['TEDxColumbusWomen', 'TEDxColumbus']",2
 40.015831,-105.27927,Boulder,"['TEDxBoulder', 'TEDxBoulder 2011']",2
 40.116328,-88.243522,Champaign,['TEDxUIUC'],1
-40.35198,-74.660744,Princeton,['Princeton University'],1
-40.442169,-79.994945,Pittsburgh,"['TEDxPittsburgh', 'TEDxCMU', 'Carnegie Mellon University']",3
+40.442169,-79.994945,Pittsburgh,"['TEDxPittsburgh', 'TEDxCMU']",2
 40.640316999999996,22.935272,Thessaloniki,['TEDxThessaloniki'],1
-40.713054,-74.007228,New York,"['TED Residency', 'TED-Ed Weekend', 'TEDNYC', 'TEDSalon NY2015', 'TEDYouth 2015', 'TED@Unilever', 'TEDYouth 2014', 'TEDSalon NY2014', 'TEDxNewYork', 'TEDxMet', 'TEDCity2.0', 'TED@NYC', 'TEDSalon NY2013', 'TEDYouth 2012', 'TED@New York', 'TEDSalon NY2012', 'TEDYouth 2011', 'TEDxManhattan', 'TEDxTeen', 'TEDxWomen 2011', 'TEDPrize@UN', 'TEDSalon NY2011', 'NextGen:Charity', 'TEDxEast', 'TEDxNYED', 'World Science Festival', 'New York State Senate', 'Michael Howard Studios', 'TEDSalon 2007 Hot Science', 'Gel Conference', 'TEDSalon 2006', 'Bowery Poetry Club']",32
+40.713054,-74.007228,New York,"['TED Residency', 'TED-Ed Weekend', 'TEDNYC', 'TEDSalon NY2015', 'TEDYouth 2015', 'TED@Unilever', 'TEDYouth 2014', 'TEDSalon NY2014', 'TEDxNewYork', 'TEDxMet', 'TEDCity2.0', 'TED@NYC', 'TEDSalon NY2013', 'TEDYouth 2012', 'TED@New York', 'TEDSalon NY2012', 'TEDYouth 2011', 'TEDxManhattan', 'TEDxTeen', 'TEDxWomen 2011', 'TEDPrize@UN', 'TEDSalon NY2011', 'TEDxEast', 'TEDxNYED', 'TEDSalon 2007 Hot Science', 'TEDSalon 2006']",26
 40.758478000000004,-111.88814199999999,Salt Lake City,['TEDxSaltLakeCity'],1
 40.801899,-77.856697,University Park,['TEDxPSU'],1
 40.896694000000004,-77.838886,PA,['TEDxPenn'],1
@@ -94,17 +88,16 @@ latitude,longitude,desc,events,count
 41.20237,-76.786061,Muncy,['TEDxMuncyStatePrison'],1
 41.258652000000005,-95.93719499999999,Omaha,['TEDxOmaha'],1
 41.588822,-93.62030899999999,Des Moines,['TEDxDesMoines'],1
-41.824461,-71.412747,Providence,"['TEDxProvidence', 'Business Innovation Factory']",2
+41.824461,-71.412747,Providence,['TEDxProvidence'],1
 41.883229,-87.632398,Chicago,['TEDxMidwest'],1
 42.052157,-87.687867,Evanston,['TEDxNorthwesternU'],1
 42.098702,-75.912543,Binghamton,['TEDxBinghamtonUniversity'],1
-42.251704,-79.501693,Chautauqua,['Chautauqua Institution'],1
 42.281419,-83.748478,Ann Arbor,['TEDxUofM'],1
 42.283773,-71.34729200000001,Natick,['TEDxNatick'],1
 42.332916,-83.047853,Detroit,['TED@MotorCity'],1
 42.333674,-71.120879,Brookline,['TEDxBeaconStreet'],1
 42.358894,-71.056742,Boston,"['TED@StateStreet Boston', 'TEDxBoston', 'TED@State Street Boston', 'TEDxBoston 2012', 'TEDxBoston 2011', 'TEDxBoston 2010', 'TEDxBoston 2009']",7
-42.365248,-71.10501500000001,Cambridge,"['TEDxCambridge', 'Harvard University', 'Justice with Michael Sandel']",3
+42.365248,-71.10501500000001,Cambridge,['TEDxCambridge'],1
 42.375805,-72.519871,Amherst,['TEDxHampshireCollege'],1
 42.452705,-83.15714200000001,[8500 - 8599] New,['TEDxChange'],1
 42.697721,23.322596,Sofia,['TEDxBG'],1
@@ -114,14 +107,14 @@ latitude,longitude,desc,events,count
 43.465041,-80.523566,Waterloo,['TEDxUW'],1
 43.551208,7.012695,Cannes,"['TEDxCannes', 'TED@Cannes']",2
 43.604462,1.4442469999999998,Toulouse,['TEDxToulouse'],1
-43.651893,-79.381713,Toronto,"['TEDxToronto', 'TEDxToronto 2011', 'TEDxToronto 2010', 'Toronto Youth Corps']",4
+43.651893,-79.381713,Toronto,"['TEDxToronto', 'TEDxToronto 2011', 'TEDxToronto 2010']",3
 44.058088,-121.31515,Bend,['TEDxBend'],1
 44.552839,-69.631309,Waterville,['TEDxColbyCollege'],1
 44.977478999999995,-93.264346,Minneapolis,['TEDxTC'],1
 45.437191,12.334589999999999,Venice,['TEDxCaFoscariU'],1
 45.509062,-73.553363,Montreal,"['TEDxMontreal', 'TEDxUdeM']",2
 45.516018,-122.681425,Portland,"['TEDxPortland', 'TEDxMtHood', 'TEDxConcordiaUPortland', 'TEDxDirigo']",4
-46.201756,6.146601,Geneva,"['TEDGlobal>Geneva', 'TEDxPlaceDesNations', 'TEDxRC2', 'LIFT 2007']",4
+46.201756,6.146601,Geneva,"['TEDGlobal>Geneva', 'TEDxPlaceDesNations', 'TEDxRC2']",3
 46.215624,-63.492676,Victoria,['TEDxVictoria'],1
 46.232841,6.081779,Meyrin,['TEDxCERN'],1
 46.521827,6.632703,Lausanne,"['TEDxHelvetia', 'TEDxCHUV']",2
@@ -129,7 +122,6 @@ latitude,longitude,desc,events,count
 47.498382,19.040471,Budapest,['TEDxDanubia'],1
 47.603229,-122.33028,Seattle,"['TEDxSeattleU', 'TEDxRainier']",2
 48.065466,17.113207,Bratislava,['TEDxBratislava'],1
-48.13641,11.57753,Munich,['DLD 2007'],1
 48.192309,16.371364,Vienna,['TEDxVienna'],1
 48.696899,-122.904198,Eastsound,['TEDxOrcasIsland'],1
 48.856506,2.3521330000000003,Paris,"['TED@BCG Paris', 'TEDxConcorde', 'TEDxParis 2012', 'TEDxParis 2010']",4
@@ -148,15 +140,15 @@ latitude,longitude,desc,events,count
 51.046362,-114.05803,Calgary,['TEDxYYC'],1
 51.099884,3.739013,Ghent,['TEDxGhent'],1
 51.178506,-115.574277,Banff,['TEDSummit'],1
-51.507276,-0.12766,London,"['Global Witness HQ', 'TEDxEastEnd', 'TEDGlobalLondon', 'TEDGlobal>London', 'TED@BCG London', 'TED@State Street London', 'TEDSalon London Spring 2012', 'TEDxObserver', 'TEDSalon London Fall 2012', 'TEDxGoodenoughCollege', 'TEDxLondonBusinessSchool', 'TED@London', 'TEDxImperialCollege', 'TEDxUCL', 'TEDxEuston', 'TEDSalon London Fall 2011', 'TEDSalon London Spring 2011', 'TEDSalon London 2010', 'TEDSalon London 2009', 'Elizabeth G. Anderson School', 'TEDSalon 2009 Compassion', 'Royal Institution']",22
-51.752155,-1.258214,Oxford,"['TEDxSkoll', 'TEDGlobal 2010', 'TED Senior Fellows at TEDGlobal 2010', 'TEDGlobal 2009', 'Skoll World Forum 2007', 'TEDGlobal 2005']",6
+51.507276,-0.12766,London,"['TEDxEastEnd', 'TEDGlobalLondon', 'TEDGlobal>London', 'TED@BCG London', 'TED@State Street London', 'TEDSalon London Spring 2012', 'TEDxObserver', 'TEDSalon London Fall 2012', 'TEDxGoodenoughCollege', 'TEDxLondonBusinessSchool', 'TED@London', 'TEDxImperialCollege', 'TEDxUCL', 'TEDxEuston', 'TEDSalon London Fall 2011', 'TEDSalon London Spring 2011', 'TEDSalon London 2010', 'TEDSalon London 2009', 'TEDSalon 2009 Compassion']",19
+51.752155,-1.258214,Oxford,"['TEDxSkoll', 'TED Senior Fellows at TEDGlobal 2010', 'TEDGlobal 2010', 'TEDGlobal 2009', 'TEDGlobal 2005']",5
 51.842739,5.8634699999999995,Nijmegen,['TEDxNijmegen'],1
 51.922896,4.463173,Rotterdam,['TEDxRotterdam 2010'],1
 52.011402000000004,4.35839,Delft,['TEDxDelft'],1
 52.095942,5.110414,Utrecht,['TEDxHogeschoolUtrecht'],1
 52.371009,4.900112,Amsterdam,['TEDxAmsterdam'],1
 52.408106,-1.510456,Coventry,['TEDxWarwick'],1
-52.517037,13.388860000000001,Berlin,"['TED@BCG Berlin', 'TEDSalon Berlin 2014', 'TEDxBerlin', 'Web 2.0 Expo 2008']",4
+52.517037,13.388860000000001,Berlin,"['TED@BCG Berlin', 'TEDSalon Berlin 2014', 'TEDxBerlin']",3
 52.587894999999996,0.381641,Denver,['TEDxDU 2011'],1
 53.219065,6.568008,Groningen,['TEDxGroningen'],1
 53.260664,-2.125516,Macclesfield,['TEDxYouth@Manchester'],1
