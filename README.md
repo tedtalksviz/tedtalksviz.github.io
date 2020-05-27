@@ -166,5 +166,5 @@ The processbook can be viewed here: [Processbook.pdf](https://github.com/com-480
 
 ### Screencast
 
-Here is a Youtube link to our screencast: https://youtu.be/n7Lsy\_XmB-g
+Here is a Youtube link to our screencast: https://www.youtube.com/watch?v=n7Lsy_XmB-g&feature=youtu.be 
 
