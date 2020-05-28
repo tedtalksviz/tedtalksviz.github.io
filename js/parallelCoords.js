@@ -386,7 +386,7 @@ class ParallelCoords {
           .attr("x", -23)
           .attr("width", 36)
           .append("title")
-          .text("Doubleclick to dismiss");
+          .text("Click under the axis to dismiss");
         // Search
         console.log(filtered_data);
         var last_talk = null;
