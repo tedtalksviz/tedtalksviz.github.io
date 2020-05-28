@@ -162,7 +162,7 @@ The website should work on all modern browsers except on Firefox on Windows.
 
 ### Processbook
 
-The processbook can be viewed here: [Process\_book.pdf](https://github.com/com-480-data-visualization/com-480-project-robert-drop-table-students/blob/master/Processbook.pdf)
+The processbook can be viewed here: [Process\_book.pdf](https://github.com/com-480-data-visualization/com-480-project-robert-drop-table-students/blob/master/Process\_book.pdf)
 
 ### Screencast
 
